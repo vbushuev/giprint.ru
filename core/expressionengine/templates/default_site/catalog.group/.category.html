@@ -1,0 +1,376 @@
+{embed=embed/.header title="{exp:query sql="SELECT cat_name, exp_categories.cat_id, field_id_5 cat_title,cat_description FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}{if cat_title}{cat_title}{if:else}{cat_name}{/if}{/exp:query}" {exp:query sql="SELECT field_id_4 description, field_id_3 keywords FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}     description="{description}"  keywords="{keywords}" {/exp:query} }
+{if segment_3 !=''}{redirect='404'}{/if}
+
+<script>
+  (function($) {
+    var Uploader = {
+      onReady: function() {
+        $('.attachments_uploader__inner').pluploadQueue({
+          runtimes : 'html5,flash,silverlight,html4',
+          url: '/plupload/upload.php',
+          chunk_size: 0,
+          rename: true,
+          dragdrop: true,
+          unique_names: true,
+          flash_swf_url: '/static/Moxie.swf',
+          silverlight_xap_url: '/static/Moxie.xap',
+
+          filters: {
+            max_file_size: '999mb',
+            mime_types: [
+              {title: "Image files", extensions: "ai,eps,cdr,tif,tiff,jpg,gif,png,jpeg"},
+              {title: "Zip files", extensions: "zip,rar,7z"}
+            ]
+          },
+
+          init: {
+            UploadComplete: function (up, files) {
+              var $productFiles = $('.order_attachments');
+
+              console.log(files);
+
+              var filenames = [];
+              plupload.each(files, function (file) {
+                filenames.push(file.target_name);
+              });
+              $productFiles.val(filenames.join());
+            }
+          }
+        });
+      }
+    };
+
+    $(document).ready(function() {
+        $(document).on('mousewheel', ':input[type=number]', function(e){
+            e.preventDefault();
+        });
+
+        Uploader.onReady();
+
+      $('.js-add-attachments').on('click', function() {
+        $('.attachments_uploader').fadeIn();
+
+        return false;
+      });
+      });
+      }(jQuery));
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+//        $(".calc_order").live('click', function() {
+//            var calc_id = $(this).attr("calc_id");
+//            var pt = $(this).attr("pt");
+//            $("#calc-block").empty();
+//            window.ExpressoStore = undefined;
+//            $.get('{site_url}store/ajax_calc/'+calc_id+'/'+pt, function(data) {
+//                $("#calc-block").live().append(data);
+//                $(".store.calc select.modifier_selecting").css({"display":"none"});
+//                $(".store.calc").css({"display":"block"});
+//                $(".store.calc tr[modifier-row]").css({"display":"none"});
+//                $(".store.calc tr[modifier-row]:eq(0)").css({"display":"table-row"});
+//                $(".store.calc select.modifier_selecting:first").show();
+////                $(".store.calc").data('onDialogShow')();
+//            });
+//            return false;
+//        });
+      $(".calc_order").live('click', function() {
+          console.debug("i've found that");
+          var calc_id = $(this).attr("calc_id");
+          var pt = $(this).attr("pt");
+            $("#calc-block").empty();
+            $.get('{site_url}store/ajax_calc/'+calc_id+'/', function(data) {
+              $('#calc-block').html(data);
+              initCalculator();
+              $('.p-modal').show();//.data('onDialogShow')();
+//                $("#calc-block").live().append(data);
+//                $(".store.calc select.modifier_selecting").css({"display":"none"});
+//                $(".store.calc").css({"display":"block"});
+//                $(".store.calc tr[modifier-row]").css({"display":"none"});
+//                $(".store.calc tr[modifier-row]:eq(0)").css({"display":"table-row"});
+//                $(".store.calc select.modifier_selecting:first").show();
+//                $(".store.calc").data('onDialogShow')();
+            });
+            return false;
+        });
+
+
+        $(".close_order").live('click',function() {
+            $(".store.calc").css({"display":"none"});
+            return false;
+        });
+
+//      $(".calc_order").click(function () {
+//        var entryId = $(this).attr('calc_id');
+
+//        $('.entry-' + entryId).css({"display": "block"});
+//        $('.entry-' + entryId).data('onDialogShow')();
+
+//      });
+
+    });
+</script>
+
+<div class="content">
+  <div class="BigMenu">
+	  <div class="plug"></div>
+    {embed=embed/.accordion}
+	</div>
+
+  <div class="mainDiv">
+    {exp:query sql="SELECT cat_name, cat_id FROM exp_categories WHERE cat_url_title = '{segment_2}'"}
+      {if no_results}
+        {redirect='404'}
+      {/if}
+	<div class="breadcrumbs">
+    <a href="/">Главная</a> &rarr; <a href="/catalog/">Каталог</a> &rarr;  <span style="font-weight: bold">{cat_name}</span>
+    </div>
+      {if '{count}'==1}<div id="calc-block"></div>{/if}
+	   <h1>
+	   {if '{cat_id}'=='41'}
+		Дизайн календарей
+	   {if:elseif '{cat_id}'=='6'}
+		Печать календарей
+	   {if:elseif '{cat_id}'=='55'}
+		Печать самоклеющихся этикеток
+	   {if:elseif '{cat_id}'=='61'}
+		Печать конвертов
+	   {if:elseif '{cat_id}'=='64'}
+	    Изготовление упаковки
+	   {if:elseif '{cat_id}'=='60'}
+		Изготовление папок с логотипом
+ 	   {if:elseif '{cat_id}'=='50'}
+		Изготовление открыток и рекламной продукции
+           {if:elseif '{cat_id}'=='49'}
+		Изготовление рекламной продукции
+           {if:elseif '{cat_id}'=='85'}
+		Производство pos материалов
+           {if:elseif '{cat_id}'=='57'}
+		Широкоформатная интерьерная печать
+           {if:elseif '{cat_id}'=='43'}
+		Сувенирная продукция с логотипом компании
+           {if:elseif '{cat_id}'=='39'}
+		Дизайн полиграфии в Москве
+           {if:elseif '{cat_id}'=='44'}
+		Дизайн наружной рекламы
+           {if:elseif '{cat_id}'=='5'}
+		Печать визиток
+	   {if:else}
+		{cat_name}
+	   {/if}</h1>
+
+
+      {exp:channel:entries channel="products" category="{cat_id}" dynamic="off" orderby="entry_date" sort="asc" disable="member_data|trackbacks|category_fields|categories|pagination"}
+        <div class="item">
+          <div class="head">
+            <h2><a href="{comment_url_title_auto_path}/">{if product_title<>''} {product_title} {if:else} {title}{/if}</a></h2>
+            {if product_price}
+              <div class="inp">
+                <span class="total_price">{product_price}</span> руб.
+                <span style="position: absolute;right: 15px; font-weight: bold;">
+                  <a style="text-decoration: none;" href="#" class="calc_order" calc_id="{entry_id}" pt="{product_title}">
+                    <img width="43" src="{site_url}images/calculatoor.png" />Заказать
+                  </a>
+                </span>
+              </div>
+            {/if}
+          </div>
+
+          <div class="body">
+            {if product_photos}
+              {product_photos limit="1"}
+                <div class="pic">
+                  <a rel="fancybox{absolute_count}" href="{exp:imgsizer:size src="{file}" width="800"}{sized}{/exp:imgsizer:size}">
+                    {exp:imgsizer:size src="{file}" width="250"}
+                    <img src="{sized}" width="{width}" height="{height}" alt="{title}" title="{title}" />{/exp:imgsizer:size}
+                  </a>
+
+                  <div class="linza"></div>
+                </div>
+              {/product_photos}
+            {/if}
+
+            <div class="discr">
+              {if product_photos}
+                <div class="jcarousel-skin-tango">
+                  <div class="jcarousel-container jcarousel-container-horizontal">
+                    <div class="cont1">
+                      <ul>
+                        {product_photos}
+                          {if row_count>1 }
+                            <li>
+                              <div class="image">
+                                <div class="image_inner">
+                                  <a rel="fancybox{absolute_count}" alt="{exp:imgsizer:size src="{file}" width="250"}{sized}{/exp:imgsizer:size}" href="{exp:imgsizer:size src="{file}" width="800"}{sized}{/exp:imgsizer:size}">
+                                    {exp:imgsizer:size src="{file}" height="80"}
+                                    <img src="{sized}" width="{width}" height="{height}" alt="{about}" title="{about}" />{/exp:imgsizer:size}
+                                  </a>
+                                </div>
+
+                                <a href="{exp:imgsizer:size src="{file}" width="800"}{sized}{/exp:imgsizer:size}"></a>
+                              </div>
+                            </li>
+                          {/if}
+                        {/product_photos}
+                      </ul>
+                    </div>
+
+                    <div class="jcarousel-prev jcarousel-prev-horizontal sc_right"></div>
+                    <div class="jcarousel-next jcarousel-next-horizontal sc_left"></div>
+                  </div>
+                </div>
+              {/if}
+
+              <div class="cost">{if product_price}{product_price} р.*{if:else}&nbsp;{/if}</div>
+             <!--noindex--> {product_lozung}<em>* Не является публичной офертой</em><br/><br/><!--/noindex-->
+            </div>
+
+            <div class="text">
+              {product_announcement}
+             <!--noindex--> <div class="more"><a href="{comment_url_title_auto_path}/">Цена »</a></div><!--/noindex-->
+            </div>
+
+            <div class="clr"></div>
+          </div>
+        </div>
+      {/exp:channel:entries}
+	  {/exp:query}
+
+    {exp:query sql="SELECT field_id_6 seo_text FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}
+      {seo_text}
+    {/exp:query}
+
+	<div class="feedback_form">
+	<div class="block first">
+		<div class="title">
+			<div class="name">
+				Обратная связь:</div>
+			<div class="shadow">
+				Обратная связь:</div>
+			<div class="clr">
+				&nbsp;</div>
+		</div>
+		<div class="body">
+			<div class="top">
+				&nbsp;</div>
+			<div class="cont">
+				<div class="contact_from">
+					{exp:freeform:form form_name="contact" return="/contacts/ok" admin_notify="info@giprint.ru" admin_notification_template="contact" notify_admin="yes" user_email_template="user_notification" send_user_email="yes" required="email|phone|comment"}
+						<div class="contact_email">
+							<div class="blok_1">
+								<p>
+									<label for="name">Ф.И.О.</label></p>
+								<div class="int-ml4">
+									<div class="int-rt">
+										<div class="int-lt">
+											<input class="int4" id="name" name="name" required="required" type="text" value="" /></div>
+									</div>
+								</div>
+								<p>
+									<label for="email">E-mail</label></p>
+								<div class="int-ml4">
+									<div class="int-rt">
+										<div class="int-lt">
+											<input class="int4" id="email" name="email" required="required" type="text" value="" /></div>
+									</div>
+								</div>
+								<p>
+									<label for="phone">Телефон</label></p>
+								<div class="int-ml4">
+									<div class="int-rt">
+										<div class="int-lt">
+											<input class="int4" id="phone" name="phone" required="required" type="text" value="" /></div>
+									</div>
+								</div>
+							</div>
+							<div class="blok_2">
+								<p>
+									<label>Введите текст вашего сообщения:</label></p>
+								<div class="txtar-ml2">
+									<textarea class="wpcf7-form-control wpcf7-textarea" cols="40" required="required" name="comment" rows="10" style="width: 300px; height: 150px;"></textarea></div>
+							</div>
+
+							<div class="item">
+							  <div class="body">
+							    <div class="text">
+							      <div class="ibox">
+
+								images/send.jpg
+								<input type="hidden" name="order_attachments" class="order_attachments">
+
+								    <a href="#" class="js-add-attachments itxt">Добавить макет к заказу</a>
+							      </div>
+							    </div>
+							    <div class="clr"></div>
+							    </div>
+
+							  <div class="attachments_uploader" style="display: none;">
+							    <p style="text-align: center;"><a href="/company/trebovaniya-k-maketam/" target="_blank">Требования к макетам</a></p>
+							      <div class="attachments_uploader__inner">
+
+							      <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+							      </div>
+							  </div>
+
+
+							</div>
+
+
+						</div>
+					{/exp:freeform:form}
+				</div>
+				<div class="clr">
+					&nbsp;</div>
+			</div>
+			<div class="bot">
+				&nbsp;</div>
+		</div>
+	</div>
+</div>
+
+	</div>
+
+  <div class="leftDiv">
+	  <div class="BigMenu">
+		  {embed=embed/.special_sale}
+			{embed=embed/.seo_block category_url="{segment_2}"}
+				{embed=embed/.oborud}
+      {if segment_2=='vizitki' OR segment_2=='papki-blanki-otkrytki' OR segment_2=='etiketki-naklejki-gologrammy' OR segment_2=='bumazhnye-stakany' OR segment_2=='papki' OR segment_2=='konverty'}
+			  <div id="accordion7">
+				  <div class="block super">
+					  <div class="titlePlug"></div>
+
+            <div class="title">
+						  <div class="name">ВЫРУБНЫЕ ШТАМПЫ</div>
+							<div class="shadow">ВЫРУБНЫЕ ШТАМПЫ</div>
+						</div>
+
+            <div class="body">
+              <div class="top"></div>
+							<div class="cont">
+							  <a href="/blanking_dies/" rel="external">Изготовление вырубных штампов для любого вида продукции</a>
+								<div class="clr"></div>
+							</div>
+							<div class="bot"></div>
+
+						</div>
+					</div>
+				</div>
+			{/if}
+		{embed=embed/.moreinfo}
+		</div>
+
+    <div class="left_text">
+      {exp:query sql="SELECT cat_description, cat_id FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}
+        {if cat_id==55}
+          {cat_description}
+        {/if}
+      {/exp:query}
+    </div>
+	</div>
+
+  <div class="clr"></div>
+</div>
+
+<div class="clr"></div>

@@ -1,0 +1,6 @@
+.scrollgeneric {line-height:1px; font-size:1px; position:absolute; top:0; left:0}
+.flexcroll {position:relative; overflow:auto; outline:none;; }
+ .flexcroll .vscrollerbase {background:url(../../../images/ui/flexcroll/vscroll-bar.gif) repeat-y 0 0; width:7px;  }
+ .flexcroll .vscrollerbar {background:url(../../../images/ui/flexcroll/vscroll-track.gif) repeat-y 50% 0; cursor:pointer; cursr:hand; top:0; width:7px; padding:12px 0; }
+ .flexcroll .vscrollerbasebeg {cursor:pointer; height:12px !important; width:7px; background-image:url(../../../images/ui/flexcroll/vscroll-ar.gif); }
+ .flexcroll .vscrollerbaseend {cursor:pointer; height:12px !important; width:7px; background:url(../../../images/ui/flexcroll/vscroll-ar.gif) 0 100%; }

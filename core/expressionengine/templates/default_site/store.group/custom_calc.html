@@ -1,0 +1,192 @@
+{exp:freeform:form form_name="zakaz" form:class="calc_form" file_upload="forms" send_attachment="yes" return="/basket/ok" template="zakaz" required="name|email|phone|product"}
+    {exp:channel:entries channel="order_auto_calc" entry_id="{segment_3}"}
+        <div class="calculator_wrapper">
+            {markup}
+            <link rel="stylesheet" href="{site_url}themes/site_themes/default_theme/{css}">
+            <script src="{site_url}themes/site_themes/default_theme/js/{javascript}"></script>
+
+            <div class="calculator_operations form-group">
+                <button class="proceed_to_checkout btn btn-primary">Оформить заказ</button>
+            </div>
+        </div>
+    {/exp:channel:entries}
+
+    <div class="calc_checkout" style="display: none;">
+        <div class="calc_checkout_form">
+            <div class="form-group clearfix">
+                <label for="zakaz_customer_type" class="form-label __required">Покупатель</label>
+                <select name="zakaz_customer_type" id="zakaz_customer_type" class="customer_type form-control">
+                    <option value="individual">Физическое лицо</option>
+                    <option value="legal_entity">Юридическое лицо</option>
+                </select>
+            </div>
+
+            <div class="calc_checkout_fields"></div>
+
+            <div class="form-group clearfix">
+                <label for="zakaz_payment_method" class="form-label">Способ оплаты</label>
+                <select name="zakaz_payment_method" id="zakaz_payment_method" class="checkout_payment-method form-control">
+                    <option value="invoice">Безналичный расчёт</option>
+		    <option value="robokassa">Оплатить онлайн</option>
+                    <option value="receipt">Квитанция</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p>* - поле, обязательное для заполнения. Информация из полей, отмеченных *, используется для составления
+                    автоматического счета для оплаты заказываемой продукции. Мы не храним персональную информацию,
+                    указываемую Вами, и не используем её для чего-либо кроме обеспечения процесса заказа на нашем
+                    сайте.</p>
+
+                <p>Нажимая на кнопку отправки заказа, Вы подтверждаете указанные параметры товара, а также даёте
+                    согласие на генерацию счета оплаты согласно <a href="/static/oferta.doc">договору-оферте</a>.</p>
+            </div>
+            <div class="form-group">
+                <button class="checkout_edit-order btn btn-alt pull-left">Изменить заказ</button>
+                <button type="submit" class="checkout_submit-order btn btn-alt pull-right">Оформить заказ</button>
+            </div>
+
+        </div>
+    </div>
+
+
+{/exp:freeform:form}
+
+<script>
+    (function($) {
+        function createField(options) {
+            var fieldName = options.name;
+            var fieldTitle = options.title;
+            var isRequired = options.required || false;
+            var inputType = options.type || 'text';
+
+            var labelClasses = ['form-label'];
+            var labelAttributes = ['for="' + fieldName + '"'];
+            var inputAttributes = ['type="' + inputType + '"'];
+            if (isRequired) {
+                labelClasses.push('__required');
+                inputAttributes.push('required="required"');
+            }
+
+            var result = '<div class="form-group clearfix">';
+            result += '<label class="' + labelClasses.join(' ') + '" ' + labelAttributes.join(' ') + '>' + fieldTitle + '</label>';
+            result += '<input class="form-control" id="'+fieldName+'" name="'+fieldName+'" ' + inputAttributes.join(' ') + ' />';
+            result += '</div>';
+            return result;
+        }
+
+
+        $('.customer_type').on('change', function() {
+            var currentValue = $(this).val();
+            var calcCheckoutFields = $('.calc_checkout_fields');
+            var $paymentMethod = $('.checkout_payment-method');
+
+            calcCheckoutFields.html('');
+
+            if (currentValue === 'individual') {
+                $paymentMethod.val('robokassa');
+                $paymentMethod.find('option[value="invoice"]').attr('disabled', 'disabled');
+
+                calcCheckoutFields.append(createField({name: 'name', title: 'Ф.И.О.', required: true}));
+                calcCheckoutFields.append(createField({name: 'phone', title: 'Телефон', type: 'tel', required: true }));
+                calcCheckoutFields.append(createField({name: 'email', title: 'E-Mail', type: 'email', required: true}));
+            }
+            else if (currentValue === 'legal_entity') {
+                $paymentMethod.find('option[value="invoice"]').removeAttr('disabled');
+
+                calcCheckoutFields.append(createField({name: 'zakaz_company', title: 'Компания', required: true}));
+                calcCheckoutFields.append(createField({name: 'name', title: 'Ф.И.О. представителя', required: true}));
+                calcCheckoutFields.append(createField({name: 'phone', title: 'Телефон', type: 'tel', required: true}));
+                calcCheckoutFields.append(createField({name: 'email', title: 'E-Mail', type: 'email', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_address1', title: 'Адрес', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_address2', title: 'Адрес', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_inn', title: 'ИНН', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_kpp', title: 'КПП', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_bank', title: 'Банк', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_rs', title: 'Расчётный счёт', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_ks', title: 'Корреспондентский счёт', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_bik', title: 'БИК', type: 'number', required: true}));
+            }
+        });
+
+        $('.proceed_to_checkout').on('click', function() {
+            $('.calculator_wrapper').fadeOut(400, function() {
+                $('.customer_type').trigger('change');
+                $('.calc_checkout').fadeIn(400);
+            });
+            return false;
+        });
+
+        $('.checkout_edit-order').on('click', function() {
+            $('.calc_checkout').fadeOut(400, function() {
+                $('.calculator_wrapper').fadeIn(400);
+            });
+
+            return false;
+        });
+
+        $('.calc_form').on('submit', function(e) {
+            // Тут начинается суровая магия (а вернее это костыль...)
+            // В хук Freeform не попадут поля, которые не были описаны в админке. Из-за этого было заведено поле meta,
+            // в которое мы пихаем сериализованную форму.
+            // Вторая степень костыльности заключается в том, что калькулятор у нас исключительно на JS, т.е. бэкенд
+            // вообще ничего не знает о его полях, их именах и опциях. В связи с этим, при сериализации формы,
+            // добавляем название поля (ищем label по id и выдёргиваем его содержимое) и значение поля в виде текстовой
+            // строки. Значение поля актуально для select'ов, т.к. у них value это атрибут дочернего option'a, а текст -
+            // строка в этом option'е.
+            // Собственно, после того как всю информацию собрали, подпихиваем hidden поле, а дальше идёт стандартный
+            // механизм submit'а.
+
+            var postData = [];
+
+            $.each($(this).find(':input'), function(item) {
+                var value = '';
+                var text = '';
+
+                var me = $(this);
+
+                var title = $('label[for=' + me.attr('id') + ']').html();
+                var name = me.attr('name');
+
+                // Служебные поля исключаем
+                if (name === 'params_id' || name === 'XID') {
+                    return;
+                }
+
+                if (me.is('input[type=text]')) {
+                    value = me.val();
+                    text = me.val();
+                }
+                else if (me.is('select')) {
+                    value = me.find('option:selected').val();
+                    text = me.find('option:selected').text();
+                }
+                else if (me.is('input[type=checkbox]')) {
+                    value = me.is(':checked');
+                    text = value ? 'Да' : 'Нет';
+                }
+                else if (me.is('input[type=hidden]')) {
+                    value = me.val();
+                    text = me.val();
+                }
+                else {
+                    return;
+                }
+
+                postData.push({name: name, title: title, value: value, text: text});
+            });
+
+            $('<input/>', {
+                type: 'hidden',
+                value: JSON.stringify(postData),
+                name: 'zakaz_meta'
+            }).appendTo($(this));
+
+//            return false;
+
+        });
+
+    }(jQuery));
+</script>
+
+

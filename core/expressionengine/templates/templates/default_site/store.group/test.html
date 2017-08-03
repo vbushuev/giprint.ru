@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Test</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{stylesheet=store/style}" />
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".calc_order").live('click', function() {
+            var calc_id = $(this).attr("calc_id");
+            var pt = $(this).attr("pt");
+            //alert(calc_id);
+            //$("#calc-block").empty();
+            $("#calc-block").load('{site_url}store/ajax_calc/'+calc_id+'/'+pt);
+            return false;
+        });
+
+        $(".close_order").click(function() {
+            $(".store.calc").css({"display":"none"});
+            return false;
+        });
+    });
+</script>
+</head>
+<body>
+<a href="#" class="calc_order" calc_id="68" pt="Календарик">Рассчитать</a>
+<div id="calc-block"></div>
+</body>
+</html>

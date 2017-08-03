@@ -1,0 +1,1003 @@
+{exp:store:orders order_hash="{segment_3}"}
+
+	{if no_orders}
+		{redirect="404"}
+	{/if}
+
+    <?php
+    // взято с хабра: http://habrahabr.ru/post/53210/
+
+    /**
+     * Возвращает сумму прописью
+     * @author runcore
+     * @uses morph(...)
+     */
+   function num2str($num) {
+    $nul='ноль';
+    $ten=array(
+        array('','один','два','три','четыре','пять','шесть','семь', 'восемь','девять'),
+        array('','одна','две','три','четыре','пять','шесть','семь', 'восемь','девять'),
+    );
+    $a20=array('десять','одиннадцать','двенадцать','тринадцать','четырнадцать' ,'пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать');
+    $tens=array(2=>'двадцать','тридцать','сорок','пятьдесят','шестьдесят','семьдесят' ,'восемьдесят','девяносто');
+    $hundred=array('','сто','двести','триста','четыреста','пятьсот','шестьсот', 'семьсот','восемьсот','девятьсот');
+    $unit=array( // Units
+        array('копейка' ,'копейки' ,'копеек',	 1),
+        array('рубль'   ,'рубля'   ,'рублей'    ,0),
+        array('тысяча'  ,'тысячи'  ,'тысяч'     ,1),
+        array('миллион' ,'миллиона','миллионов' ,0),
+        array('миллиард','милиарда','миллиардов',0),
+    );
+    //
+    list($rub,$kop) = explode('.',sprintf("5.2f", floatval($num)));
+    $out = array();
+    if (intval($rub)>0) {
+        foreach(str_split($rub,3) as $uk=>$v) { // by 3 symbols
+            if (!intval($v)) continue;
+            $uk = sizeof($unit)-$uk-1; // unit key
+            $gender = $unit[$uk][3];
+            list($i1,$i2,$i3) = array_map('intval',str_split($v,1));
+            // mega-logic
+            $out[] = $hundred[$i1]; # 1xx-9xx
+            if ($i2>1) $out[]= $tens[$i2].' '.$ten[$gender][$i3]; # 20-99
+            else $out[]= $i2>0 ? $a20[$i3] : $ten[$gender][$i3]; # 10-19 | 1-9
+            // units without rub & kop
+            if ($uk>1) $out[]= morph($v,$unit[$uk][0],$unit[$uk][1],$unit[$uk][2]);
+        } //foreach
+    }
+    else $out[] = $nul;
+    $out[] = morph(intval($rub), $unit[1][0],$unit[1][1],$unit[1][2]); // rub
+    $out[] = $kop.' '.morph($kop,$unit[0][0],$unit[0][1],$unit[0][2]); // kop
+    return trim(preg_replace('/ {2,}/', ' ', join(' ',$out)));
+}
+
+/**
+ * Склоняем словоформу
+ * @ author runcore
+ */
+function morph($n, $f1, $f2, $f5) {
+    $n = abs(intval($n)) % 100;
+    if ($n>10 && $n<20) return $f5;
+    $n = $n % 10;
+    if ($n>1 && $n<5) return $f2;
+    if ($n==1) return $f1;
+    return $f5;
+}
+ ?>
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title></title>
+  <meta name="generator" content="LibreOffice 4.2.5.2 (Linux)">
+  <meta name="created" content="20140627;175424697516800">
+  <meta name="changed" content="20140627;175424697516800">
+
+  <style type="text/css"><!--
+  body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Arial"; font-size:xx-small }
+  -->
+  </style>
+
+</head>
+
+<body text="#000000">
+<table cellspacing="0" border="0">
+<colgroup span="37" width="20"></colgroup>
+<tr>
+  <td colspan=37 height="48" align="center" valign=middle>Внимание! Оплата данного счета означает согласие с условиями поставки товара. Уведомление об оплате <br> обязательно, в противном случае не гарантируется наличие товара на складе. Товар отпускается по факту<br> прихода денег на р/с Поставщика, самовывозом, при наличии доверенности и паспорта.</td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td style="border-top: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=18 rowspan=2 height="21" align="left" valign=top><font size=2>АКБ &quot;АБСОЛЮТ БАНК&quot; (ЗАО) Г. МОСКВА</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=3 align="left" valign=middle><font size=2>БИК</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=16 align="left" valign=middle sdval="44525976" sdnum="1033;0;000000000"><font size=2>044525593</font></td>
+</tr>
+<tr>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=3 rowspan=2 align="left" valign=top><font size=2>Сч. №</font></td>
+  <td style="border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=16 rowspan=2 align="left" valign=top><font size=2>30101810200000000593</font></td>
+</tr>
+<tr>
+  <td style="border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=18 height="11" align="left">Банк получателя</td>
+</tr>
+<tr>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d" colspan=2 height="11" align="left" valign=middle><font size=2>ИНН</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=7 align="left" valign=middle sdval="7702718589" sdnum="1033;0;0"><font size=2>7708254076</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d" colspan=2 align="left" valign=middle><font size=2>КПП</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=7 align="left" valign=middle sdval="770201001" sdnum="1033;0;0"><font size=2>770801001</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=3 rowspan=4 align="left" valign=top><font size=2>Сч. №</font></td>
+  <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=16 rowspan=4 align="left" valign=top><font size=2>40702810201400005360</font></td>
+</tr>
+<tr>
+  <td style="border-top: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=18 rowspan=2 height="21" align="left" valign=top><font size=2>ООО &quot;Центральная типография&quot;</font></td>
+</tr>
+<tr>
+</tr>
+<tr>
+  <td style="border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=18 height="11" align="left">Получатель</td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <?php
+    // Да, приходится такое городить, когда используешь старый PHP
+    $orderDateLoc = str_replace(array('Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'),
+                array('Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'),
+                '{order_date format="%j %F %Y"}');
+  ?>
+
+  <td style="border-bottom: 2px solid #4d4d4d" colspan=37 height="46" align="left" valign=middle><b><font size=4>Счет на оплату № {order_id} от <span style="text-transform: lowercase;"><?=$orderDateLoc?></span></font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=6 height="34" align="left" valign=middle><font size=2>Поставщик:</font></td>
+  <td colspan=31 align="left" valign=top><b><font size=2>ООО &quot;Центральная типография&quot;, ИНН 7708254076, КПП 770801001, 127051, 107140  г. Москва Переулок Красносельский 1-й,д. 3, помещение 1, оф. 79, тел.: (495) 505-50-47</font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=6 height="34" align="left" valign=middle><font size=2>Грузоотправитель:</font></td>
+  <td colspan=31 align="left" valign=top><b><font size=2>ООО &quot;Центральная типография&quot;, ИНН 7708254076, КПП 770801001, 127051, 107140  г. Москва Переулок Красносельский 1-й,д. 3, помещение 1, оф. 79, тел.: (495) 505-50-47</font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=6 height="18" align="left" valign=middle><font size=2>Покупатель:</font></td>
+  <td colspan=31 align="left" valign=top><b><font size=2>
+      {billing_company},
+      ИНН {billing_inn},
+      КПП {billing_kpp}
+  </font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=6 height="18" align="left" valign=middle><font size=2>Грузополучатель:</font></td>
+  <td colspan=31 align="left" valign=top><b><font size=2>
+      {billing_company},
+      ИНН {billing_inn},
+      КПП {billing_kpp}
+  </font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td style="border-top: 2px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 2px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=2 height="11" align="center" valign=middle><b><font size=2>№</font></b></td>
+  <td style="border-top: 2px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=21 align="center" valign=middle><b><font size=2>Товары (работы, услуги)</font></b></td>
+  <td style="border-top: 2px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=3 align="center" valign=middle><b><font size=2>Кол-во</font></b></td>
+  <td style="border-top: 2px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=2 align="center" valign=middle><b><font size=2>Ед.</font></b></td>
+  <td style="border-top: 2px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=4 align="center" valign=middle><b><font size=2>Цена</font></b></td>
+  <td style="border-top: 2px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 2px solid #4d4d4d" colspan=5 align="center" valign=middle><b><font size=2>Сумма</font></b></td>
+</tr>
+
+<?php $totalCount = 0; ?>
+{items}
+<?php
+// Ну пипец... чтобы узнать количество элементов в корзине, приходится пробегать цикл.
+$totalCount++;
+?>
+{/items}
+
+<?php if ($totalCount > 0): ?>
+<?php
+// Грёбаный EE!!! Приходится вводить свой счётчик, чтобы вывести порядковый номер записи, а потом и общее количество
+$index = 0;
+?>
+{items}
+<?php $index++; ?>
+<tr>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 2px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=2 height="16" align="center" valign=top sdval="1" sdnum="1033;0;0"><?=$index?></td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=21 align="left" valign=top>{title}</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=3 align="right" valign=top sdval="50" sdnum="1033;0;0">{item_qty}</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=2 align="left" valign=top>шт</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=4 align="right" valign=top sdval="531.36" sdnum="1033;0;0.00">{exp:price_format price="{price_val}"} руб.</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 2px solid #4d4d4d" colspan=5 align="right" valign=top sdval="26568" sdnum="1033;0;#,##0.00">{exp:price_format price="{item_subtotal_val}"} руб.</td>
+</tr>
+{/items}
+<?php else: ?>
+<tr>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 2px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=2 height="16" align="center" valign=top sdval="1" sdnum="1033;0;0">1</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=21 align="left" valign=top>Полиграфическая продукция</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=3 align="right" valign=top sdval="50" sdnum="1033;0;0">1</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=2 align="left" valign=top>шт</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 1px solid #4d4d4d" colspan=4 align="right" valign=top sdval="531.36" sdnum="1033;0;0.00">{exp:price_format price="{order_subtotal_val}"} руб.</td>
+    <td style="border-top: 1px solid #4d4d4d; border-bottom: 1px solid #4d4d4d; border-left: 1px solid #4d4d4d; border-right: 2px solid #4d4d4d" colspan=5 align="right" valign=top sdval="26568" sdnum="1033;0;#,##0.00">{exp:price_format price="{order_subtotal_val}"} руб.</td>
+</tr>
+<?php
+$totalCount = 1;
+?>
+<?php endif; ?>
+
+
+
+<tr>
+  <td style="border-top: 2px solid #4d4d4d" height="9" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left" valign=top><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="right" valign=top><b><font size=2><br></font></b></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="right" valign=top><b><font size=2><br></font></b></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td colspan=4 align="right" valign=top><b><font size=2>Итого:</font></b></td>
+  <td colspan=5 align="right" valign=top sdval="26568" sdnum="1033;0;#,##0.00"><b><font size=2>{exp:price_format price="{order_subtotal_val}"} руб.</font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="right" valign=top><b><font size=2>В том числе НДС:</font></b></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td colspan=5 align="right" valign=top><b><font size=2>Всего к оплате:</font></b></td>
+  <td colspan=5 align="right" valign=top sdval="26568" sdnum="1033;0;#,##0.00"><b><font size=2>{exp:price_format price="{order_total_val}"} руб.</font></b></td>
+</tr>
+<tr>
+  <td colspan=37 height="11" align="left"><font size=2>Всего наименований <?=$totalCount?>, на сумму {exp:price_format price="{order_total_val}"} руб.</font></td>
+</tr>
+<tr>
+  <td colspan=37 height="11" align="left" valign=top><b><font size=2 style="text-transform: capitalize;">
+    <?php
+    $total = {order_total_val};
+    $totalStr = num2str($total);
+    echo ucfirst($totalStr);
+    ?>
+  </font></b></td>
+</tr>
+<tr>
+  <td height="9" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td style="border-top: 2px solid #4d4d4d" height="9" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+  <td style="border-top: 2px solid #4d4d4d" align="left"><br></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=5 height="11" align="left" valign=middle><b><font size=2>Руководитель</font></b></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" colspan=9 align="center"><b><font size=2><br></font></b></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><br></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" colspan=10 align="center"><b><font size=2>Кобыльский Д. А.</font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td colspan=9 align="center" valign=top>должность</td>
+  <td align="left"><br></td>
+  <td colspan=10 align="center" valign=top>подпись</td>
+  <td align="left"><br></td>
+  <td colspan=10 align="center" valign=top>расшифровка подписи</td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><font size=2><br></font></td>
+  <td align="center"><b><font size=2><br></font></b></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td height="11" align="left" valign=middle><b><font size=2>Главный (старший) бухгалтер</font></b></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><br></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" colspan=10 align="center"><b><font size=2>Кобыльский Д. А.</font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td colspan=10 align="center" valign=top>подпись</td>
+  <td align="left"><br></td>
+  <td colspan=10 align="center" valign=top>расшифровка подписи</td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=5 height="11" align="left" valign=middle><b><font size=2>Ответственный</font></b></td>
+  <td align="left"><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="left" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="right" valign=middle><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><font size=2><br></font></td>
+  <td style="border-bottom: 1px solid #4d4d4d" align="left"><br></td>
+  <td align="left"><br></td>
+  <td style="border-bottom: 1px solid #4d4d4d" colspan=10 align="center"><b><font size=2></font></b></td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td colspan=10 align="center" valign=top>подпись</td>
+  <td align="left"><br></td>
+  <td colspan=10 align="center" valign=top>расшифровка подписи</td>
+</tr>
+<tr>
+  <td height="11" align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+  <td align="left"><br></td>
+</tr>
+<tr>
+  <td colspan=37 height="35" align="center"><font size=2>  Согласно уведомлению о возможности применения упрощённой системы налогообложения № 1278 от 23.11.2009<br>оплата происходит без НДС.</font></td>
+</tr>
+</table>
+<!-- ************************************************************************** -->
+</body>
+
+</html>
+
+{/exp:store:orders}

@@ -1,0 +1,152 @@
+{embed=embed/.header title="Цены" keywords="Калькулятор стоимости заказа типографии в Москве" description="Предлагаемый Вашему вниманию калькулятор создан для упрощения и автоматизации процесса подсчета стоимости Вашего заказа."}
+<div class="content">
+  <div class="BigMenu sidebar prce">
+    <div class="plug"></div>
+    <div id="accordion2" class="clearfix">
+      <div class="block first">
+        <div class="title">
+          <div class="name">Цены</div>
+          <div class="shadow">Цены</div>
+          <div class="clr"></div>
+        </div>
+        <div class="body">
+          <div class="top"></div>
+          <div class="cont">
+            <ul class="mainMenu">
+              <li><a href="{path=price}"{if segment_1 == "price"} class="sel"{/if} title="Автоматический расчет
+                заказа">Автоматический расчет заказа</a></li>
+              <li><a href="{path=price/onlajn-rasschet-zakaza}"{if segment_2 == "onlajn-rasschet-zakaza"}
+                class="sel"{/if} title="Ручной расчет заказа">Ручной расчет заказа</a></li>
+              <li><a href="{path=basket}"{if segment_1 == "basket"} class="sel"{/if} title="Оформление
+                заказа">Оформление заказа</a></li>
+            </ul>
+            <div class="clr"></div>
+          </div>
+          <div class="bot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="menuwrapper" class="b-auto-calc-sections">
+        {exp:gwcode_categories channel="order_auto_calc"}
+            <a href="#">{cat_name}</a>
+
+            {if depth == 2 || has_children == false}
+            <ul>
+                {exp:channel:entries channel="order_auto_calc"}
+                    {if independent_calc == "Да"}
+                        {categories}
+                            {if category_id == cat_id}
+                                <li><a href="#" data-entry-id="{entry_id}" data-independent="1">{title}</a></li>
+                            {/if}
+                        {/categories}
+                    {if:else}
+                        {categories}
+                            {if category_id == cat_id}
+                                <li><a href="#" data-entry-id="{related_entries id="product"}{entry_id}{/related_entries}">{title}</a></li>
+                            {/if}
+                        {/categories}
+                    {/if}
+                {/exp:channel:entries}
+            </ul>
+            {/if}
+
+
+        {/exp:gwcode_categories}
+
+        <script>
+            (function($){
+                $(function() {
+                    $('.b-auto-calc-sections a').click(function() {
+                        var $ul = $(this).next('ul');
+                        if ($ul.length > 0){
+                            $ul.slideToggle();
+                            return false;
+                        }
+                        return true;
+                    });
+                });
+            }(jQuery));
+
+
+        </script>
+    </div>
+  </div>
+
+  <div class="mainDiv3">
+    <h1>Автоматический расчет заказа</h1>
+
+    <div class="item">
+      <div class="body">
+        <div class="text">
+          <p>Предлагаемый Вашему вниманию калькулятор создан для упрощения и автоматизации процесса подсчета стоимости
+            Вашего заказа. Ввиду резкого падения курса рубля, цены в калькуляторе ориентировочные и могут меняться в зависимости от ситуации на рынке. Поэтому перед тем, как сделать заказ, <strong>уточняйте актуальность цены у менеджера.</strong></p>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="head2">
+        <h2>Расчет стоимости печати</h2>
+
+
+
+      </div>
+      <div class="body">
+        <div class="text">
+          <script>
+            (function ($) {
+              $.fn.removeClassWild = function (mask) {
+                return this.removeClass(function (index, cls) {
+                  var re = mask.replace(/\*/g, '\\S+');
+                  return (cls.match(new RegExp('\\b' + re + '', 'g')) || []).join(' ');
+                });
+              };
+            })(jQuery);
+
+            $(document).ready(function () {
+              $("#menuwrapper").on('click', 'a', function () {
+                var me = $(this);
+
+                // Не агримся на категории
+                if (me.next('ul').length > 0) {
+                  return false;
+                }
+
+                var entryId = me.data('entry-id');
+                var independent = me.data('independent');
+
+                  if (independent == 1) {
+                      $.get('{site_url}store/custom_calc/' + entryId, function(data) {
+                          $('.calculator').html(data);
+                      });
+                  }
+                  else {
+                      $.get('{site_url}store/ajax_calc/' + entryId, function (data) {
+                          $('.calculator').html(data);
+                          me.parent().trigger('blur');
+                          initCalculator(); // FIXME: Глобальная функция в калькуляторе.
+                          var calcCss = {
+                              'position': 'inherit',
+                              'box-shadow': 0,
+                              'margin-left': 0
+                          };
+                          $('.store.calc').css(calcCss).show().data('onDialogShow')();
+                      });
+                  }
+
+                return false;
+              });
+            });
+          </script>
+
+          <div class="calculator">
+
+          </div>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{embed=embed/.footer}

@@ -1,0 +1,17 @@
+{exp:store:product entry_id="{embed:entry_id}" disable_form="yes"}
+{modifiers}
+{modifier_name}
+{if modifier_type == 'var' OR modifier_type == 'var_single_sku'}
+<select id="{modifier_input_name}" name="{modifier_input_name}">
+    {modifier_options}
+    <option value="{option_id}">
+        {option_name} {if price_mod_val} ({price_mod}) {/if}
+    </option>
+    {/modifier_options}
+</select>
+{if:else}
+<input type="text" id="{modifier_input_name}" name="{modifier_input_name}" value="" />
+{/if}
+<p class="help-block">{modifier_instructions}</p>
+{/modifiers}
+{/exp:store:product}

@@ -1,0 +1,47 @@
+AddDefaultCharset UTF-8
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	
+    RewriteCond %{REQUEST_URI} ^(.*)/index\.php$
+    RewriteRule ^(.*)index\.php$ http://%{HTTP_HOST}/$1 [R=301,L]
+    
+RewriteCond %{HTTP_HOST} !^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/ 
+	RewriteCond %{REQUEST_METHOD} !POST
+	RewriteRule ^index\.html$ http://www.giprint.ru/ [R=301,L]
+	
+	
+	Redirect 301 /upakovka-dlya-pici-i-t.d/ http://www.giprint.ru/korobki-iz-mikrogofrokartona/
+	Redirect 301 /catalog/pechat-chertezhey/ http://www.giprint.ru/pechati-chertejei-dokumentatsii/
+	RewriteBase /
+	RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^(.*)\.(css|zip|doc|htc|xml|xls|js|jpg|gif|png|swf|pdf|rar|wmv|mp3|txt|html|htm|php)$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{REQUEST_URI} !^/admin.php
+RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1/ [L,R=301]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_METHOD} !^POST$
+	RewriteCond %{REQUEST_URI} !(\.[a-zа-яA-ZА-Я0-9]{1,5}|/)$
+	RewriteRule ^(.*)$ $1/ [L,R=301]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteCond $1 !\.(gif|jpe?g|png)$ [NC]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule (.*) /index.php/$1 [L]
+</IfModule>
+php_value max_input_vars 30000

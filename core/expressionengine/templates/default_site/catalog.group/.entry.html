@@ -1,0 +1,1152 @@
+{exp:channel:entries channel="products" limit="1" url_title="{segment_1}" track_views="one" disable="member_data|trackbacks|pagination"}
+    {if no_results} {redirect='404'} {/if}
+    {if segment_2 !=''} {redirect='404'} {/if}
+    {embed=embed/.header url_title="{segment_1}" title="{title}"}
+<script>
+    (function($) {
+        var Uploader = {
+            onReady: function() {
+                $('.attachments_uploader__inner').pluploadQueue({
+                    runtimes: 'html5,flash,silverlight,html4',
+                    url: '/plupload/upload.php',
+                    chunk_size: 0,
+                    rename: true,
+                    dragdrop: true,
+                    unique_names: true,
+                    flash_swf_url: '/static/Moxie.swf',
+                    silverlight_xap_url: '/static/Moxie.xap',
+
+                    filters: {
+                        max_file_size: '999mb',
+                        mime_types: [{
+                            title: "Image files",
+                            extensions: "ai,eps,cdr,tif,tiff,jpg,gif,png,jpeg"
+                        }, {
+                            title: "Zip files",
+                            extensions: "zip,rar,7z"
+                        }]
+                    },
+
+                    init: {
+                        UploadComplete: function(up, files) {
+                            var $productFiles = $('.order_attachments');
+
+                            console.log(files);
+
+                            var filenames = [];
+                            plupload.each(files, function(file) {
+                                filenames.push(file.target_name);
+                            });
+                            $productFiles.val(filenames.join());
+                        }
+                    }
+                });
+            }
+        };
+
+        $(document).ready(function() {
+            $(document).on('mousewheel', ':input[type=number]', function(e) {
+                e.preventDefault();
+            });
+
+            Uploader.onReady();
+
+            $('.js-add-attachments').on('click', function() {
+                $('.attachments_uploader').fadeIn();
+
+                return false;
+            });
+        });
+    }(jQuery));
+</script>
+<div class="content">
+    <div class="BigMenu">
+        <div class="plug"></div>
+        {embed=embed/.accordion}
+    </div>
+
+    <div class="mainDiv">
+        <div class="breadcrumbs">
+            <a href="/">Главная</a> &rarr; <a href="/catalog/">Каталог</a> &rarr; {categories}{if category_name!='Дизайн' && category_name!='Упаковка' && category_name!='Полиграфия'} <a href="http://www.giprint.ru/catalog/{category_url_title}/">{category_name}</a>            &rarr; {/if}{/categories} <span style="font-weight: bold">{if product_title}{product_title}{if:else}{title}{/if}</span>
+        </div>
+
+        <div class="item">
+            <div class="head">
+                <h1>{if product_header}{product_header}{if:else}{title}{/if}</h1>
+
+                <span style="position: absolute;right: 15px; font-weight: bold;">
+          <a style="text-decoration: none;" href="#" class="calc_order">
+            <img width="43" src="{site_url}images/calculatoor.png" />Заказать
+          </a>
+        </span>
+            </div>
+
+            <div class="body">
+                {if product_photos}
+                <!-- SLIDER -->
+                <div class="slider">
+
+                    <!-- Start cssSlider -->
+                    <div id="wowslider-container1">
+                        <div class="ws_images">
+                            <ul>
+
+
+
+                                {product_photos}
+
+                                <li> {exp:imgsizer:size src="{file}" height="378" }<img src="{sized}" width="{width}" height="{height}" alt="{about}" title="{about}" />{/exp:imgsizer:size}</li>
+
+
+                                {/product_photos}
+
+
+                            </ul>
+                        </div>
+                        <!--
+	<div class="jcarousel jcarousel-prev-horizontal" />&nbsp; </div>
+<div class="jcarousel jcarousel-next-horizontal" />	&nbsp; </div> -->
+                        <div class="ws_thumbs">
+                            <div>
+
+
+
+
+                                {product_photos}
+
+                                <a href="#" title=""> {exp:imgsizer:size src="{file}" height="148"}<img src="{sized}" width="150px" height="150px" alt="{about}" title="{about}" />{/exp:imgsizer:size} </a> {/product_photos}
+
+
+                            </div>
+                        </div>
+
+                        <div class="ws_shadow"></div>
+                    </div>
+                    <script type="text/javascript" src="{site_url}themes/site_themes/default_theme/js/wowslider.js"></script>
+                    <script type="text/javascript" src="{site_url}themes/site_themes/default_theme/js/script.js"></script>
+                    <!-- End cssSlider -->
+
+
+                </div>
+
+                {/if}
+
+
+
+                <div class="line">
+                    <div class="txt-line"> {if product_header}{product_header}{if:else}{title} {/if} {if product_price}{product_price} р.*{if:else}&nbsp;{/if}</div>
+                </div>
+
+
+
+                <div class="text">
+                    {product_lozung}<em>* Не является публичной офертой</em> {product_short}
+                    <br/> {if segment_1 == 'gotovye-korobki'}
+                    <div>
+                        <style type="text/css">
+                            .content .mainDiv .item .head,
+                            .text em,
+                            .line,
+                            .slider {
+                                display: none;
+                            }
+                        </style>
+                        <div class="head42">
+                            <h1>{if product_header}{product_header}{if:else}{title}{/if}*</h1></div>
+                        <p>
+                            &nbsp;</p>
+                        <p>
+                            {if product_photos} {product_photos limit='1000'}
+                            <div class="productblock">
+                                <div class="image">
+                                    {exp:imgsizer:size src="{file}" height="178"}<img src="{sized}" alt="{about}" title="{about}" {if {width}> 200}width="100%" {if:else} height="178"{/if} />{/exp:imgsizer:size}</div>
+                                <div class="title">
+                                    <div class="razm">Размеры:</div> {korobki_name}</div>
+                                <div class="description">
+                                    {about}</div>
+                                <hr />
+                                <div class="pricek">
+                                    {korobki_price}</div>
+                                <a class="calc_order" href="#" style="text-decoration: none;">
+                                    <div class="cart">
+                                        &nbsp; </div>
+                                </a>
+                            </div>
+                            {/product_photos} {/if}</div>
+                    <p>
+                        &nbsp;</p>
+                    <p>
+                        <i class="minorder">*Минимальный заказ - от 5,000р. &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </i></p>
+                    <script>
+                        $(function() {
+                            $(window).scroll(function() {
+                                var bottom = $(document).outerHeight(true) - $(window).scrollTop();
+                                if (bottom < 1300) $(".minorder").css({
+                                    bottom: '0',
+                                    position: 'relative'
+                                });
+                                else $(".minorder").css({
+                                    bottom: '15px',
+                                    position: 'fixed'
+                                });
+                            });
+                        });
+                    </script>
+                    {/if} {product_body}
+
+                    <br/>
+                    <p style="font-size: 8pt; text-align: center;">Внимание: информация, содержащаяся в описании товара, является справочной (не является публичной офертой и не подпадает под п. 2 ст. 437 ГК РФ).</p>
+
+                    <div id="calc-block"></div>
+
+                    <div class="totop">
+                        <a href="{site_url}catalog/{exp:last_cat:cat_url entry_id='{entry_id}'}/"><img src="{site_url}/images/totopbut.jpg" style="position:relative; bottom:5px;" width="119" height="32" border="0" alt="" /></a>
+                    </div>
+                </div>
+
+                <div class="clr"></div>
+            </div>
+        </div>
+
+
+        <div class="feedback_form">
+            <div class="block first">
+                <div class="title">
+                    <div class="name">
+                        Обратная связь:</div>
+                    <div class="shadow">
+                        Обратная связь:</div>
+                    <div class="clr">
+                        &nbsp;</div>
+                </div>
+                <div class="body">
+                    <div class="top">
+                        &nbsp;</div>
+                    <div class="cont">
+                        <div class="contact_from">
+                            {exp:freeform:form form_name="contact" return="/contacts/ok" admin_notify="info@giprint.ru" admin_notification_template="contact" notify_admin="yes" user_email_template="user_notification" send_user_email="yes" required="email|phone|comment"}
+                            <div class="contact_email">
+                                <div class="blok_1">
+                                    <p>
+                                        <label for="name">Ф.И.О.</label>
+                                    </p>
+                                    <div class="int-ml4">
+                                        <div class="int-rt">
+                                            <div class="int-lt">
+                                                <input class="int4" id="name" name="name" required="required" type="text" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <label for="email">E-mail</label>
+                                    </p>
+                                    <div class="int-ml4">
+                                        <div class="int-rt">
+                                            <div class="int-lt">
+                                                <input class="int4" id="email" name="email" required="required" type="text" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <label for="phone">Телефон</label>
+                                    </p>
+                                    <div class="int-ml4">
+                                        <div class="int-rt">
+                                            <div class="int-lt">
+                                                <input class="int4" id="phone" name="phone" required="required" type="text" value="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blok_2">
+                                    <p>
+                                        <label>Введите текст вашего сообщения:</label>
+                                    </p>
+                                    <div class="txtar-ml2">
+                                        <textarea class="wpcf7-form-control wpcf7-textarea" cols="40" required="required" name="comment" rows="10" style="width: 300px; height: 150px!important;"></textarea>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="body">
+                                        <div class="text">
+                                            <div class="ibox">
+                                                <p>
+                                                    <button class="button submitbtn" type="submit">отправить</button>
+                                                    <input type="hidden" name="order_attachments" class="order_attachments">
+
+                                                    <a href="#" class="js-add-attachments itxt">Добавить макет к заказу</a>
+                                            </div>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </div>
+
+                                    <div class="attachments_uploader" style="display: none;">
+                                        <p style="text-align: center;"><a href="/company/trebovaniya-k-maketam/" target="_blank">Требования к макетам</a></p>
+                                        <div class="attachments_uploader__inner">
+
+                                            <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+                            {/exp:freeform:form}
+                        </div>
+                        <div class="clr">
+                            &nbsp;</div>
+                    </div>
+                    <div class="bot">
+                        &nbsp;</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="leftDiv">
+        <div class="BigMenu">
+            {embed=embed/.special_sale} {embed=embed/.contacts} {embed=embed/.oborud} {if segment_1=='eksklyuzivnye-vizitki' OR segment_1=='vizitki-biznes-klassa' OR segment_1=='vizitki-ekonom-klassa' OR segment_1=='dvustoronie-vizitki' OR segment_1=='bloknoty'}
+            <div id="accordion7">
+                <div class="block super">
+                    <div class="titlePlug"></div>
+
+                    <div class="title">
+                        <div class="name">ВЫРУБНЫЕ ШТАМПЫ</div>
+                        <div class="shadow">ВЫРУБНЫЕ ШТАМПЫ</div>
+                    </div>
+
+                    <div class="body">
+                        <div class="top"></div>
+                        <div class="cont">
+                            <a href="/blanking_dies/" rel="external">Изготовление вырубных штампов для любого вида продукции</a>
+                            <div class="clr"></div>
+                        </div>
+                        <div class="bot"></div>
+
+                    </div>
+                </div>
+            </div>
+            {/if} {embed=embed/.moreinfo}
+            <div class="body">
+                <div class="top"></div>
+                <div class="cont">
+                    <div class="text">
+                        <h3>{product_seo_title}</h3> {product_seo}
+                    </div>
+
+                    <div class="clr"></div>
+                </div>
+
+                <div class="bot"></div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class='uploader_container uploader_container-{entry_id}' style="z-index:9999">
+        <div class="uploader_container_header" style="text-align: center;">
+            <a href="/company/trebovaniya-k-maketam/" target="_blank">Требования к макетам</a>
+            <a href="#" class="uploader_container_close">&times;</a>
+        </div>
+        <div class='plupload_dialog'>
+            <form>
+                <div class="uploader-{entry_id}">
+                    <p>Your browser doesn't have Flash, Silverlight, Gears, BrowserPlus or HTML5 support.</p>
+                    <input style='display:none;' type='file' value='' name='upload' id='upload'>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <div class="clr"></div>
+    {exp:store:product entry_id="{entry_id}" return="basket/ok"}
+    <style>
+        .p-modal {
+            position: fixed;
+            display: none;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: 100%
+        }
+
+        .p-pool-right {
+            float: right
+        }
+
+        .p-modal .p-button {
+            border-radius: 1em;
+            height: 1.6em;
+            line-height: 1.6em;
+            text-align: center;
+            background: 0;
+            padding: 0 1em;
+            font-size: 1.4em;
+            display: inline-block;
+            border: 1px solid rgba(16, 116, 188, .8);
+            cursor: pointer;
+            transition: all .4s ease-in
+        }
+
+        .p-modal .p-button:hover {
+            background-color: : rgba(0, 0, 0, .3);
+            color: rgba(0, 0, 0, .8)
+        }
+
+        .p-button.p-button-primary {
+            color: rgba(255, 255, 255, .8);
+            border: 0;
+            text-shadow: 2px;
+            background: -webkit-linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8));
+            background: -o-linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8));
+            background: -moz-linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8));
+            background: linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8))
+        }
+
+        .p-button.p-button-primary:hover {
+            color: rgba(255, 255, 255, 1);
+            background: -webkit-linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5));
+            background: -o-linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5));
+            background: -moz-linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5));
+            background: linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5))
+        }
+
+        .p-modal .p-modal-container {
+            position: relative;
+            background-color: #fff;
+            color: rgba(0, 0, 0, 0.3);
+            margin: 5% 20%;
+            padding: 2em 0 0 0;
+            border-radius: 1em;
+            font-size: 16px;
+            min-width: 640px;
+            max-width: 720px;
+            box-shadow:0 0 25px 0 #333;
+        }
+
+        .p-modal .p-modal-container .p-modal-header {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: .4em 2em;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase
+        }
+
+        .p-modal .p-modal-container .p-modal-header .p-currency {
+            font-size: 2.8em;
+            margin-top: -.55em
+        }
+
+        .p-modal .p-modal-container .p-title {
+            color: #000;
+            height: 2em;
+            line-height: 2em;
+            display: inline-block;
+            font-size: 1.2em
+        }
+
+        .p-modal .p-modal-container .p-readonly {
+            margin: 0;
+            text-align: right;
+            padding: 0 1em;
+            height: 2.2em;
+            margin: 0 .4em;
+            border: 0;
+            border-radius: 1em;
+            min-width: 12rem;
+            background-color: #fff;
+            display: inline-block
+        }
+
+        .p-modal .p-modal-container .p-modal-header .p-modal-close {
+            position: absolute;
+            right: .8em;
+            top: .4em;
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all .4s ease-in
+        }
+
+        .p-modal .p-modal-container .p-modal-header .p-modal-close:hover {
+            color: rgba(0, 0, 0, 0.5)
+        }
+
+        .p-modal .p-modal-container .p-modal-body {
+            background-color: #fff;
+            margin: 1em;
+            padding: 1em
+        }
+
+        .p-modal .p-modal-container .p-modal-body p {
+            font-size: 10pt
+        }
+
+        .p-modal .p-modal-container .p-modal-body p a {
+            transition: all .4s ease-in;
+            color: rgba(16, 116, 188, .5);
+            text-decoration: none
+        }
+
+        .p-modal .p-modal-container .p-modal-body p a:hover {
+            text-decoration: underline
+        }
+
+        .p-row {
+            padding: 0;
+            margin: 1em 0;
+            position: relative
+        }
+
+        .p-modal .p-modal-container .p-modal-body .p-label {
+            display: inline-block;
+            margin: 0;
+            width: 30%;
+            font-weight: 600;
+            color: rgba(0, 0, 0, .9)
+        }
+        .p-modal .p-modal-container .p-modal-body .p-highlighted {
+            border-radius: .4em;
+            border: 1px solid rgba(16, 116, 188, .8);
+            margin: 0 -1em;
+            padding: 0 1em;
+        }
+        .p-modal .p-modal-container .p-modal-body  .p-label.p-highlighted {
+
+            color: rgba(16, 116, 188, .8);
+        }
+
+        .p-modal .p-modal-container .p-modal-body .p-value {
+            display: inline-block;
+            width: 70%;
+            margin: 0;
+            position: relative
+        }
+
+        .p-modal .p-modal-container .p-modal-body .p-instructions {
+            display: block;
+            width: 70%;
+            font-size: 90%;
+            position: relative;
+            margin: -1em 0 -1em 30%
+        }
+
+        .p-modal .p-modal-container .p-modal-body .p-value select,
+        .p-modal .p-modal-container .p-modal-body .p-value input {
+            width: 100%;
+            font-size: 14pt;
+            height: 2em;
+            line-height: 2em;
+            outline: solid 1px rgba(0, 0, 0, .3);
+            border: 0;
+            color: rgba(0, 0, 0, .3);
+            display: inline-block
+        }
+
+        .p-modal .p-modal-container .p-modal-body .p-value input {
+            color: rgba(0, 0, 0, .9);
+            padding 0 1em
+        }
+
+        .p-modal .p-modal-container .p-modal-body .p-value select.p-visited {
+            color: rgba(0, 0, 0, .9)
+        }
+
+        .p-required:after {
+            content: '*'
+        }
+
+        .p-modal .p-modal-container .p-modal-footer {
+            margin: 1em;
+            text-align: right;
+            padding: 1em
+        }
+
+        .alert-required {
+            border: solid 2px red
+        }
+
+        #p-tabs {
+            position: relative;
+            width: 100%;
+            text-align: justify
+        }
+
+        #p-tabs > div {
+            display: none
+        }
+
+        #p-tabs > a {
+            display: inline-block;
+            border: solid 3px #97bde3;
+            padding: 0 1em;
+            margin: 1em;
+            margin-bottom: 0;
+            line-height: 3em;
+            margin-left: 3px;
+            text-align: center;
+            color: rgba(0, 0, 0, .5);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all .4s ease-in;
+            text-align: center;
+            border-radius: .4em;
+            font-size: 10px;
+            font-family: tahoma, DejaVu Sans Condensed;
+            text-transform: uppercase
+        }
+
+        #p-tabs > a:hover {
+            color: rgba(0, 0, 0, .8)
+        }
+
+        #p-tabs.p-tab1 div.p-tab1 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab2 div.p-tab2 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab3 div.p-tab3 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab4 div.p-tab4 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab5 div.p-tab5 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab6 div.p-tab6 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab7 div.p-tab7 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab8 div.p-tab8 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab9 div.p-tab9 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab10 div.p-tab10 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab11 div.p-tab11 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab12 div.p-tab12 {
+            display: block;
+            width: 100%
+        }
+
+        #p-tabs.p-tab1 > a.p-tab1 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab2 > a.p-tab2 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab3 > a.p-tab3 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab4 > a.p-tab4 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab5 > a.p-tab5 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab6 > a.p-tab6 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab7 > a.p-tab7 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab8 > a.p-tab8 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab9 > a.p-tab9 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab10 > a.p-tab10 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab11 > a.p-tab11 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        #p-tabs.p-tab12 > a.p-tab12 {
+            color: #fff;
+            background-color: #97bde3;
+            cursor: default;
+            text-decoration: none
+        }
+
+        .p-currency {
+            font-weight: normal
+        }
+
+
+
+        .uploader_container {
+            border-color: rgba(16, 116, 188, .8)
+        }
+    </style>
+    <div class="p-modal" id="p_newcalc">
+        <div class="p-modal-container">
+            <div class="p-modal-header">
+                <a href="#" class="p-modal-close">&times;</a>
+                <div class="p-title">Стоимость заказа</div>
+                <div class="p-title p-pool-right p-currency"> &#8381;</div>
+                <div class="p-readonly p-pool-right" id="p_total_price" style="font-size:24pt;height:1.2em;line-height:1.2em"></div>
+            </div>
+            <div class="p-modal-body">
+                {modifiers}
+                <?php $modifierName = "{modifier_name}"; ?>
+                    <div class="p-row" <?php if(strpos($modifierName, '^')===0 ): ?>style="display:none;"<?php endif;?> >
+                            <?php if (strpos($modifierName, '#') === 0): $modifierName = substr($modifierName, 1, strlen($modifierName) - 1);?>
+                            <?php elseif (strpos($modifierName, '^Files') === 0): ?>
+                                <input type="hidden" name="{modifier_input_name}" class="product_files" />
+                            <?php else: ?>
+                                {if modifier_type == 'var' OR modifier_type == 'var_single_sku'}
+                                    <div class="p-label p-required">{modifier_name}</div><div class="p-value">
+                                        <select uid="{embed:entry_id}" name="{modifier_input_name}" class="p-modifiers-select">
+                                                <!--<option value="">Выбрать ...</option>-->
+                                                {modifier_options}
+                                                <option mod value="{option_id}" price="{if price_mod == ''}0{if:else}{price_mod}{/if}">{option_name}</option>
+                                                {/modifier_options}
+                                        </select></div>
+                                {if:else}
+                                    <div class="p-label">{modifier_name}</div><div class="p-value"><input type="text" uid="{embed:entry_id}" id="{modifier_input_name}" name="{modifier_input_name}" value="" class="p-modifiers-input" /> </div>
+                                {/if}
+                            <?php endif; ?>
+                            {if modifier_instructions!==""}<div class="p-instructions">{modifier_instructions}</div>{/if}
+                    </div>
+                {/modifiers}
+                <div class='p-highlighted'>
+                    <div class="p-row p-empty">
+                        <div class="p-label p-highlighted p-required">Ваше имя</div><div class="p-value"><input type="text" class="p-modifiers-input" name="billing_name" /></div>
+                    </div>
+                    <div class="p-row p-empty">
+                        <div class="p-label  p-highlightedp-required">E-mail</div><div class="p-value"><input type="text" class="p-modifiers-input" name="order_email" /></div>
+                    </div>
+                    <div class="p-row p-empty">
+                        <div class="p-label  p-highlighted p-required">Телефон</div><div class="p-value"><input type="text" class="p-modifiers-input" name="billing_phone" /></div>
+                    </div>
+                </div>
+                <p>* - поле, обязательное для заполнения. Информация из полей, отмеченных *, используется для составления автоматического счета для оплаты заказываемой продукции. Мы не храним персональную информацию, указываемую Вами,
+                    и не используем её для чего-либо кроме обеспечения процесса заказа на нашем сайте.</p>
+                                        <!--
+                    <p>Ввиду резкого падения курса рубля, цены в калькуляторе ориентировочные и могут меняться в зависимости от ситуации на рынке. Поэтому перед тем, как сделать заказ, уточните актуальность цены у менеджера. </p>
+                    <p>Нажимая на кнопку отправки заказа, Вы подтверждаете указанные параметры товара, а также даётесогласие на генерацию счета оплаты согласно <a href="/static/oferta.doc">договору-оферте</a>.</p>
+                    -->
+            </div>
+                    <div class="p-modal-footer">
+
+                        <input type="hidden" name="item_qty" />
+                        <button class="p-button" style="float:left;" id="p_maket" type="button">Загрузить макет</button>
+                        <button class="p-button p-button-primary" id="p_checkout">Оформить заказ</button>
+                    </div>
+            </div>
+        </div>
+
+        <script src="/themes/site_themes/default_theme/js/newcalculator.js"></script>
+        <script src="/themes/site_themes/default_theme/js/vbcalc.js"></script>
+        <script>
+            $(document).ready(function() {
+                var product = ExpressoStore.products[{entry_id}],
+                    avaliableStock = [],
+                    as = new Object(),
+                    entryId = "{entry_id}",
+                    acceptedEntries = getAcceptedEntries(),
+                    currentStock = getStock({entry_id});
+                $(".p-modifiers-select").change(function() {
+                    //$(this).addClass("p-visited");
+                    // if(entryId=="30_")getoptions();
+                    // else
+                        onVarChange(product.price,currentStock);
+                });
+                // old style
+                /*
+                $('[name=modifiers_200] >option').each(function() {
+                    $(this).text($(this).text().replace(/(\d+)\s.+/, "$1 шт."));
+                });
+                */
+                console.debug(product);
+                for (var i in product.stock) {
+                    var stock = product.stock[i]; // склад
+                    if (stock.stock_level != 0 && stock.stock_level != '0') {
+                        avaliableStock.push(stock);
+                        var k = Object.keys(stock.opt_values),
+                            v = Object.values(stock.opt_values);
+                        for (var i1 in k) {
+                            if(typeof(product.modifiers[k[i1]].options[v[i1]])=="undefined")break;
+                            for (var i2 in k) {
+                                console.debug(i1,i2);
+                                if (i1 != i2) {
+                                    if (typeof(product.modifiers[k[i1]].options[v[i1]]["combinations"]) == "undefined") product.modifiers[k[i1]].options[v[i1]]["combinations"] = {};
+                                    if (typeof(product.modifiers[k[i1]].options[v[i1]]["combinations"][k[i2]]) == "undefined") product.modifiers[k[i1]].options[v[i1]]["combinations"][k[i2]] = {};
+                                    product.modifiers[k[i1]].options[v[i1]]["combinations"][k[i2]][v[i2]] = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                $('[name=modifiers_198]').val('833');
+                $('[name=modifiers_199]').val('836');
+                $('[name=modifiers_200]').val('1176');
+
+
+                window.calculate = function() {
+                    if ($("[name=modifiers_198] option:selected").length == 0 || $("[name=modifiers_199] option:selected").length == 0 || $("[name=modifiers_200] option:selected").length == 0) return;
+                    //var total = (typeof(window.currentSelectedItem)!="undefined")?window.currentSelectedItem.price:product.price,
+                    var total = product.price,
+                        paper = $("[name=modifiers_198] option:selected").attr("price").replace(/([\+\-]\d+\.?\d*).+/, "$1"),
+                        format = $("[name=modifiers_199] option:selected").attr("price").replace(/([\+\-]\d+\.?\d*).+/, "$1"),
+                        count = $("[name=modifiers_200] option:selected").attr("price").replace(/([\+\-]\d+\.?\d*).+/, "$1"),
+                        quantity = $("[name=modifiers_200] option:selected").text().replace(/(\d+).*/, "$1");
+                    console.debug("price=" + total + " paper=" + paper + " format=" + format + " count=" + count + " quantity=" + quantity);
+                    total += parseFloat(paper) + parseFloat(format) + parseFloat(count);
+                    console.debug("price=" + total + " total=" + (total * parseInt(quantity)));
+                    //total = ((typeof(window.currentSelectedItem)!="undefined")?window.currentSelectedItem.price:total)*parseInt(quantity);
+                    total = (total) * parseInt(quantity);
+                    if (!isNaN(total)) {
+                        $("input[name=item_qty]").val(quantity);
+                        $("#p_total_price").text(priceNumber(total.toFixed(2)));
+                    }
+                };
+                window.getoptions = function() {
+                    var choosen = {
+                        "198": $('[name=modifiers_198]').val(),
+                        "199": $('[name=modifiers_199]').val(),
+                        "200": $('[name=modifiers_200]').val(),
+                        selected: $('[name=modifiers_200] :selected').text()
+                    };
+                    console.debug(choosen);
+                    $(".p-modifiers-select[name=modifiers_200] > option").addClass("option-hidden").hide();
+                    for (var i in product.stock) {
+                        var s = product.stock[i];
+                        if (s.opt_values["198"] == choosen["198"] && s.opt_values["199"] == choosen["199"]) {
+                            $(".p-modifiers-select[name=modifiers_200] > option[value='" + s.opt_values["200"] + "']").removeClass("option-hidden").show();
+                        }
+                    }
+                    console.debug("visible options = " + $(".p-modifiers-select[name=modifiers_200] option::not(.option-hidden)").length);
+                    var new_s = $(".p-modifiers-select[name=modifiers_200] option:not(.option-hidden):contains('" + choosen.selected + "')").val();
+                    if (new_s) {
+                        console.debug("new value by text =" + new_s)
+                        $(".p-modifiers-select[name=modifiers_200]").val(new_s);
+                        choosen["200"] = new_s;
+                    }
+                    calculate();
+                }
+                $(".p-modal-close").click(function() {
+                    $(".p-modal").hide();
+                });
+
+                $(".calc_order").live('click', function(e) {
+                    // e.stopPropagation();
+                    // e.preventDefault();
+                    // $('#p_newcalc').show();
+                    // $('#p_newcalc').trigger('calc:start');
+                    // if(product.price)$('#p_total_price').html(priceNumber(product.price));
+                    // onInitCalc(currentSelectedItem,stock);
+                    // if ( acceptedEntries.indexOf(entryId)>-1 && false) {
+                    //     $('#p_newcalc').show();
+                    //     $('#p_newcalc').trigger('calc:start');
+                    //     onInitCalc(currentSelectedItem,stock);
+                    // } else {
+                        var calc_id = $(this).attr("calc_id");
+                        var pt = $(this).attr("pt");
+                        $("#calc-block").empty();
+                        $.get('{site_url}store/ajax_calc/{entry_id}/', function(data) {
+                            $('#calc-block').html(data);
+                            initCalculator();
+                            $('.store.calc').show();//.data('onDialogShow')();
+                        });
+                    // }
+                    return false;
+                });
+
+                $('#p-tabs > a').click(function() {
+                    if ($(this).attr('class') != $('#p-tabs').attr('class')) {
+                        $('#p-tabs').attr('class', $(this).attr('class'));
+                    }
+                });
+                /*
+                $(".uploader-"+entryId).pluploadQueue({
+                    // General settings
+                    runtimes: 'html5, gears,flash,silverlight,browserplus',
+                    url: '/plupload/upload.php',
+                    max_file_size: '999mb',
+                    chunk_size: '1mb',
+                    unique_names: true,
+
+                    // Specify what files to browse for
+                    filters: [{
+                        title: "Image files",
+                        extensions: "ai,eps,cdr,tif,tiff,pdf"
+                    }, {
+                        title: "Zip files",
+                        extensions: "zip,rar,7z"
+                    }],
+
+                    // Flash settings
+                    flash_swf_url: '/static/Moxie.swf',
+
+                    // Silverlight settings
+                    silverlight_xap_url: '/static/Moxie.xap',
+
+                    init: {
+                        UploadComplete: function(up, files) {
+                            var index = 1;
+                            var $productFiles = $("#p_newcalc" + ' .product_files');
+
+                            var filenames = [];
+                            plupload.each(files, function(file) {
+                                filenames.push(file.target_name);
+                            });
+                            $productFiles.val(filenames.join());
+
+                        }
+                    }
+                });
+                $(".uploader_container_close").click(function() {
+                    $(this).parent().parent().hide();
+                    return false;
+                });
+                */
+                // клик на "Загрузить макет"
+                // $('#p_maket').click(function() {
+                //     $('.uploader_container-'+{entry_id}).show();
+                // });
+
+                $('.features-table-new td.grey1').hover(function() {
+                    var p = $(this).closest('td').prevAll().length,greyqty = $(this).parent().find("td.grey").length;
+                    $(this).parent().find("td.grey1").css("background-color", "rgba(151, 189, 227,1)");
+                    $(this).parent().find("td:nth-child("+greyqty+")").css("background-color", "#d3dff1");
+
+                    $(this).parent().parent().find("tr td.grey1:nth-child(" + (p + 1) + ")").css("background-color", "rgba(151, 189, 227,1)");
+                    $(this).parent().parent().find("tr:nth-child(2) td:nth-child(" + (p+1-greyqty)+ ")").css("background-color", "#d3dff1");
+                    $(this).css("background-color", "#1175bc").css("color", "#ffffff");
+                }, function() {
+                    var p = $(this).closest('td').prevAll().length,greyqty = $(this).parent().find("td.grey").length;
+                    $(this).parent().find("td.grey1").css("background-color", "#d3dff1");
+                    $(this).parent().find("td:nth-child("+greyqty+")").css("background-color", "#97bde3");
+
+                    $(this).parent().parent().find("tr td.grey1:nth-child(" + (p + 1) + ")").css("background-color", "#d3dff1");
+                    $(this).parent().parent().find("tr:nth-child(2) td:nth-child(" + (p+1-greyqty) + ")").css("background-color", "#97bde3");
+                }).click(function() {
+                    var $t = $(this);
+                    if($t.text().length==0)return false;
+                    var p = $t.closest('td').prevAll().length,greyqty = $(this).parent().find("td.grey").length
+                        itm = {
+                            f: $t.parent().find("td:nth-child(1)").text().replace(/[\r\n]+/, "").replace(/^\s+/, ""),
+                            c: $t.parent().find("td:nth-child(2)").text().replace(/[\r\n]+/, "").replace(/^\s+/, ""),
+                            q: $t.parent().parent().find("tr:nth-child(2) td:nth-child(" + (p+1-greyqty) + ")").text().replace(/[\r\n]+/, "").replace(/\s+/g, "").replace(/(\d+).*/,"$1")+" шт.",
+                            f_c: "",
+                            price: $t.text().replace(/[^\d,]+/ig, "").replace(/,/, ".")
+                        };
+                        itm.f_c = itm.f;
+                        if(typeof(itm.c)!="undefined" && itm.c.length) itm.f_c+=" "+itm.c;
+                    window.currentSelectedItem = itm;
+                    // if(entryId=="30"){
+                    //     window.currentSelectedItem.f_c = window.currentSelectedItem.f.replace(/((A|А)\d+).+/, "$2").replace(/A/, "А") + " (" + window.currentSelectedItem.c + ")";
+                    //     window.currentSelectedItem["198"] = $("#p-tabs").attr("data-val");
+                    //     window.currentSelectedItem["199"] = window.currentSelectedItem.f_c;
+                    //     window.currentSelectedItem["200"] = window.currentSelectedItem.q + ".";
+                    //     if (typeof(window.currentSelectedItem) != "undefined") {
+                    //         $(".p-modifiers-select[name=modifiers_198]").val(window.currentSelectedItem["198"]);
+                    //         $(".p-modifiers-select[name=modifiers_199] > option:contains('" + window.currentSelectedItem["199"] + "')").attr("selected", "selected");
+                    //         $(".p-modifiers-select[name=modifiers_200] > option:contains('" + window.currentSelectedItem["200"] + "')").attr("selected", "selected");
+                    //     }
+                    // }
+                    $('#minWidth > div > div.content > div.mainDiv > div.item > div.head > span > a.calc_order').click();
+                });
+                $(".btnsdfh").on("click",function(e){
+                    e.preventDefault();
+                    window.currentSelectedItem = {
+                        f: $(this).attr("data-format"),
+                        c: $(this).attr("data-format"),
+                        q: $(this).attr("data-quantity"),
+                        f_c: $(this).attr("data-format"),
+                        price: $(this).attr("data-price"),
+                    };
+                    $("#p-tabs").attr("data-val",$(this).attr("data-tab"));
+                    $('#minWidth > div > div.content > div.mainDiv > div.item > div.head > span > a.calc_order').click();
+                });
+                $("#p_checkout").on("click", function() {
+                    // fool check
+                    $(".alert-required").removeClass('alert-required');
+                    var allow_submit = true,
+                        showed = false,
+                        entrySel = "#p_newcalc";
+
+                    $(".p-modifiers-select option:selected").each(function() {
+                        if ($(this).val() == 0) {
+                            allow_submit = false;
+                            $(this).parent().addClass('alert-required');
+                        }
+                    });
+                    if ($("input[name=billing_name]").val().length == 0) {
+                        $(this).addClass('alert-required');
+                        if (!showed) alert('Укажите Ваше имя!');
+                        showed = true;
+                        allow_submit = false;
+                    }
+                    if ($("input[name=billing_phone]").val().length == 0 || !$("input[name=billing_phone]").val().match(/(\+7|8)?\d{10}/i)) {
+                        $(this).addClass('alert-required');
+                        if (!showed) alert('Укажите Ваш телефон! Пример: +79998887766');
+                        showed = true;
+                        allow_submit = false;
+                    }
+                    if ($("input[name=order_email]").val().length == 0 || !$("input[name=order_email]").val().match(/[^@]+@.+?\.\w{2,4}/i)) {
+                        $(this).addClass('alert-required');
+                        if (!showed) alert('Укажите Ваш email! Пример: mymail@mail.com');
+                        showed = true;
+                        allow_submit = false;
+                    }
+                    if (!allow_submit) {
+                        if (!showed) alert('Не все поля заполнены!');
+                        return false;
+                    }
+                    var postData = $('#p_newcalc').serializeArray();
+                    console.debug('postData',postData);
+                    $.ajax({
+                        url: document.location.href,
+                        type: "POST",
+                        data: postData,
+                        success: function(data, textStatus, jqXHR) {
+                            $.get('{site_url}store/ajax_checkout', function(data) {
+                                console.debug("ajax_checkout get");
+                                var s = '<form method="POST" action="' + document.location.href + '" id="_submit_form">';
+                                s += '<input type="hidden" name="_params" value="' + $(data).find("input[name=_params]").val() + '"/>';
+                                s += '<input type="hidden" name="XID" value="' + $(data).find("input[name=XID]").val() + '"/>';
+                                s += '<input type="hidden" name="ACT" value="' + $(data).find("input[name=ACT]").val() + '"/>';
+                                s += '<input type="hidden" name="RET" value="' + $("input[name=RET]").val() + '"/>';
+                                s += '<input type="hidden" name="return_url" value="' + $(data).find("input[name=return_url]").val() + '"/>';
+                                s += '<input type="hidden" name="site_id" value="' + $("input[name=site_id]").val() + '"/>';
+                                s += '<input type="hidden" name="billing_customer_type" value="individual"/>';
+                                s += '<input type="hidden" name="payment_method" value="receipt"/>';
+                                s += '<input type="hidden" name="submit"/>';
+                                s += '<input type="hidden" name="billing_name" value="' + $("input[name=billing_name]").val() + '"/>';
+                                s += '<input type="hidden" name="billing_phone" value="' + $("input[name=billing_phone]").val() + '"/>';
+                                s += '<input type="hidden" name="order_email" value="' + $("input[name=order_email]").val() + '"/>';
+                                s += '</form>';
+                                console.debug(s);
+                                var form = $(s).appendTo('#p_newcalc');
+                                //form.submit();
+
+                                //console.debug(data);
+                                //$("form.store_product_form input").each(function(){if($(this).attr("name").match(/modifier/i))$(this).remove();});
+                                //console.debug($('form.store_product_form').serializeArray());
+                                var _form_ = $('#_submit_form');
+                                console.debug(_form_);
+                                if(confirm("Продолжаем?"))
+                                HTMLFormElement.prototype.submit.call(_form_[0]);
+                                return false;
+                            });
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            //if fails
+                        }
+                    });
+                    return false;
+                });
+                $('#p_newcalc').on('calc:start', function() {
+                    //$(".p-modifiers-select[name=modifiers_198] option:nth-child(2)").attr("selected","selected").change();
+                    //getoptions();
+                });
+                $('.p-empty input').on('keyup', function() {
+                    console.debug($(this).val());
+                    if ($(this).val().length) {
+                        $(this).parent().parent().removeClass('p-empty');
+                    }
+                });
+                $(document).keyup(function(e) {
+                    if (e.keyCode == 27) { // escape key maps to keycode `27`
+                        // <DO YOUR WORK HERE>
+                        $(".p-modal-close").click();
+                    }
+                });
+                $(".-info-block-button").click(function(){
+                    if($(this).hasClass("-info-showed")){
+                        $(".-info-block-text[id="+$(this).attr("data-rel")+"]").hide();
+                        $(this).removeClass("-info-showed");
+                    }else{
+                        $(".-info-block-text[id="+$(this).attr("data-rel")+"]").show();
+                        $(this).addClass("-info-showed");
+                    }
+                });
+            });
+
+        </script>
+        {/exp:store:product}
+    </div>
+
+
+    {/exp:channel:entries}

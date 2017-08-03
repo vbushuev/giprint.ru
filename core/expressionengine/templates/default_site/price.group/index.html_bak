@@ -1,0 +1,207 @@
+{embed=embed/.header title="Цены" keywords="Калькулятор стоимости заказа типографии в Москве" description="Предлагаемый Вашему вниманию калькулятор создан для упрощения и автоматизации процесса подсчета стоимости Вашего заказа."}
+			<div class="content">
+				<div class="BigMenu">
+					<div class="plug"></div>
+					<div id="accordion2">
+						<div class="block first">
+							<div class="title">
+								<div class="name">Цены</div>
+								<div class="shadow">Цены</div>
+								<div class="clr"></div>
+							</div>
+							<div class="body">
+								<div class="top"></div>
+								<div class="cont">
+                                	<ul class="mainMenu">
+										<li><a href="{path=price}"{if segment_1 == "price"} class="sel"{/if} title="Калькулятор">Калькулятор</a></li>
+										<li><a href="{path=price/onlajn-rasschet-zakaza}"{if segment_2 == "onlajn-rasschet-zakaza"} class="sel"{/if} title="Онлайн расчет заказа">Онлайн расчет заказа</a></li>
+										<li><a href="{path=basket}"{if segment_1 == "basket"} class="sel"{/if} title="Оформление заказа">Оформление заказа</a></li>
+                                    </ul>
+									<div class="clr"></div>
+								</div>
+								<div class="bot"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mainDiv3">
+					<h1>Калькулятор</h1>
+					<div class="item">
+						<div class="body">
+							<div class="text">
+								<p>Предлагаемый Вашему вниманию калькулятор создан для упрощения и автоматизации процесса подсчета стоимости Вашего заказа. В прайс-листах нашей типографии содержатся фиксированные цены на позиции, установленные в рамках действующих акций; цены прочих позиций регулярно подвергаются пересмотру. Калькулятор использует актуальные цены, содержащиеся в базе данных, позволяя, таким образом, рассчитать стоимость заказа, актуальную на момент расчета.</p>
+							</div>
+							<div class="clr"></div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="head2">
+							<h2>Расчет стоимости печати</h2>
+						</div>
+						<div class="body">
+							<div class="text">
+                                <div class="ibox">
+                                	<select id="sel-1" class="isel">
+                                    	<option value="5">Буклет</option>
+                                        <option value="6">Буклет2</option>
+                                        <option value="7">Буклет3</option>
+                                        <option value="8">Буклет4</option>
+                                        <option value="9">Буклет5</option>
+                                        <option value="10">Буклет6</option>
+                                        <option value="11">Буклет7</option>
+                                    </select>
+                                    <span class="itxt">Наименование продукции&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-2" class="isel">
+                                    	<option value="15">148х210 мм</option>
+                                        <option value="20">A1</option>
+                                        <option value="25">A2</option>
+                                        <option value="18">A3</option>
+                                        <option value="12">A4</option>
+                                        <option value="13">A5</option>
+                                        <option value="16">A6</option>
+                                    </select>
+                                    <span class="itxt">Формат (размер)&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-3" class="isel">
+                                    	<option value="10">10 г/см2</option>
+                                        <option value="15">15 г/см2</option>
+                                        <option value="30">30 г/см2</option>
+                                        <option value="40">40 г/см2</option>
+                                        <option value="50">50 г/см2</option>
+                                        <option value="60">60 г/см2</option>
+                                        <option value="100">100 г/см2</option>
+                                    </select>
+                                    <span class="itxt">Плтоность бумаги&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-4" class="isel">
+                                    	<option value="10">10 000 шт.</option>
+                                        <option value="15">15 000 шт.</option>
+                                        <option value="30">30 000 шт.</option>
+                                        <option value="40">40 000 шт.</option>
+                                        <option value="50">50 000 шт.</option>
+                                        <option value="60">60 000 шт.</option>
+                                        <option value="100">100 000 шт.</option>
+                                    </select>
+                                    <span class="itxt">Тираж&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-5" class="isel">
+                                    	<option value="4">4+4</option>
+                                        <option value="5">5+5</option>
+                                        <option value="4.5">2+6</option>
+                                        <option value="7.5">10+5</option>
+                                        <option value="8">6+2</option>
+                                        <option value="12">8+8</option>
+                                        <option value="14">4+5</option>
+                                    </select>
+                                    <span class="itxt">Красочность&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-6" class="isel">
+                                    	<option value="8">8 полос</option>
+                                        <option value="9">9 полос</option>
+                                        <option value="10">10 полос</option>
+                                        <option value="11">11 полос</option>
+                                        <option value="12">12 полос</option>
+                                        <option value="13">13 полос</option>
+                                        <option value="14">14 полос</option>
+                                    </select>
+                                    <span class="itxt">Количество полос&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-7" class="isel">
+                                    	<option value="0">Нет</option>
+                                        <option value="10">Да</option>
+                                        <option value="8">Пункт3</option>
+                                        <option value="7">Пункт4</option>
+                                        <option value="3">Пункт5</option>
+                                        <option value="6">Пункт6</option>
+                                        <option value="4">Пункт7</option>
+                                    </select>
+                                    <span class="itxt">Обложка&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-8" class="isel">
+                                    	<option value="10">Скрепка</option>
+                                        <option value="12">Пункт2</option>
+                                        <option value="2">Пункт3</option>
+                                        <option value="4">Пункт4</option>
+                                        <option value="5">Пункт5</option>
+                                        <option value="20">Пункт6</option>
+                                        <option value="1">Пункт7</option>
+                                    </select>
+                                    <span class="itxt">Поспечатная оработка&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-9" class="isel">
+                                    	<option value="24">Выборочно, УФ</option>
+                                        <option value="34">Пункт2</option>
+                                        <option value="12">Пункт3</option>
+                                        <option value="45">Пункт4</option>
+                                        <option value="12">Пункт5</option>
+                                        <option value="56">Пункт6</option>
+                                        <option value="23">Пункт7</option>
+                                    </select>
+                                    <span class="itxt">Лакирование&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-10" class="isel">
+                                    	<option value="63">Матовая</option>
+                                        <option value="43">Пункт2</option>
+                                        <option value="34">Пункт3</option>
+                                        <option value="23">Пункт4</option>
+                                        <option value="54">Пункт5</option>
+                                        <option value="23">Пункт6</option>
+                                        <option value="75">Пункт7</option>
+                                    </select>
+                                    <span class="itxt">Ламинация&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-11" class="isel">
+                                    	<option value="32">Срочно</option>
+                                        <option value="23">Пункт2</option>
+                                        <option value="12">Пункт3</option>
+                                        <option value="21">Пункт4</option>
+                                        <option value="12">Пункт5</option>
+                                        <option value="43">Пункт6</option>
+                                        <option value="23">Пункт7</option>
+                                    </select>
+                                    <span class="itxt">Срок изготовления&nbsp;</span>
+                                </div>
+                                <div class="ibox">
+                                	<select id="sel-12" class="isel">
+                                    	<option value="54">Нет</option>
+                                        <option value="23">Пункт2</option>
+                                        <option value="435">Пункт3</option>
+                                        <option value="34">Пункт4</option>
+                                        <option value="55">Пункт5</option>
+                                        <option value="66">Пункт6</option>
+                                        <option value="17">Пункт7</option>
+                                    </select>
+                                    <span class="itxt">Доставка&nbsp;</span>
+                                </div>
+							</div>
+							<div class="clr"></div>
+						</div>
+					</div>
+                    <div class="item">
+						<div class="head3">
+                        		<div id="summ"><p>0 руб.</p></div>
+                                <input id="summ-sub" type="submit" class="su-sub tel" value="" />
+						</div>
+                    </div>
+
+<span style="color:#DB4800;">На данный момент функция калькулятора на нашем сайте находится в доработке. <br>Вы можете отправить свой заказ и с Вами свяжется наш менеджер для его уточнения. Также Вы можете уточнить стоимость и другие детали продукции с помощью <a href="/price/onlajn-rasschet-zakaza/">онлайн-расчета заказа</a> или <a href="javascript:;" class="fdbk">обратной связи</a></span>
+				</div>
+				<div class="leftDiv" style="padding-bottom:0 !important;">
+					<div class="BigMenu">
+						<div class="clr"></div>
+					</div>
+				</div>
+				<div class="clr"></div>
+			</div>
+{embed=embed/.footer}

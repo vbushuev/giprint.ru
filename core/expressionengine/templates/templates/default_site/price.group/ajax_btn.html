@@ -1,0 +1,36 @@
+{if segment_3!=""}
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#summ-sub").click(function() {
+            var uid = $(this).attr("uid");
+            //alert(uid);
+            var rp = parseFloat($("span.regular_price[uid="+uid+"]").text());
+            var selects = $("select.modifier_selecting[uid="+uid+"]");
+            var add_p = 0;
+            var modifier = "";
+            if(selects && selects.length>0) {
+                for(var i=0;i<selects.length;i++) {
+                    modifier = $("select.modifier_selecting[uid="+uid+"]:eq("+i+") option:selected");
+                    add_p = parseFloat(modifier.attr("price"));
+                    //console.log(add_p);
+                    rp = rp+add_p;
+                }
+            }
+            var count = Math.abs(parseInt($("input[name=item_qty][uid="+uid+"]").val()));
+            rp = parseFloat(rp*count);
+
+            $(".sale_price[uid="+uid+"]").text(rp);
+
+            return false;
+        });
+
+    });
+</script>
+<div class="head3">
+    {exp:store:product entry_id="{segment_3}"}
+    <div id="summ"><p><span class="sale_price" uid="{segment_3}">0</span> руб.</p></div>
+    {/exp:store:product}
+    <input id="summ-sub" type="submit" uid="{segment_3}" class="su-sub tel" value="" />
+</div>
+{/if}

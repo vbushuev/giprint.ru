@@ -1,0 +1,9 @@
+{if segment_3!==""}
+<select id="sel-2" class="isel">
+    <option value="">Выберите категорию</option>
+    {exp:channel:categories channel="products" dynamic="off"}
+    {if parent_id=="{segment_3}"}<option value="{category_id}">{category_name}</option>{/if}
+    {/exp:channel:categories}
+</select>
+<span class="itxt">Категория&nbsp;</span>
+{if:else}{/if}

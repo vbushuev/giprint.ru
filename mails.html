@@ -1,0 +1,87 @@
+<h2 style="font-family: times new roman,times;color: #1f497d;">Спасибо за ваш выбор «Центральной типографии»!</h2>
+<p style="font-family: times new roman,times;"><b>Номер заказа</b>: <strong>{order_id}</strong></p>
+{items}
+    <p style="font-family: times new roman,times;"><b>Заказанный продукт:
+        {if {entry_id}==24} Эксклюзивные визитки
+        {if:elseif {entry_id}==25} Настольный календарь
+        {if:elseif {entry_id}==29} Печать плакатов
+        {if:elseif {entry_id}==30} Печать листовок
+        {if:elseif {entry_id}==31} Печать флайеров
+            {if:elseif {entry_id}==33} Печать бланков
+            {if:elseif {entry_id}==34} Печать открыток
+        {if:elseif {entry_id}==35} Печать пластиковых карт
+            {if:elseif {entry_id}==37} Изготовление буклетов
+            {if:elseif {entry_id}==40} Печать каталогов
+        {if:elseif {entry_id}==41} Печать блокнотов
+            {if:elseif {entry_id}==46} Печать фотокартин
+            {if:elseif {entry_id}==47} Печать фотопортретов
+        {if:elseif {entry_id}==49} Печать наклеек
+        {if:elseif {entry_id}==51} Изготовление бейджей из пластика
+        {if:elseif {entry_id}==52} Изготовление удостоверений и пропусков
+        {if:elseif {entry_id}==53} Печать бирок
+        {if:elseif {entry_id}==54} Изготовление и печать браслетов
+            {if:elseif {entry_id}==77} Штендеры
+            {if:elseif {entry_id}==83} Печать презентаций
+        {if:elseif {entry_id}==88} Настенные перекидные календари
+            {if:elseif {entry_id}==108} Печать папок
+            {if:elseif {entry_id}==116} Бумажные пакеты
+        {if:elseif {entry_id}==123} Бумажные стаканы
+        {if:elseif {entry_id}==124} Самоклеящиеся этикетки
+        {if:elseif {entry_id}==134} Печать сертификатов
+        {if:elseif {entry_id}==160} Изготовление голограмм
+            {if:elseif {entry_id}==166} Жиростойкая бумага
+            {if:elseif {entry_id}==177} Кубарики
+            {if:elseif {entry_id}==183} Фотоальбомы в твердом переплете
+            {if:elseif {entry_id}==184} Реклама на чековой ленте
+        {if:elseif {entry_id}==221} Печать приглашений
+        {if:elseif {entry_id}==230} Карманный календарь
+        {if:elseif {entry_id}==231} Двухслойные бумажные стаканы
+            {if:elseif {entry_id}==232} Рекламные воблеры
+        {if:elseif {entry_id}==234} Ростовые фигуры
+        {if:elseif {entry_id}==290} Коробки
+        {/if}
+        ({item_qty} шт.)
+    </b></p>
+    <br />
+    <h3 style="font-family: times new roman,times;color: #1f497d;">Заказчик:</h3>
+    <p style="font-family: times new roman,times;">
+        Ф.И.О.: {billing_name}<br>
+        E-mail: {order_email}<br>
+        Телефон: {billing_phone}
+    </p>
+    <h3 style="font-family: times new roman,times;color: #1f497d;">Параметры заказа:</h3>
+    <p style="font-family: times new roman,times;">
+    {modifiers}
+        {if "{modifier_name}" == "^Files"}
+            {if "{modifier_value}"}
+                Макет к заказу: <a href="{site_url}plupload/data/{modifier_value}">{site_url}plupload/data/{modifier_value}</a><br />
+            {/if}
+        {if:elseif "{modifier_name}" == "Тираж"}
+            {modifier_name}: {item_qty} шт.<br />
+        {if:elseif "{modifier_name}" == "price"}
+            Стоимость заказа: <b>{modifier_value} руб.</b><br />
+        {if:elseif "{modifier_name}" == "data"}
+            {modifier_value}<br />
+        {if:elseif "{modifier_name}" != "^Radio" AND "{modifier_name}"!="Комментарий к заказу"}
+            {modifier_name}: {modifier_value}<br />
+        {/if}
+    {/modifiers}
+    </p>
+{if {entry_id}==123}
+<p>
+<img alt="Схема бумажных однослойных стаканов" src="http://www.giprint.ru/images/uploads/shema_stakanov_na_sait.jpg" style="width: 610px; height: 363px;">
+</p>
+{/if}
+    {if {entry_id}==30 OR {entry_id}==31 OR {entry_id}==24 OR {entry_id}==35 OR {entry_id}==54 OR {entry_id}==47  OR {entry_id}==232  OR {entry_id}==187 }
+        <p style="font-family: times new roman,times;">Мы свяжемся с вами в ближайшее время. Ваш личный менеджер - Ирина Медведева: <a href="tel:+79030021270">+7 (903) 002-12-70</a>, <a href="mailto:113@giprint.ru">113@giprint.ru</a></p>
+    {if:elseif {entry_id}==25 OR {entry_id}==160 OR {entry_id}==230 OR {entry_id}==41 OR {entry_id}==88  OR {entry_id}==116  OR {entry_id}==108  OR {entry_id}==166 OR {entry_id}==177  }
+        <p style="font-family: times new roman,times;">Мы свяжемся с вами в ближайшее время. Ваш личный менеджер - Лариса Рубцова: <a href="tel:+79030012664">+7 (903) 001-26-64</a>, <a href="mailto:118@giprpint.ru">118@giprint.ru</a></p>
+    {if:elseif {entry_id}==29 OR {entry_id}==49 OR {entry_id}==51 OR {entry_id}==52 OR {entry_id}==53 OR {entry_id}==123 OR {entry_id}==124 OR {entry_id}==231 OR {entry_id}==234 OR {entry_id}==46  OR {entry_id}==77 }
+        <p style="font-family: times new roman,times;">Мы свяжемся с вами в ближайшее время. Ваш личный менеджер - Юлия Шахматова: <a href="tel:+79645185056">+7 (964) 518-50-56</a>, <a href="mailto:116@giprint.ru">116@giprint.ru</a></p>
+    {if:elseif {entry_id}==134 OR {entry_id}=221 OR {entry_id}==33  OR {entry_id}==34  OR {entry_id}==37  OR {entry_id}==184 OR {entry_id}==40  }
+        <p style="font-family: times new roman,times;">Мы свяжемся с вами в ближайшее время. Ваш личный менеджер - Дарья Искандерова: <a href="tel:+79636250050">+7 (963) 625-00-50</a>, <a href="mailto:112@giprint.ru">112@giprint.ru</a></p>
+    {/if}
+{/items}
+
+<p style="font-family: times new roman,times;">С наилучшими пожеланиями, «Центральная типография»</p>
+<a href="http://www.giprint.ru">http://www.giprint.ru</a>

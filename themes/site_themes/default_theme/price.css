@@ -1,0 +1,437 @@
+.intro {
+color:#1175bc;
+font-size: 19px;
+}
+
+.sdiv {
+float:left;
+width: 280px;
+}
+
+#step2:hover ,#step3:hover ,#step4:hover,#step2_1:hover  {
+cursor:pointer;	
+}
+.section {
+ float:left; width:100%;margin-top: 25px;
+ position:relative;
+}
+.step {
+float:left; width:52px;
+z-index:10;
+}
+.fon {
+margin-top: 6px;
+margin-left: -50px;
+height: 35px;
+width: 1050px;
+z-index: 1;
+background:#f9f9f9;
+}
+.up {
+float: right;
+    height: 32px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 10px;
+    color: #1175bc;
+z-index:10;	
+margin-top:7px;
+}
+.up img{
+width:60px;
+}
+.razdel {
+float: left;
+z-index:10;
+    height: 52px;
+    font-size: 17px;
+    padding-top: 13px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    color: #1175bc;
+    font-weight: 700;
+}
+
+.nopadding {
+
+padding:0;
+}
+.divsearch {
+float:left;
+width:250px;
+height:40px;
+background: url('http://giprint.ru/images/price/search.png') no-repeat transparent;
+margin-left: 25px;
+margin-top: 7px;
+ 
+}
+
+.divsearch .searchfield {
+
+border:none;
+color: #1175bc;
+margin-top: 10px;
+margin-left: 20px;
+font-size: 14px;
+}
+
+.searchfield::-webkit-input-placeholder{
+  color: #1175bc;
+}
+.searchfield:-moz-placeholder{
+   color: #1175bc;
+}
+
+.radio-toolbar {
+float:left; width:100%;text-align:center;
+}
+.radio-toolbar input[type="radio"] {
+    display:none; 
+}
+
+.radio-toolbar label {
+    display:inline-block;
+    background-color:#fff;
+	border: 1px solid #b3b3b3;
+    padding:4px 11px;
+     text-transform:uppercase;
+    font-size:14px;
+	margin-bottom: 10px;
+    margin-right: 10px;
+	cursor: pointer;
+	color:#1175bc; 
+	font-weight:700;
+	letter-spacing: 0.1px;
+}
+
+ 
+.radio-toolbar input[type="radio"]:checked + label, .radio-toolbar label:hover { 
+    background-color:#2397d5;
+	color:#fff;
+}
+
+#filter-count {
+float:left;
+float: left;
+height: 20px;
+font-size: 10px;
+padding-top: 17px;
+
+}
+
+.selectradio label {
+    background:#bcbcbc;
+	cursor:pointer;
+
+}
+
+ 
+
+.selectradio input[type="radio"]:checked + label, .selectradio input[type="radio"]:hover + label, .selectradio label:hover, .selectradio input[type="radio"]:checked + label span, .selectradio input[type="radio"]:hover + label span {
+    background-color:#2397d5; 
+	color:#fff;
+   }
+
+.selectradio label span:hover {
+background-color:#2397d5; 
+}
+
+.selectradio span {
+position:absolute; bottom:10px; left:0px; 
+width:120px;
+color:#2397d5; 
+text-align:center;  
+margin-left:10px;
+padding:5px;
+font-weight:700;
+
+border-radius:20px;
+border: 1px solid #bcbcbc;
+
+-webkit-box-shadow:0px 0px 0px 4px #cccccc;
+-moz-box-shadow:0px 0px 0px 4px #cccccc ;
+box-shadow:0px 0px 0px 4px #cccccc ;
+
+
+
+} 
+
+   
+   
+  .selectradio input[type="radio"] {
+    visibility:hidden;
+ 
+    
+}
+
+
+
+
+ 
+
+ 
+
+.params {
+float:left; 
+margin-left: 10px; 
+}
+/*
+.params:nth-child(1) {
+ 
+width:220px;
+}
+.params:nth-child(2) {
+ 
+width:400px;
+}
+
+.params:nth-child(3) {
+
+width:300px;
+}
+ */
+
+ 
+.clearboth label{
+color: #1175bc;
+font-weight:bold;display: block;
+padding-bottom:8px;
+font-size: 14px;
+}
+
+.clearboth select, .clearboth .item_qty{
+width:200px; 
+border-radius:10px;
+margin-bottom:10px;
+font-size: 14px;
+padding: 3px 0 3px 13px;
+background: url(http://giprint.ru/images/price/down_g.png) no-repeat right #fff;
+-webkit-appearance: none;
+border: 1px solid #b3b3b3;
+height: 27px;    
+}
+.clearboth .item_qty { 
+background:none;
+}
+
+.checks label, .buttons{
+padding:10px;
+border: 1px solid #b3b3b3;
+border-radius:10px;
+padding: 5px 10px 5px 13px;
+background: #fff;
+margin-right: 10px;
+margin-bottom: 10px;
+font-size: 12px;
+float: left;
+}
+
+.textareafield {
+padding:10px;
+border-radius:10px;
+border: 1px solid #b3b3b3;
+padding: 5px 10px 5px 13px;
+background: #fff;
+margin-right: 10px;
+margin-bottom: 10px;
+
+}
+
+.btn_load_layout, .btn_order_design {
+cursor:pointer;
+}
+.order_design {
+background: #1175bc;
+color:#fff;
+}
+.bluefont {
+color: #1175bc;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 5px;
+    font-size: 14px;
+	
+}
+
+#total {
+  color: #1175bc;
+  font-size:36px;
+  float:left;
+  width:100%;
+  font-weight:700;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.orderbutton {
+width:250px; 
+float:right;
+height:200px;
+}
+
+.produkt {
+float:left;
+background:#fff;
+width:155px;position:relative;
+  
+height:200px;
+
+}
+.bigger {
+width:235px;
+text-align: center;
+}
+.bigger label{
+margin-right:10px; 
+}
+.bigger span{
+margin-left:10px;
+width:200px;
+}
+.arrow_up {
+ float:left; width:100%;
+}
+
+.arrow_down{
+ float:left; width:100%;  
+}
+.imgs {
+width:119px;
+text-align:center;
+background:#cbcdce; /* #2397d5 */
+ 
+margin-left:15px;
+}
+
+.leftside {
+float:left;
+width:13px;
+height:33px;
+background: url('http://giprint.ru/images/price/left.png') no-repeat #fff;
+}
+
+.rightside {
+float:right;
+width:15px;
+height:33px;
+background: url('http://giprint.ru/images/price/right.png') no-repeat #fff;
+ 
+}
+
+.centerside {
+float:left;
+color:#1175bc;
+width:91px;
+height:33px;
+font-size:12px;
+padding-top: 3px;
+text-align: center; 
+background: url('http://giprint.ru/images/price/center.png') repeat-x #fff;
+    font-weight: 700;
+}
+
+.word2{
+font-size: 11px;
+padding:7px!important;
+}
+.word3{
+font-size: 9px;
+padding:8px!important;
+}
+
+.calc_table { width:100%; }
+.calc_table td, .fulltable td {
+vertical-align: top;
+ 
+}
+.calc_column {
+floaT:left;width:300px;
+}
+
+.calc_load_table, .hidetable {
+	display:none; /* fixed */
+}
+
+.insert_calc_table .hidetable {
+	display:block!important;
+}
+
+.store_product_in_out_stock {
+height: 40px;
+}
+
+.smaller_container {
+ 
+position: absolute;
+    left: 550px;
+    top: 380px;
+    width: 350px;
+	margin-bottom: 20px;
+	border:none;
+	box-shadow:none;
+}
+
+.plupload_file_size { display:none; /* fixed */}
+.plupload_file_status { margin-top:-5px;}
+.smaller_container .plupload_scroll .plupload_filelist {
+    height: 85px;
+}	
+
+.smaller_container  li.plupload_droptext {
+    
+    line-height: 65px;
+}
+.calc_checkout_fields {
+float:left;
+} 
+
+#step4 {
+    width: 950px;
+    margin-left: -30px;
+}
+
+#calc-block {
+
+position:relative;
+}
+
+.downer {
+float:left;
+width:100%;
+}
+.red {
+color:red;
+}
+.outputdivs {
+float:left; 
+}
+.output_div {
+float:left;
+width:99%;
+margin-left: 0px;
+}
+
+#output_additional, #output_price {
+text-align:center;
+}
+#output_additional {width:25%;}
+#output_price, #output_options {width:35%!important;}
+
+#output_options {
+text-align:left;
+}
+
+#nextstep {
+    padding: 10px;
+    background: #1175bc;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+}
+
+#calculator_table td:hover {
+background: #1175bc;
+cursor: pointer;
+	
+}
+

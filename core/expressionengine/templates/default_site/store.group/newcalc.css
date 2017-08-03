@@ -1,0 +1,251 @@
+.p-modal {
+  position: fixed;
+  display: none;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.2);
+  width: 100%;
+  height: 100%;
+}
+.p-pool-right{
+    float: right;
+}
+.p-modal .p-button {
+  border-radius: 1em;
+  height: 1.6em;
+  line-height: 1.6em;
+  text-align: center;
+  background: none;
+  padding: 0 1em;
+  font-size: 1.4em;
+  display: inline-block;
+  border: 1px solid rgba(16, 116, 188,.8);
+
+  cursor: pointer;
+  transition: all .4s ease-in;
+}
+.p-modal .p-button:hover {
+    background-color: :rgba(0,0,0,.3);
+    color:rgba(0,0,0,.8);
+}
+.p-button.p-button-primary {
+    color:rgba(255,255,255,.8);
+    border: none;
+    text-shadow: 2px;
+    background: -webkit-linear-gradient(rgba(16, 116, 188,.5), rgba(16, 116, 188,.8)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(16, 116, 188,.5), rgba(16, 116, 188,.8)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(16, 116, 188,.5), rgba(16, 116, 188,.8)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(16, 116, 188,.5), rgba(16, 116, 188,.8)); /* Standard syntax */
+}
+.p-button.p-button-primary:hover {
+    color:rgba(255,255,255,1);
+    background: -webkit-linear-gradient(rgba(16, 116, 188,.8), rgba(16, 116, 188,.5)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(16, 116, 188,.8), rgba(16, 116, 188,.5)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(16, 116, 188,.8), rgba(16, 116, 188,.5)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(16, 116, 188,.8), rgba(16, 116, 188,.5)); /* Standard syntax */
+}
+.p-modal .p-modal-container {
+  position: relative;
+  background-color: #fff;
+  color: rgba(0,0,0,0.3);
+  margin: 5% 20%;
+  padding: 2em 0 0 0;
+  border-radius: 1em;
+  font-size: 16px;
+  min-width: 640px;
+  max-width: 720px;
+
+}
+.p-modal .p-modal-container .p-modal-header {
+  background-color: rgba(0,0,0,0.2);
+  padding: .4em 2em;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+}
+.p-modal .p-modal-container  .p-modal-header .p-currency {
+    font-size: 2.8em;
+    margin-top: -.55em;
+}
+.p-modal .p-modal-container .p-title {
+  color: #000;
+  height: 2em;
+  line-height: 2em;
+  display: inline-block;
+  font-size: 1.2em;
+}
+.p-modal .p-modal-container .p-readonly {
+  margin: 0em;
+  text-align: right;
+  padding: 0 1em;
+  height: 2.2em;
+  margin: 0 .4em;
+  border: none;
+  border-radius: 1em;
+  min-width: 12rem;
+  background-color: #fff;
+  display: inline-block;
+}
+.p-modal .p-modal-container .p-modal-header .p-modal-close {
+  position: absolute;
+  right: .8em;
+  top: 0.4em;
+  text-decoration: none;
+  color: rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+.p-modal .p-modal-container .p-modal-header .p-modal-close:hover {
+  color: rgba(0,0,0,0.5);
+}
+.p-modal .p-modal-container .p-modal-body {
+  background-color: #fff;
+  margin: 1em;
+  padding: 1em;
+}
+.p-modal .p-modal-container .p-modal-body p {
+
+  font-size: 10pt;
+}
+.p-modal .p-modal-container .p-modal-body p a{
+    transition: all .4s ease-in;
+    color:rgba(16, 116, 188,.5);
+    text-decoration: none;
+}
+.p-modal .p-modal-container .p-modal-body p a:hover{
+    text-decoration: underline;
+
+}
+.p-row{
+    padding: 0;
+    margin: 1em 0;
+    position: relative;
+}
+.p-modal .p-modal-container .p-modal-body .p-label{
+    display: inline-block;
+    margin:0;
+    width:30%;
+    font-weight: 600;
+    color: rgba(0,0,0,.7);
+}
+.p-modal .p-modal-container .p-modal-body .p-value{
+    display: inline-block;
+    width:70%;
+    margin:0;
+    position: relative;
+}
+.p-modal .p-modal-container .p-modal-body .p-instructions{
+    display: block;
+    width:70%;
+    font-size: 90%;
+    position: relative;
+    margin: -1em 0 -1em 30%;
+}
+.p-modal .p-modal-container .p-modal-body .p-value select,.p-modal .p-modal-container .p-modal-body .p-value input{
+    width: 100%;
+    font-size: 14pt;
+    height: 2em;
+    line-height: 2em;
+    outline:solid 1px rgba(0,0,0,.3);
+    border: none;
+    color: rgba(0,0,0,.3);
+    display: inline-block;
+}
+.p-modal .p-modal-container .p-modal-body .p-value input{
+    color: rgba(0,0,0,.9);
+    padding 0 1em;
+}
+.p-modal .p-modal-container .p-modal-body .p-value select.p-visited{
+    color: rgba(0,0,0,.9);
+}
+.p-required:after{
+    content: '*';
+}
+.p-modal .p-modal-container .p-modal-footer {
+  margin: 1em;
+  text-align: right;
+  padding: 1em;
+}
+.alert-required{border:solid 2px red;}
+
+
+#p-tabs{
+    position: relative;
+    width:100%;
+    text-align: justify;
+}
+#p-tabs div {
+    display:none;
+}
+#p-tabs  a{
+    display: inline-block;
+    border:solid 3px #97bde3;
+    padding:0 1em;
+    margin: 1em;
+    margin-bottom: 0px;
+    line-height: 3em;
+    margin-left: 3px;
+    text-align: center;
+    color: rgba(0,0,0,.5);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .4s ease-in;
+    text-align: center;
+    border-radius: .4em;
+    font-size: 10px;
+    font-family: tahoma, DejaVu Sans Condensed;
+    text-transform: uppercase;
+}
+#p-tabs a:hover{
+    color: rgba(0,0,0,.8);
+}
+#p-tabs.p-tab1 div.p-tab1 {
+    display:block;
+    width:100%;
+}
+#p-tabs.p-tab2 div.p-tab2 {
+    display:block;
+    width:100%;
+}
+#p-tabs.p-tab3 div.p-tab3 {
+    display:block;
+    width:100%;
+}
+#p-tabs.p-tab1 a.p-tab1 {
+    color: #ffffff;
+    background-color: #97bde3;
+    cursor: default;
+    text-decoration: none;
+}
+#p-tabs.p-tab2 a.p-tab2 {
+    color: #ffffff;
+    background-color: #97bde3;
+    cursor: default;
+    text-decoration: none;
+}
+#p-tabs.p-tab3 a.p-tab3 {
+    color: #ffffff;
+    background-color: #97bde3;
+    cursor: default;
+    text-decoration: none;
+}
+.p-currency{
+    font-weight: normal;
+}
+.p-highlighted{
+    border-radius: .4em;
+    border: 1px solid rgba(16, 116, 188,.8);
+    margin:0 -1em;
+    padding:0 1em;
+    color:grey;
+}
+.p-highlighted .p-label{
+    color:grey !important;
+}
+.p-highlighted .p-empty .p-label{
+    color: rgba(16, 116, 188,.8) !important;
+}
+.uploader_container{
+    border-color: rgba(16, 116, 188,.8);
+}

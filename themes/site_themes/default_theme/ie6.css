@@ -1,0 +1,19 @@
+#minWidth {width:expression(((document.compatMode && document.compatMode=='CSS1Compat') ? document.documentElement.clientWidth : document.body.clientWidth) <= 1002 ? "1000px" : "auto");}
+a:hover {text-indent:0}
+.content .menu,
+.header .left,
+.tel
+{
+	filter:expression(fixPNG(this))
+}
+
+img
+ {
+	behavior:	url("/public/scripts/pngbehavior.htc");
+}
+.header .right .trash, .header .right  .trash:hover, .header .right  .trash-dis {
+	margin-left:4px !important;
+}
+.content .mainDiv3  .item .body .text ul.ult li ul {
+	margin-top:-18px;
+}

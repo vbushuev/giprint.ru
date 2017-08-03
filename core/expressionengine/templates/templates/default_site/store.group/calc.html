@@ -1,0 +1,606 @@
+<script type="text/javascript">
+function initCalculator() {
+    console.log("init calc");
+
+
+    var uid = '{embed:entry_id}';	// id продукта
+    var entrySel = '.entry-' + uid + ' ';
+
+
+    $(".uploader-" + uid).pluploadQueue({
+        // General settings
+        runtimes: 'html5, gears,flash,silverlight,browserplus',
+        url: '/plupload/upload.php',
+        max_file_size: '999mb',
+        chunk_size: '1mb',
+        unique_names: true,
+
+        // Specify what files to browse for
+        filters: [
+            {title: "Image files", extensions: "ai,eps,cdr,tif,tiff,pdf"},
+            {title: "Zip files", extensions: "zip,rar,7z"}
+        ],
+
+        // Flash settings
+        flash_swf_url: '/static/Moxie.swf',
+
+        // Silverlight settings
+        silverlight_xap_url: '/static/Moxie.xap',
+
+        init: {
+            UploadComplete: function (up, files) {
+                var index = 1;
+                var $productFiles = $(entrySel + ' .product_files');
+
+                var filenames = [];
+                plupload.each(files, function (file) {
+                    filenames.push(file.target_name);
+                });
+                $productFiles.val(filenames.join());
+
+            }
+        }
+    });
+
+    $(entrySel + " .close_order").click(function () {
+        $(entrySel).data('onDialogClose')();
+        $(entrySel).css({"display": "none"});
+        return false;
+    });
+
+    $(".uploader_container_close").click(function () {
+        $(this).parent().parent().hide();
+        return false;
+    });
+
+    // клик на "Загрузить макет"
+    $(entrySel + ' .btn_load_layout').click(function () {
+        $('.uploader_container-' + uid).show();
+    });
+
+    // На сабмит формы заказа делаем ajax вызов
+    $(entrySel + '.store_product_form').submit(function (e) {
+        var allow_submit = true;
+
+        $(entrySel + "select.modifier_selecting option:selected").each(function () {
+            if ($(this).val() == 0) {
+                allow_submit = false;
+            }
+        });
+
+        if (!allow_submit) {
+            e.preventDefault();
+            alert('Пожалуйста, выберите нужные опции из всех выпадающих списков.');
+            return false;
+        }
+
+        var postData = $(this).serializeArray();
+console.log(postData);
+        var formURL = $(this).attr("action");
+console.log(formURL);
+        $.ajax({
+            url: formURL,
+            type: "POST",
+            data: postData,
+            success: function (data, textStatus, jqXHR) {
+                $.get('{site_url}store/ajax_checkout/', function (data) {
+                    $('.zebra_table').hide();
+                    $('.checkout_placeholder').html(data);
+                    $('.checkout_buttons').show();
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                //if fails
+            }
+        });
+        e.preventDefault(); //STOP default action
+        e.unbind(); //unbind. to stop multiple form submit.
+    });
+
+    // клик на "В корзину"
+    $(entrySel + '.btn_basket').click(function() {
+      $(entrySel + '.store_product_form').submit();
+
+    });
+
+    $(entrySel + ' .checkout_edit-order').on('click', function() {
+        $('.checkout_placeholder').html('');
+        $('.checkout_buttons').hide();
+        $('.zebra_table').show();
+    });
+
+    $(entrySel + ' .checkout_submit-order').on('click', function() {
+        // $('.checkout_placeholder form').submit() вызвать не получится, т.к. у формы есть поле с именем submit.
+        // Подробности: http://stackoverflow.com/questions/12540953
+        HTMLFormElement.prototype.submit.call($('.checkout_placeholder form')[0]);
+    });
+
+
+
+
+    if (typeof window.ExpressoStore == 'undefined') {
+      return;
+    }
+
+    /****************************************************************************************/
+    /************************************ Инициализация *************************************/
+
+
+
+    var product = ExpressoStore.products[uid];	// сам продукт
+    var stock = product.stock;			// склад
+
+    /****************************************************************************************/
+    /**************** Составим дерево всех возможных комбинаций модификаторов ***************/
+
+    // пересортируем модификаторы в правильном порядке.
+    // порядок берем из ui. костыль, но что поделать.
+    // на порядок ключей в объекте js полагаться нельзя
+    var modifiers = [],
+        modifiers_order = [];
+
+    $(entrySel + 'select.modifier_selecting').each(function() {
+      modifiers_order.push($(this).attr('name').split('_')[1]);
+    });
+
+    for(var mo = 0; mo < modifiers_order.length; mo++) {
+      modifiers.push(product.modifiers[modifiers_order[mo]]);
+    }
+
+    // все комбинации
+
+    var root = {combination: ''};
+    var parents = [root];
+    var combinations_plain;
+
+    for(var i = 0; i < modifiers.length; i++) {
+      // в i - id модификатора
+      //if (modifiers[i].mod_type !== 'var') continue; // игнорируем все типы, кроме var
+
+      var options = modifiers[i].options;
+      var new_parents = [];
+      combinations_plain = []; // на каждом новом уровне очищаем массив,
+      // чтобы добраться до самого глубокого уровня
+
+      for(var j in options) { // в j - номер опции
+        // для каждого указанного в parents массива добавляем новый уровень
+        // с опциями текущего модификатора
+        for(var k in parents) {
+          var prefix = (parents[k].combination) ? parents[k].combination + '|' : '';
+          parents[k][j] = {combination: prefix+j};
+          new_parents.push(parents[k][j]);
+          combinations_plain.push(parents[k][j].combination);
+        }
+      }
+      parents = new_parents;
+    }
+
+    // Итак, в combinations_plain сейчас лежат все возможные комбинации
+  
+
+    /****************************************************************************************/
+    /*************************************** Проверяем склад ********************************/
+
+    for(var i in combinations_plain) {
+      // комбинации разделены вертикальной чертой;
+      // ключи модификаторов лежат в modifiers_order
+      var combination = combinations_plain[i].split('|');
+
+      // ищем комбинацию
+      for(var j in stock) {
+        var elem = stock[j];
+
+        // проверяем каждый модификатор
+        var failed = false;
+        for (var k=0; k<modifiers_order.length; k++) {
+          var modifier_id = modifiers_order[k];
+          var modifier_value = combination[k];
+          if (elem.opt_values[modifier_id] != modifier_value) failed = true;
+        }
+
+        if (failed) continue; // если не совпало, ищем дальше
+
+        // если нашли, проверяем статус на складе
+        var outofstock = (elem.stock_level===0 || elem.stock_level==='0');
+
+        if (outofstock) {
+          // удаляем ненужную комбинацию
+          combinations_plain[i] = false;
+        }
+
+        // в любом случае, раз мы нашли комбинацию в стоке, дальше элементы стока не перебираем;
+        // переходим к следующей комбинации
+        break;
+      }
+    }
+
+    /****************************************************************************************/
+    /*************************** Вычищаем дерево от пустых веток ****************************/
+
+    function clean_empty_branches(branch, parent, parent_key) {
+      // сразу же вызываем рекурсивно, чтобы забраться
+      // на самый глубокий уровень и начать оттуда
+      for(var b in branch) {
+        if (b != 'combination') {
+          clean_empty_branches(branch[b], branch, b);
+        }
+      }
+
+      // если мы на самом глубоком уровне
+      if (getObjSize(branch) == 1) { // то есть в ветке только элемент 'combination'
+        // ищем эту комбинацию
+        var found = false;
+        for(var i in combinations_plain) {
+          // если нашли, то дальше не ищем, просто оставляем ветку.
+          // на месте несуществующей на складе комбинации в combinations_plain
+          // лежит false, поэтому срабатывания не будет
+          if (combinations_plain[i] === branch.combination) {
+            found = true;
+            break;
+          }
+        }
+
+        // не нашли? значит, нет на складе (combinations_plain[...]===false), удаляем ветку
+        if (!found) branch.combination = false;
+      }
+
+      // проверим ветку на пустоту
+      if (is_empty_branch(branch)) {
+        // самоликвидируемся
+        branch.combination = false;
+      }
+    }
+
+    // рекурсивно проверяет, пуста ли ветка
+    function is_empty_branch(branch) {
+      // если мы на самом глубоком уровне
+      if (getObjSize(branch) == 1) { // то есть в ветке только элемент 'combination'
+        // проверяем его
+        if (branch.combination === false) return true; // пуста
+        else return false; // не пуста
+      } else {
+        // а если есть дочерние ветки, проверяем рекурсивно их
+        var found_something = false;
+        for(var i in branch)
+          if (i != 'combination')
+            if (!is_empty_branch(branch[i])) // не пустая
+              found_something = true;
+
+        if (found_something) return false; // не пустая
+        else return true; // пустая
+      }
+    }
+
+    // virtual "obj.length"
+    function getObjSize(obj) {
+      var size = 0, key;
+      for (key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          size++;
+        }
+      }
+      return size;
+    }
+
+    // Запускаем очистку
+    clean_empty_branches(root, null, 0);
+
+    // Уничтожаем ненужный объект
+    delete combinations_plain;
+
+    /****************************************************************************************/
+    /********************************** User Interface **************************************/
+
+    // При открытии окна:
+    // - запомним содержимое селекторов
+    // - вызовем первый раз change()
+    // - уберем лишнее из строк с примечаниями
+
+    var selects_cache = {};
+    $(entrySel).data('onDialogShow', function() {
+      $(entrySel + 'select.modifier_selecting option').show();
+      for(var i in modifiers_order)
+        selects_cache[modifiers_order[i]] = $(entrySel + '.modifiers_'+modifiers_order[i]).html();
+
+      $(entrySel + 'select.modifier_selecting:eq(0)').change();
+    });
+
+    $(entrySel).data('onDialogClose', function() {
+      for(var i in modifiers_order)
+        restore_selector(modifiers_order[i]);
+    });
+
+    // восстанавливает содержимое селектора
+    function restore_selector(id) {
+      $(entrySel + '.modifiers_'+id).html(selects_cache[id]);
+    }
+
+    // Реакция на селекторы
+
+    var selects = $(entrySel + 'select.modifier_selecting');
+    selects.change(function() {
+      // Определим, какой селектор сработал и очистим следующие
+      var mod_id = this.id.split('_')[1];
+      var select = $(entrySel + '.modifiers_'+mod_id);
+      var clear = false;
+      for(i in modifiers_order) {
+        if (clear) $(entrySel + ".modifiers_"+modifiers_order[i]+" option:eq(0)").attr("selected", "selected").parent().change();
+        if (modifiers_order[i] == mod_id) clear = true;
+      }
+
+      // Прогуляемся по уровням
+      var obj = root; // начинаем с нулевого уровня
+      for(var i in modifiers_order) {
+        var mod_id = modifiers_order[i]; // modifier id
+        var select = $(entrySel + '.modifiers_'+mod_id);
+        var val = select.val();
+
+        restore_selector(mod_id);
+
+        if (obj === false) {
+          // оставляем только "Выбрать..."
+          select.find('option[mod]').remove();
+        } else {
+          // оставляем только те опции/ветки, в которых combination !== false
+          for (var j in obj) {
+            if (j != 'combination') {
+              var option = $(entrySel + '.modifiers_'+mod_id+' option[mod][value='+j+']');
+
+              if (obj[j].combination === false) option.remove();
+
+              //if ($('.modifiers_'+mod_id+' option:selected').not(':visible'))
+              //	$('.modifiers_'+mod_id+' option').not('[mod]').attr('selected','selected');
+            }
+          }
+
+          if (val == '') obj = false;
+          else           obj = obj[val];
+        }
+
+        select.val(val);
+      }
+
+      // Скрываем строки с единственным вариантом "Выбрать..."
+      for(var i in modifiers_order) {
+        var row = $(entrySel + 'tr[modifier-row]').has('.modifiers_'+modifiers_order[i]);
+        if ($(entrySel + '.modifiers_'+modifiers_order[i]+' option[mod]').length == 0) {
+          if (row.is(':visible'))	row.hide();
+        } else {
+          if (row.is(':hidden'))  row.show();
+        }
+      }
+
+      // Раскрасим зебру заново
+//      update_zebra();
+
+      // Обновим минимальное количество
+      update_quantity();
+
+      // Обновим цену/стоимость
+      update_price();
+    });
+
+    // раскрашивает таблицу в зебру, учитывая скрытые строки
+    function update_zebra() {
+      var odd = true;
+      $('.zebra_table tr:visible').each(function() {
+        if (odd) $(this).removeClass('zebra_even').addClass('zebra_odd');
+        else     $(this).removeClass('zebra_odd').addClass('zebra_even');
+        odd = !odd;
+      });
+    }
+
+    // обновляем минимальное количество
+    var last_mod_state = '';
+    function update_quantity() {
+      // если ничего не изменилось, выходим
+      var mod_state = '';
+      for (var k=0; k<modifiers_order.length; k++) {
+        var modifier_id = modifiers_order[k];
+        var modifier_value = $(entrySel + '.modifiers_'+modifier_id+' option:selected').val();
+        if (modifier_value == '') {
+          $(entrySel + "span.min_order_qty").text('0');
+        }
+        if (mod_state != '') mod_state += '|'; mod_state += modifier_value;
+      }
+      if (mod_state == last_mod_state) return;
+      last_mod_state = mod_state;
+
+      // ищем комбинацию
+      for(var j in stock) {
+        var elem = stock[j];
+
+        // проверяем каждый модификатор
+        var failed = false;
+        for (var k=0; k<modifiers_order.length; k++) {
+          var modifier_id = modifiers_order[k];
+          var modifier_value = $(entrySel + '.modifiers_'+modifier_id+' option:selected').val();
+          if (elem.opt_values[modifier_id] != modifier_value) failed = true;
+        }
+
+        if (failed) continue; // если не совпало, ищем дальше
+
+        // если нашли, пишем min_order_qty
+        if (elem.hasOwnProperty("min_order_qty")) {
+          $(entrySel + "span.min_order_qty").text(elem.min_order_qty);
+
+
+          var $quantityInput = $(entrySel + ".item_qty");
+          var currentQuantity = $quantityInput.val();
+          $quantityInput.val(Math.max(elem.min_order_qty, currentQuantity));
+        }
+
+        // в любом случае, раз мы нашли комбинацию в стоке, дальше элементы стока не перебираем;
+        break;
+      }
+    }
+
+    // обновление ценника
+    $(entrySel + 'input[name=item_qty]').keyup(function() { update_price(); });
+    function update_price() {
+      var uid = $(entrySel + 'input[name=entry_id]').val();
+      var rp = parseFloat($(entrySel + "span.regular_price[uid="+uid+"]").text());
+      var selects = $(entrySel + "select.modifier_selecting[uid="+uid+"]");
+      var add_p = 0;
+      var modifier = "";
+      var min_qty = $(entrySel + "span.min_order_qty[uid="+uid+"]").text();
+
+      if(selects && selects.length>0) {
+        for(var i=0;i<selects.length;i++) {
+          modifier = $(entrySel + "select.modifier_selecting[uid="+uid+"]:eq("+i+") option:selected");
+          add_p = parseFloat(modifier.attr("price"));
+          //console.log(add_p);
+          rp = rp+add_p;
+        }
+      }
+      var count = Math.abs(parseInt($(entrySel + "input[name=item_qty][uid="+uid+"]").val()));
+
+      rp = rp*count;
+
+      // стоимость
+      count = parseInt($(entrySel + 'input[name=item_qty]').val());
+      if ($(entrySel + 'input[name=item_qty]').val()=='') count = 0;
+
+      if (isNaN(rp)) {
+        $(entrySel + ".sale_price[uid="+uid+"]").text('---');
+      } else {
+        $(entrySel + ".sale_price[uid="+uid+"]").text(rp.toFixed(2).toString().replace(/\./, ',') + ' р.');
+      }
+
+      // количество
+      //var min_qty = $("span.min_order_qty[uid="+uid+"]").text();
+      (count < min_qty) ? $(entrySel + '.order_more').show() : $(entrySel + '.order_more').hide();
+
+      return false;
+    }
+  }
+
+//  $(document).ready(function() {
+//    initCalculator();
+//  } );
+
+$('td.grey').css("cursor","default");
+
+</script>
+
+
+<div class="store calc entry-{embed:entry_id}">
+  <h3 class="store_product_name">{embed:title}</h3>
+  <a href="#" class="close_order">&times;</a>
+
+  {exp:store:product entry_id="{embed:entry_id}" return="basket"}
+    <input type="hidden" name="empty_cart" value="yes"/>
+    <div class="store_product_in_out_stock" align="center">
+      <span class="store_product_in_stock">Товар можно заказать! <img src='/images/forms/green_circle.png'></span>
+      <span class="store_product_out_of_stock">Товар нельзя заказать из калькулятора - актуальные цены уточняйте у менеджера! <img src='/images/forms/red_circle.png'></span>
+    </div>
+
+  <div class="order_more" style="display:none;" align="center">Недостаточное количество - тираж будет увеличен до указанного Вами! <img src='/images/forms/red_circle.png'></div>
+
+    <span style="display: none;" class="regular_price" uid="{embed:entry_id}">{regular_price}</span>
+    <span style="display: none;" class="min_order_qty" uid="{embed:entry_id}">{min_order_qty}</span>
+
+    <table class="zebra_table">
+      <tr>
+        <td><p style="margin: 3px 10px 3px 0;">Стоимость</p></td>
+        <td class="sale_price_td"><div class="sale_price" uid="{embed:entry_id}">{regular_price}</div></td>
+      </tr>
+      {modifiers}
+        <?php $modifierName = "{modifier_name}"; ?>
+        <tr {if modifier_type == 'var' OR modifier_type == 'var_single_sku'}modifier-row{/if} <?php if(strpos($modifierName, '^') === 0): ?>style="display:none;" <?php endif; ?>>
+
+            <?php if (strpos($modifierName, '#') === 0): ?>
+              <?php $modifierName = substr($modifierName, 1, strlen($modifierName) - 1); ?>
+              <td colspan="2">
+                <p style="margin: 3px 10px 3px 0; font-style: italic;"><?php echo $modifierName; ?></p>
+              </td>
+            <?php elseif (strpos($modifierName, '^Files') === 0): ?>
+                <td style="display: none;"><input type="hidden" name="{modifier_input_name}" class="product_files"/></td>
+            <?php else: ?>
+              <td>
+                <p style="margin: 3px 10px 3px 0;">{modifier_name}</p>
+              </td>
+              <td>
+                {if modifier_type == 'var' OR modifier_type == 'var_single_sku'}
+                <select class="modifier_selecting {modifier_input_name}" uid="{embed:entry_id}" name="{modifier_input_name}">
+                  <option value="">Выбрать...</option>
+                  {modifier_options}
+                  <option mod value="{option_id}" price="{if price_mod == ''}0{if:else}{price_mod}{/if}">
+                    {option_name} {if price_mod_val} ({price_mod}) {/if}
+                  </option>
+                  {/modifier_options}
+                </select>
+                {if:else}
+                <input type="text" uid="{embed:entry_id}" id="{modifier_input_name}" name="{modifier_input_name}" value="" />
+                {/if}
+              </td>
+            <?php endif; ?>
+
+
+            {if modifier_instructions!==""}
+        </tr>
+        <tr>
+            <td colspan="2"><p class="m_inst">{modifier_instructions}</p></td>
+        </tr>
+            {/if}
+        </tr>
+        {/modifiers}
+        <tr>
+            <td><p style="margin: 3px 10px 3px 0;">Количество</p></td>
+            <td>
+                <input type="text" uid="{embed:entry_id}" name="item_qty" class="input-mini item_qty" value="1" />
+            </td>
+        </tr>
+        <tr class='last_row'>
+            <td><span style='cursor:pointer' class='btn_load_layout'><img src='/images/forms/load_layout.png'></span></td>
+            <td align='right'><span style='cursor:pointer' class='btn_basket'><img src='/images/forms/basket.png'></span></td>
+        </tr>
+    </table>
+    {/exp:store:product}
+
+
+
+    <div class="checkout_placeholder"></div>
+
+    <div class="checkout_buttons" style="display: none;">
+
+        <div class="form-group">
+            <p>* - поле, обязательное для заполнения. Информация из полей, отмеченных *, используется для составления
+            автоматического счета для оплаты заказываемой продукции. Мы не храним персональную информацию,
+            указываемую Вами, и не используем её для чего-либо кроме обеспечения процесса заказа на нашем
+            сайте.</p>
+<p>Ввиду резкого падения курса рубля, цены в калькуляторе ориентировочные и могут меняться в зависимости от ситуации на рынке. Поэтому перед тем, как сделать заказ, уточните актуальность цены у менеджера. </p>
+            <p>Нажимая на кнопку отправки заказа, Вы подтверждаете указанные параметры товара, а также даёте
+                согласие на генерацию счета оплаты согласно <a href="/static/oferta.doc">договору-оферте</a>.</p>
+        </div>
+
+        <div class=" form-group clearfix" >
+            <button class="checkout_edit-order btn btn-alt pull-left">Изменить заказ</button>
+            <button type="submit" class="checkout_submit-order btn btn-alt pull-right" name="submit">Оформить заказ</button>
+        </div>
+    </div>
+</div><!-- .calc -->
+
+<div class='uploader_container uploader_container-{embed:entry_id}'>
+  <div class="uploader_container_header" style="text-align: center;">
+      <a href="/company/trebovaniya-k-maketam/" target="_blank">Требования к макетам</a>
+    <a href="#" class="uploader_container_close">&times;</a>
+  </div>
+	<div class='plupload_dialog'>
+	<form>
+	    <div class="uploader-{embed:entry_id}">
+	        <p>Your browser doesn't have Flash, Silverlight, Gears, BrowserPlus or HTML5 support.</p>
+		<input style='display:none;' type='file' value='' name='upload' id='upload'>
+	    </div>
+	</form>
+	</div>
+</div>
+
+
+<div style='display: none;'>
+</div>
+<script>
+  $(document).ready(function(){
+    $(".modifiers_198").val('833');
+  })
+</script>

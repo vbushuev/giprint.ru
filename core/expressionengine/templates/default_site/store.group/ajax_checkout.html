@@ -1,0 +1,83 @@
+{exp:store:checkout form_class="checkout-form" return="/basket/ok"}
+<div class="form-group clearfix">
+    <label for="billing_customer_type" class="form-label">Покупатель</label>
+    <select name="billing_customer_type" id="billing_customer_type" class="customer_type form-control">
+        <option value="individual">Физическое лицо</option>
+        <option value="legal_entity">Юридическое лицо</option>
+    </select>
+</div>
+<!--
+<div class="calc_checkout_fields"></div>
+
+<div class="form-group clearfix">
+    <label for="payment_method" class="form-label">Способ оплаты</label>
+    <select name="payment_method" id="payment_method" class="checkout_payment-method form-control">
+        <option value="invoice">Безналичный расчёт</option>
+        <option value="robokassa">Оплатить онлайн</option>
+	<option value="receipt">Квитанция</option>
+    </select>
+</div>
+-->
+
+<!--
+Store требует, чтобы в POST было передано поле с именем submit. По умолчанию это кнопка submit, но т.к. мы сабмитим
+форму из другого места - добавляем hidden поле с таким именем.
+Также, эту форму не получится засабмитить через jQuery.
+Подробности и workaround: http://stackoverflow.com/questions/12540953
+-->
+<input type="hidden" name="submit"/>
+
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            $('.customer_type')
+                .on('change', function () {
+                    var currentValue = $(this).val();
+                    var calcCheckoutFields = $('.calc_checkout_fields');
+                    var $paymentMethod = $('.checkout_payment-method');
+
+                    calcCheckoutFields.html('');
+
+
+                    if (currentValue === 'individual') {
+                        $paymentMethod.val('robokassa');
+                        $paymentMethod.find('option[value="invoice"]').attr('disabled', 'disabled');
+
+                        calcCheckoutFields.append(createField({name: 'billing_name', title: 'Ф.И.О.'}));
+                        calcCheckoutFields.append(createField({name: 'billing_phone', title: 'Телефон'}));
+                        calcCheckoutFields.append(createField({name: 'order_email', title: 'E-Mail'}));
+                    }
+                    else if (currentValue === 'legal_entity') {
+
+                        $paymentMethod.find('option[value="invoice"]').removeAttr('disabled');
+
+                        calcCheckoutFields.append(createField({name: 'billing_name', title: 'Компания'}));
+                        calcCheckoutFields.append(createField({name: 'billing_company', title: 'Ф.И.О. представителя'}));
+                        calcCheckoutFields.append(createField({name: 'billing_phone', title: 'Телефон'}));
+                        calcCheckoutFields.append(createField({name: 'order_email', title: 'E-Mail'}));
+                        calcCheckoutFields.append(createField({name: 'billing_address1', title: 'Адрес'}));
+                        calcCheckoutFields.append(createField({name: 'billing_address2', title: 'Адрес'}));
+                        calcCheckoutFields.append(createField({name: 'billing_inn', title: 'ИНН'}));
+                        calcCheckoutFields.append(createField({name: 'billing_kpp', title: 'КПП'}));
+                        calcCheckoutFields.append(createField({name: 'billing_bank', title: 'Банк'}));
+                        calcCheckoutFields.append(createField({name: 'billing_rs', title: 'Расчётный счёт'}));
+                        calcCheckoutFields.append(createField({name: 'billing_ks', title: 'Корреспондентский счёт'}));
+                        calcCheckoutFields.append(createField({name: 'billing_bik', title: 'БИК'}));
+                    }
+                })
+                .trigger('change');
+
+            function createField(options) {
+                var fieldName = options.name;
+                var fieldTitle = options.title;
+                var result = '<div class="form-group clearfix">';
+                result += '<label class="form-label __required" for="' + fieldName + '">' + fieldTitle + '</label>';
+                result += '<input class="form-control" id="' + fieldName + '" name="' + fieldName + '" type="text"/>';
+                result += '</div>';
+                return result;
+            }
+        });
+    }(jQuery));
+</script>
+
+{/exp:store:checkout}

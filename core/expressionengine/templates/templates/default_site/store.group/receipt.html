@@ -1,0 +1,598 @@
+{exp:store:orders order_hash="{segment_3}"}
+
+{if no_orders}
+{redirect="404"}
+{/if}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ru">
+<head>
+<title>Печать квитанции формы ПД-4</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ru">
+<link rel="icon" type="image/png" href="images/q16x16.png">
+<style type="text/css">
+    .nowr {
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 0;
+        border: 0;
+    }
+
+    table {
+        border: none;
+    }
+    body {
+        background-color: white;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .ramka {
+        border: 1px dashed black;
+        margin: 0;
+        height: 145mm;
+    }
+
+    .kassir {
+        font-weight: bold;
+        font-size: 10pt;
+        font-family: "Arial", serif;
+        padding: 7mm 0 7mm 0;
+        text-align: center;
+    }
+
+    .cell {
+        font-family: Arial, sans-serif;
+        border-left: black 1px solid;
+        border-bottom: black 1px solid;
+        border-top: black 1px solid;
+        font-weight: bold;
+        font-size: 8pt;
+        line-height: 1.1;
+        height: 4mm;
+        vertical-align: bottom;
+        text-align: center;
+    }
+
+    .cells {
+        border-right: black 1px solid;
+        width: 100%;
+    }
+
+    .subscript {
+        font-size: 6pt;
+        font-family: "Arial", serif;
+        line-height: 1;
+        vertical-align: top;
+        text-align: center;
+    }
+
+    .string, .dstring {
+        font-weight: bold;
+        font-size: 8pt;
+        font-family: Arial, sans-serif;
+        border-bottom: black 1px solid;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+    .floor {
+        vertical-align: bottom;
+        padding-top: 0.5mm;
+    }
+
+    .stext {
+        font-size: 8.5pt;
+        font-family: "Arial", serif;
+        vertical-align: bottom;
+    }
+
+    .stext7 {
+        font-size: 7.5pt;
+        font-family: "Arial", serif;
+        vertical-align: bottom;
+    }
+</style>
+</head>
+
+<body>
+
+
+
+<table class="ramka" cellspacing="0" style="width: 180mm;">
+<tr>
+<td style="width: 50mm; height: 65mm; border-bottom: black 1.5px solid;">
+    <table style="width: 50mm; height: 100%;" cellspacing="0">
+        <tr>
+            <td class="kassir" style="vertical-align: top; letter-spacing: 0.2em;">Извещение</td>
+        </tr>
+        <tr>
+            <td class="kassir" style="vertical-align: bottom;">Кассир</td>
+        </tr>
+    </table>
+</td>
+<td style="width: 130mm; height: 65mm; padding: 0mm 4mm 0mm 3mm; border-left: black 1.5px solid; border-bottom: black 1.5px solid;">
+
+<table cellspacing="0" style="width: 123mm; height: 100%;">
+<tr>
+    <td>
+        <table width="100%" cellspacing="0">
+            <tr>
+                <td class="stext" style="height: 5mm;"></td>
+                <td class="stext7" style="text-align: right; vertical-align: middle;"><i>Форма &#8470;
+                    ПД-4</i></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td style="vertical-align: bottom;">
+        <table style="width: 100%;" cellspacing="0">
+            <tr>
+                <td class="string">ООО «Центральная типография»</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td class="subscript nowr">(наименование получателя платежа)</td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td width="30%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 10%;">7</td>
+                            <td class="cell" style="width: 10%;">7</td>
+                            <td class="cell" style="width: 10%;">0</td>
+                            <td class="cell" style="width: 10%;">8</td>
+                            <td class="cell" style="width: 10%;">2</td>
+                            <td class="cell" style="width: 10%;">5</td>
+                            <td class="cell" style="width: 10%;">4</td>
+                            <td class="cell" style="width: 10%;">0</td>
+                            <td class="cell" style="width: 10%;">7</td>
+                            <td class="cell" style="width: 10%;">6</td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="10%" class="stext7">&nbsp;</td>
+                <td width="60%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 5%;">4</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">7</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">2</td>
+                            <td class="cell" style="width: 5%;">8</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">2</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">4</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">5</td>
+                            <td class="cell" style="width: 5%;">3</td>
+                            <td class="cell" style="width: 5%;">6</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="subscript nowr">(ИНН получателя платежа)</td>
+                <td class="subscript">&nbsp;</td>
+                <td class="subscript nowr">(номер счета получателя платежа)</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td width="2%" class="stext">в</td>
+                <td width="64%" class="string">ОАО «АЛЬФА-БАНК» (ЗАО)</td>
+                <td width="7%" class="stext" align="right">БИК&nbsp;</td>
+                <td width="27%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 11%;">0</td>
+                            <td class="cell" style="width: 11%;">4</td>
+                            <td class="cell" style="width: 11%;">4</td>
+                            <td class="cell" style="width: 11%;">5</td>
+                            <td class="cell" style="width: 11%;">2</td>
+                            <td class="cell" style="width: 11%;">5</td>
+                            <td class="cell" style="width: 11%;">5</td>
+                            <td class="cell" style="width: 11%;">9</td>
+                            <td class="cell" style="width: 11%;">3</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="subscript">&nbsp;</td>
+                <td class="subscript nowr">(наименование банка получателя платежа)</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext7 nowr" width="40%">Номер кор./сч. банка получателя платежа</td>
+                <td width="60%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 5%;">3</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">8</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">2</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">5</td>
+                            <td class="cell" style="width: 5%;">9</td>
+                            <td class="cell" style="width: 5%;">3</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="string" width="55%">Услуги полиграфии</td>
+                <td class="stext7" width="5%">&nbsp;</td>
+                <td class="string" width="40%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="subscript nowr">(наименование платежа)</td>
+                <td class="subscript">&nbsp;</td>
+                <td class="subscript nowr">(номер лицевого счета (код) плательщика)</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="1%">Ф.И.О&nbsp;плательщика&nbsp;</td>
+                <td class="string">{billing_name}</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="1%">Адрес&nbsp;плательщика&nbsp;</td>
+                <td class="string">{billing_address1}, {billing_address2}</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <?php
+                $total = '{order_total_val}';
+                $rub = floor($total);
+                $kop = $total - $rub;
+                ?>
+                <td class="stext" width="1%">Сумма&nbsp;платежа&nbsp;</td>
+                <td class="string" width="8%"><?php echo $rub; ?></td>
+                <td class="stext" width="1%">&nbsp;руб.&nbsp;</td>
+                <td class="string" width="8%"><?php printf("d", $kop); ?></td>
+                <td class="stext" width="1%">&nbsp;коп.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сумма&nbsp;платы&nbsp;за&nbsp;услуги&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;руб.&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;коп.</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="5%">Итого&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="5%">&nbsp;руб.&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="5%">&nbsp;коп.&nbsp;</td>
+                <td class="stext" width="20%" align="right">&laquo;&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;&raquo;&nbsp;</td>
+                <td class="string" width="20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td class="stext" width="3%">&nbsp;20&nbsp;</td>
+                <td class="string" width="5%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;г.</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td class="stext7" style="text-align: justify">С условиями приема указанной в платежном документе
+        суммы, в т.ч. с суммой взимаемой платы за&nbsp;услуги банка,&nbsp;ознакомлен&nbsp;и&nbsp;согласен.
+    </td>
+</tr>
+<tr>
+    <td style="padding-bottom: 0.5mm;">
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext7" width="50%">&nbsp;</td>
+                <td class="stext7" width="1%"><b>Подпись&nbsp;плательщика&nbsp;</b></td>
+                <td class="string" width="40%">&nbsp;</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width: 50mm; height: 80mm; vertical-align: bottom;" class="kassir">Квитанция<br><br>Кассир</td>
+<td style="width: 130mm; height: 80mm; padding: 0mm 4mm 0mm 3mm; border-left: black 1.5px solid;">
+
+<table cellspacing="0" style="width: 123mm; height: 100%;">
+<tr>
+    <td style="vertical-align: bottom;">
+        <table style="width: 100%; height: 8mm;" cellspacing="0">
+            <tr>
+                <td class="string">ООО «Центральная типография»</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td class="subscript nowr">(наименование получателя платежа)</td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td width="30%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 10%;">7</td>
+                            <td class="cell" style="width: 10%;">7</td>
+                            <td class="cell" style="width: 10%;">0</td>
+                            <td class="cell" style="width: 10%;">2</td>
+                            <td class="cell" style="width: 10%;">7</td>
+                            <td class="cell" style="width: 10%;">1</td>
+                            <td class="cell" style="width: 10%;">8</td>
+                            <td class="cell" style="width: 10%;">5</td>
+                            <td class="cell" style="width: 10%;">8</td>
+                            <td class="cell" style="width: 10%;">9</td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="10%" class="stext7">&nbsp;</td>
+                <td width="60%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 5%;">4</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">7</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">2</td>
+                            <td class="cell" style="width: 5%;">8</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">4</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">4</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">8</td>
+                            <td class="cell" style="width: 5%;">9</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="subscript nowr">(ИНН получателя платежа)</td>
+                <td class="subscript">&nbsp;</td>
+                <td class="subscript nowr">(номер счета получателя платежа)</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td width="2%" class="stext">в</td>
+                <td width="64%" class="string">ОАО «АЛЬФА-БАНК» (ЗАО)</td>
+                <td width="7%" class="stext" align="right">БИК&nbsp;</td>
+                <td width="27%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 11%;">0</td>
+                            <td class="cell" style="width: 11%;">4</td>
+                            <td class="cell" style="width: 11%;">4</td>
+                            <td class="cell" style="width: 11%;">5</td>
+                            <td class="cell" style="width: 11%;">2</td>
+                            <td class="cell" style="width: 11%;">5</td>
+                            <td class="cell" style="width: 11%;">5</td>
+                            <td class="cell" style="width: 11%;">9</td>
+                            <td class="cell" style="width: 11%;">3</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="subscript">&nbsp;</td>
+                <td class="subscript nowr">(наименование банка получателя платежа)</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext7 nowr" width="40%">Номер кор./сч. банка получателя платежа</td>
+                <td width="60%" class="floor">
+                    <table class="cells" cellspacing="0">
+                        <tr>
+                            <td class="cell" style="width: 5%;">3</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">8</td>
+                            <td class="cell" style="width: 5%;">1</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">2</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">0</td>
+                            <td class="cell" style="width: 5%;">5</td>
+                            <td class="cell" style="width: 5%;">9</td>
+                            <td class="cell" style="width: 5%;">3</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="string" width="55%">Услуги полиграфии</td>
+                <td class="stext7" width="5%">&nbsp;</td>
+                <td class="string" width="40%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="subscript nowr">(наименование платежа)</td>
+                <td class="subscript">&nbsp;</td>
+                <td class="subscript nowr">(номер лицевого счета (код) плательщика)</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="1%">Ф.И.О&nbsp;плательщика&nbsp;</td>
+                <td class="string">{billing_name}</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="1%">Адрес&nbsp;плательщика&nbsp;</td>
+                <td class="string">{billing_address1}, {billing_address2}</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="1%">Сумма&nbsp;платежа&nbsp;</td>
+                <td class="string" width="8%"><?php echo $rub; ?></td>
+                <td class="stext" width="1%">&nbsp;руб.&nbsp;</td>
+                <td class="string" width="8%"><?php printf("d", $kop); ?></td>
+                <td class="stext" width="1%">&nbsp;коп.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сумма&nbsp;платы&nbsp;за&nbsp;услуги&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;руб.&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;коп.</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext" width="5%">Итого&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="5%">&nbsp;руб.&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="5%">&nbsp;коп.&nbsp;</td>
+                <td class="stext" width="20%" align="right">&laquo;&nbsp;</td>
+                <td class="string" width="8%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;&raquo;&nbsp;</td>
+                <td class="string" width="20%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td class="stext" width="3%">&nbsp;20&nbsp;</td>
+                <td class="string" width="5%">&nbsp;</td>
+                <td class="stext" width="1%">&nbsp;г.</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td class="stext7" style="text-align: justify">С условиями приема указанной в платежном документе
+        суммы, в т.ч. с суммой взимаемой платы за&nbsp;услуги банка,&nbsp;ознакомлен&nbsp;и&nbsp;согласен.
+    </td>
+</tr>
+<tr>
+    <td style="padding-bottom: 0.5mm;">
+        <table cellspacing="0" width="100%">
+            <tr>
+                <td class="stext7" width="50%">&nbsp;</td>
+                <td class="stext7" width="1%"><b>Подпись&nbsp;плательщика&nbsp;</b></td>
+                <td class="string" width="40%">&nbsp;</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+
+</body>
+
+</html>
+
+{/exp:store:orders}

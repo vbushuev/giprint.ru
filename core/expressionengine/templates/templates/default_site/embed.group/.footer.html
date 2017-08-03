@@ -1,0 +1,91 @@
+<div class="clr"></div>
+			<div class="footer">
+				<ul class="botMenu">
+					<li><a href="{site_url}" title="Главная">Главная</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+					<li><a href="{path=catalog}/" title="Продукция">Продукция</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+					<li><a href="http://www.giprint.ru/company/o-kompanii/" title="Предприятие">Предприятие</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+					<li><a href="{path=technology}/" title="Технология">Технология</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+					<li><a href="{path=/price/calculator/}/" title="Цены">Цены</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</li>
+					<li><a href="{path=contacts}/" title="Контакты">Контакты</a></li>
+				</ul>
+				<div class="copyRights">
+					<div class="vcard">&copy;&nbsp;Copyright 2008–<?=date("Y")?> «<a href="http://www.giprint.ru/" class="url fn org">Центральная Типография</a>». - <span class="adr"><span class="postal-code">123001</span>, <span class="locality">Москва</span>, <span class="street-address">ул. Большая Садовая, д. 5, стр. 1-2</span>,</span> тел. <span class="tel">+7 (495) 505 50 47</span>.</div>
+                <!--noindex-->    <p style="font-size: 8pt; color: #ccc; text-align: center;">Внимание: информация, содержащаяся в описании товара, является справочной (не является публичной офертой и не подпадает под п. 2 ст. 437 ГК РФ).</p> <!--/noindex-->
+
+<p><a href="http://rating.openstat.com/site/2132198" class="rollover1" target="_blank" rel="nofollow"> </a> 
+<a href="https://vk.com/giprintru" class="rollover2" target="_blank" rel="nofollow"> </a> 
+<a href="https://www.facebook.com/giprintru/" class="rollover3" target="_blank" rel="nofollow"></a></p>
+
+<!--Openstat--><span id="openstat2132198"></span><script type="text/javascript">
+var openstat = { counter: 2132198, image: 0, next: openstat }; document.write(unescape("%3Cscript%20src=%22http" +
+(("https:" == document.location.protocol) ? "s" : "") +
+"://openstat.net/cnt.js%22%20defer=%22defer%22%3E%3C/script%3E"));
+</script><!--/Openstat-->
+				</div>
+				<div class="clr"></div>
+                        
+			</div>
+		</div>
+	</div>
+
+		<div class="feedBack">
+			<span class="button"></span>
+			<span class="body"><a href="javascript:void(0)" id="button" title="Обратная связь">Обратная связь</a></span>
+		</div>
+		<div id="popupCont">
+			<div class="head">
+				Обратная связь
+				<div id="popupContClose">X</div>
+			</div>
+			<div class="body">
+				{exp:freeform:form form_name="contact" return="/contacts/ok" admin_notify="info@giprint.ru" admin_notification_template="contact" notify_admin="yes" user_email_template="user_notification" send_user_email="yes" required="email|comment"}
+				<div class="ips">
+					<span>Ф.И.О.</span>
+					<input type="text" name="name" />
+				</div>
+				<div class="ips">
+					<span>Ваш е-mail или телефон * <strong id="err1" class="alert">Заполните обязательное поле</strong></span>
+					<input type="text" name="email" />
+				</div>
+				<div class="ips">
+					<span>Текст сообщения * <strong id="err2" class="alert">Заполните обязательное поле</strong></span>
+					<textarea name="comment" style="height:60px"></textarea>
+				</div>
+
+                
+				<div class="ips">
+					<button type="submit">Отправить	</button>
+				</div>
+				<p style="text-align: left;"> <label>(Для отправки информации о заказе вместе с макетом воспользуйтесь формой на странице </label><a href="/contacts/" target="_blank">"Контакты")</a></p>
+                                           
+				<div class="ips">
+					<span style="font-style:italic; color:#858585; font-size:10px">* Поле обязательно для заполнения</span>
+				</div>
+				{/exp:freeform:form}
+			</div>
+		</div>
+
+	<div id="backgroundPopup"></div>
+
+
+
+
+
+<script>
+  var p3chat = p3chat || [];
+  p3chat.push(['_setAccount', '074138457']);
+  p3chat.push(['_trackPage']);
+  (function (d, t, id) {
+    if (d.getElementById(id)) return;
+    var e = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    e.src = "//p3chat.com/dist/p3.js"; e.id = id;
+    s.parentNode.insertBefore(e, s);
+  }(document, 'script', 'p3chat-snippet'));
+</script>
+
+ 
+
+
+</body>
+</html>

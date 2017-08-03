@@ -1,0 +1,381 @@
+{embed=embed/.header title="Онлайн расчет заказа" suffix="Цены" keywords="онлайн расчет цены продукции типографии в Москве" description="Для онлайн рассчета заказа следует заполнить раздел «Персональные данные» (пункты отмеченные красной звездочкой обязательны для заполнения)."}
+<div class="content">
+  <div class="BigMenu">
+    <div class="plug"></div>
+
+    <div id="accordion2">
+      <div class="block first">
+        <div class="title">
+          <div class="name">Цены</div>
+          <div class="shadow">Цены</div>
+          <div class="clr"></div>
+        </div>
+        <div class="body">
+          <div class="top"></div>
+          <div class="cont">
+            <ul class="mainMenu">
+              <li><a href="{path=/price/calculator/}" title="Автоматический расчет заказа">Автоматический расчет заказа</a></li>
+              <li><a href="{path=price/onlajn-rasschet-zakaza}"{if segment_2 == "onlajn-rasschet-zakaza"} class="sel"{/if} title="Ручной расчет заказа">Ручной расчет заказа</a></li>
+              <li><a href="{path=basket}"{if segment_1 == "basket"} class="sel"{/if} title="Оформление заказа">Оформление заказа</a></li>
+            </ul>
+            <div class="clr"></div>
+          </div>
+          <div class="bot"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mainDiv3">
+	  <h1>Ручной расчет заказа</h1>
+      {if segment_3 == "ok"}
+        <div class="item">
+            <div class="body">
+                <div class="text">
+                    <p>Ваш заказ отправлен на согласование. На указанную Вами почту придет письмо, в котором Вы сможете
+                        увидеть окончательные параметры заказа, либо наш менеджер свяжется с Вами для уточнения заказа.
+                        Если Вы отправили заказ во время рабочего дня, ответное письмо придет в течение нескольких
+                        минут. График нашей работы: пн-пт с 9:30 до 20:00.</p>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+      {if:else}
+        <div class="item">
+          <div class="body">
+            <div class="text">
+              <p>Для онлайн рассчета заказа следует заполнить раздел «Персональные данные» (пункты отмеченные красной
+                звездочкой обязательны для заполнения). В разделе «Описание заказа» можно вкратце или подробно изложить
+                суть заказа. Внизу формы есть возможность загрузить макет. Если Вы согласовали с менеджером параметры и стоимость заказа, можете выбрать любой способ оплаты.
+Если же Вы только хотите рассчитать параметры заказа, выберите "квитанцию" или "безналичный расчет" и введите произвольную сумму. После обработки заказа по указанным контактным данным с вами свяжется наш менеджер для
+                уточнения необходимых параметров и дальнейшего расчета стоимости. После этого Вы сможете сгенерировать на этой же странице счета для оплаты с точными данными. </p>
+            </div>
+            <div class="clr"></div>
+          </div>
+        </div>
+        {exp:freeform:form form_name="zakaz" form:class="manual_order_form" file_upload="forms" send_attachment="yes" return="/basket/ok/" template="zakaz" required="name|email|phone|product"}
+          <div class="personal-info form-section">
+            <h2 class="form-section_h">Персональные данные</h2>
+              <div class="form-group clearfix">
+                  <label for="zakaz_customer_type" class="form-label">Покупатель</label>
+                  <select name="zakaz_customer_type" id="zakaz_customer_type" class="customer_type form-control">
+                      <option value="individual">Физическое лицо</option>
+                      <option value="legal_entity">Юридическое лицо</option>
+                  </select>
+              </div>
+
+              <div class="calc_checkout_fields"></div>
+
+              <div class="form-group clearfix">
+                  <label for="zakaz_payment_method" class="form-label">Способ оплаты</label>
+                  <select name="zakaz_payment_method" id="zakaz_payment_method" class="zakaz_payment_method form-control">
+                      <option value="invoice">Безналичный расчёт</option>
+                      <option value="receipt">Квитанция</option>
+                      <option value="robokassa">RoboKassa</option>
+                  </select>
+              </div>
+          </div>
+
+          <div class="order-data form-section">
+            <h2 class="form-section_h">Описание заказа</h2>
+
+            <div class="form-group clearfix">
+              <label class="form-label __required" for="zakaz_sum">Цена руб.</label>
+              <input class="form-control" id="zakaz_sum" title="Некорректная сумма заказа" name="zakaz_sum" required="required" type="number" min="1" step="0.01"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="format">Формат (размер)</label>
+              <input class="form-control" id="format" name="format" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="count">Тираж</label>
+              <input class="form-control" id="count" nam="count" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="colors">Красочность</label>
+              <input class="form-control" id="colors" name="colors" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="cover">Переплёт</label>
+              <input class="form-control" id="cover" name="cover" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="structure">Состав</label>
+              <input class="form-control" id="structure" name="structure" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="panton">Пантон</label>
+              <input class="form-control" id="panton" name="panton" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="block_plane">Плоскость в блоке</label>
+              <input class="form-control" id="block_plane" name="block_plane" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="paper_weight">Плотность бумаги</label>
+              <input class="form-control" id="paper_weight" name="paper_weight" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="lamination">Ламинация</label>
+              <input class="form-control" id="lamination" name="lamination" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="offset_varnish">Офсетный лак</label>
+              <input class="form-control" id="offset_varnish" name="offset_varnish" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="additional_technology">Доп. технология</label>
+              <input class="form-control" id="additional_technology" name="additional_technology" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="finishing">После печатная обработка</label>
+              <input class="form-control" id="finishing" name="finishing" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="packaging">Упаковка</label>
+              <input class="form-control" id="packaging" name="packaging" type="text"/>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="form-label" for="comment">Комментарий к заказу</label>
+              <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="body">
+              <div class="text">
+                <div class="ibox">
+                  <input type="hidden" name="order_attachments" class="order_attachments">
+
+                  <a href="#" class="js-add-attachments itxt">Добавить материалы к заказу</a>
+                </div>
+              </div>
+              <div class="clr"></div>
+            </div>
+
+
+
+            <div class="attachments_uploader" style="display: none;">
+                <p style="text-align: center;"><a href="/company/trebovaniya-k-maketam/" target="_blank">Требования к макетам</a></p>
+                <div class="attachments_uploader__inner">
+
+                    <p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+                </div>
+            </div>
+
+
+          </div>
+          <div class="item">
+            <div class="head3">
+              <div style="width:520px; height:40px; margin:0 auto;padding:0;">
+                <input type="reset" value="" class="reset tel"/>
+                <input type="submit" value="" class="sub tel"/>
+              </div>
+            </div>
+          </div>
+        {/exp:freeform:form}
+      {/if}
+  </div>
+  <div class="leftDiv" style="padding-bottom:0 !important;">
+    <div class="BigMenu">
+      {embed=embed/.special_sale}
+      {embed=embed/.seo_block}
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>
+
+
+<script>
+  (function($) {
+    var Uploader = {
+      onReady: function() {
+        $('.attachments_uploader__inner').pluploadQueue({
+          runtimes : 'html5,flash,silverlight,html4',
+          url: '/plupload/upload.php',
+          chunk_size: '1mb',
+          rename: true,
+          dragdrop: true,
+          unique_names: true,
+          flash_swf_url: '/static/Moxie.swf',
+          silverlight_xap_url: '/static/Moxie.xap',
+
+          filters: {
+            max_file_size: '10mb',
+            mime_types: [
+              {title: "Image files", extensions: "ai,eps,cdr,tif,tiff,jpg,gif,png"},
+              {title: "Zip files", extensions: "zip"}
+            ]
+          },
+
+          init: {
+            UploadComplete: function (up, files) {
+              var $productFiles = $('.order_attachments');
+
+              console.log(files);
+
+              var filenames = [];
+              plupload.each(files, function (file) {
+                filenames.push(file.target_name);
+              });
+              $productFiles.val(filenames.join());
+            }
+          }
+        });
+      }
+    };
+
+    $(document).ready(function() {
+        $(document).on('mousewheel', ':input[type=number]', function(e){
+            e.preventDefault();
+        });
+
+        Uploader.onReady();
+
+      $('.js-add-attachments').on('click', function() {
+        $('.attachments_uploader').fadeIn();
+
+        return false;
+      });
+
+        $('.customer_type').on('change', function() {
+            var currentValue = $(this).val();
+            var calcCheckoutFields = $('.calc_checkout_fields');
+            var $paymentMethod = $('.zakaz_payment_method');
+
+            calcCheckoutFields.html('');
+
+            if (currentValue === 'individual') {
+                $paymentMethod.val('robokassa');
+                $paymentMethod.find('option[value="invoice"]').attr('disabled', 'disabled');
+
+                calcCheckoutFields.append(createField({name: 'name', title: 'Ф.И.О.', required: true}));
+                calcCheckoutFields.append(createField({name: 'phone', title: 'Телефон', type: 'tel', required: true }));
+                calcCheckoutFields.append(createField({name: 'email', title: 'E-Mail', type: 'email', required: true}));
+            }
+            else if (currentValue === 'legal_entity') {
+                $paymentMethod.find('option[value="invoice"]').removeAttr('disabled');
+
+                calcCheckoutFields.append(createField({name: 'zakaz_company', title: 'Компания', required: true}));
+                calcCheckoutFields.append(createField({name: 'name', title: 'Ф.И.О. представителя', required: true}));
+                calcCheckoutFields.append(createField({name: 'phone', title: 'Телефон', type: 'tel', required: true}));
+                calcCheckoutFields.append(createField({name: 'email', title: 'E-Mail', type: 'email', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_address1', title: 'Адрес', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_address2', title: 'Адрес', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_inn', title: 'ИНН', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_kpp', title: 'КПП', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_bank', title: 'Банк', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_rs', title: 'Расчётный счёт', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_ks', title: 'Корреспондентский счёт', type: 'number', required: true}));
+                calcCheckoutFields.append(createField({name: 'zakaz_bik', title: 'БИК', type: 'number', required: true}));
+            }
+        })
+            .trigger('change');
+    });
+
+      $('.manual_order_form').on('submit', function(e) {
+          // Тут начинается суровая магия (а вернее это костыль...)
+          // В хук Freeform не попадут поля, которые не были описаны в админке. Из-за этого было заведено поле meta,
+          // в которое мы пихаем сериализованную форму.
+          // Вторая степень костыльности заключается в том, что калькулятор у нас исключительно на JS, т.е. бэкенд
+          // вообще ничего не знает о его полях, их именах и опциях. В связи с этим, при сериализации формы,
+          // добавляем название поля (ищем label по id и выдёргиваем его содержимое) и значение поля в виде текстовой
+          // строки. Значение поля актуально для select'ов, т.к. у них value это атрибут дочернего option'a, а текст -
+          // строка в этом option'е.
+          // Собственно, после того как всю информацию собрали, подпихиваем hidden поле, а дальше идёт стандартный
+          // механизм submit'а.
+
+          var postData = [];
+
+          $.each($(this).find(':input'), function(item) {
+              var value = '';
+              var text = '';
+
+              var me = $(this);
+
+              var title = $('label[for=' + me.attr('id') + ']').html();
+              var name = me.attr('name');
+
+              // Служебные поля исключаем
+              if (name === 'params_id' || name === 'XID') {
+                  return;
+              }
+
+              if (me.is(":hidden") && !me.is('input[type=hidden]')) {
+                  return;
+              }
+
+              if (me.is('input[type=text]')) {
+                  value = me.val();
+                  text = me.val();
+              }
+              else if (me.is('select')) {
+                  value = me.find('option:selected').val();
+                  text = me.find('option:selected').text();
+              }
+              else if (me.is('input[type=checkbox]')) {
+                  value = me.is(':checked');
+                  text = value ? 'Да' : 'Нет';
+              }
+              else if (me.is('input[type=hidden]')) {
+                  value = me.val();
+                  text = me.val();
+              }
+              else {
+                  return;
+              }
+
+              postData.push({name: name, title: title, value: value, text: text});
+          });
+
+          $('<input/>', {
+              value: JSON.stringify(postData),
+              name: 'zakaz_meta'
+          }).appendTo($(this));
+      });
+
+      function createField(options) {
+          var fieldName = options.name;
+          var fieldTitle = options.title;
+          var isRequired = options.required || false;
+          var inputType = options.type || 'text';
+
+          var labelClasses = ['form-label'];
+          var labelAttributes = ['for="' + fieldName + '"'];
+          var inputAttributes = ['type="' + inputType + '"'];
+          if (isRequired) {
+              labelClasses.push('__required');
+              inputAttributes.push('required="required"');
+          }
+
+          var result = '<div class="form-group clearfix">';
+          result += '<label class="' + labelClasses.join(' ') + '" ' + labelAttributes.join(' ') + '>' + fieldTitle + '</label>';
+          result += '<input class="form-control" id="'+fieldName+'" name="'+fieldName+'" ' + inputAttributes.join(' ') + ' />';
+          result += '</div>';
+          return result;
+      }
+
+
+
+
+
+
+
+  }(jQuery));
+</script>
+
+{embed=embed/.footer}

@@ -1,0 +1,166 @@
+.jcarousel-skin-tango .jcarousel-container
+ {
+ 	width: 361px;
+	border-top:5px solid #dee2e6;
+	border-bottom:5px solid #dee2e6;
+	position:relative;
+}
+
+.jcarousel-skin-tango .jcarousel-container-horizontal
+{
+    width:  348px;
+    padding: 3px 5px;
+}
+.jcarousel-skin-tango .jcarousel-container-horizontal2
+{
+    width:  612px;
+    padding: 3px 5px;
+}
+.jcarousel-skin-tango .jcarousel-clip-horizontal
+ {
+    width:  348px;
+    height: 75px;
+}
+.jcarousel-skin-tango .jcarousel-clip-horizontal2
+ {
+    width:  612px;
+    height: 75px;
+}
+
+.jcarousel-skin-tango .jcarousel-item
+ {
+    width: 80px;
+    height: 80px;
+}
+
+.jcarousel-skin-tango .jcarousel-item-horizontal
+{
+    margin-right: 9px;
+}
+ .jcarousel-skin-tango .jcarousel-next-horizontal,
+ .jcarousel-skin-tango .jcarousel-prev-horizontal
+  {
+    position: absolute;
+    top: 2px;
+    width: 15px;
+    height: 81px;
+    cursor: pointer;
+	 background: #fff url(../../../images/ui/carusel/caruselskin.png) no-repeat 0 50%;
+}
+.jcarousel-skin-tango .jcarousel-next-horizontal
+ {
+ 	right:0;
+	background-position: -15px 50%;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-horizontal
+ {
+ left:0;
+}
+
+.jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.jcarousel-skin-tango .jcarousel-next-disabled-horizontal
+{
+    cursor: default;
+    background:none
+}
+/*******************news carouse***************************************************************/
+
+.newsCarousel  .jcarousel-skin-tango .jcarousel-container
+ {
+ 	width: 935px;
+	border: 0;
+	margin-top: 10px;
+	position:relative;
+
+}
+
+.newsCarousel  .jcarousel-skin-tango .jcarousel-container-horizontal
+{
+    width:  936px;
+    padding: 3px 5px;
+}
+.newsCarousel .jcarousel-skin-tango .jcarousel-clip-horizontal
+ {
+    width:  936px;
+    /*height: auto !important;*/
+    height: 72px;
+    overflow: hidden;
+}
+
+.newsCarousel .jcarousel-skin-tango .jcarousel-item
+ {
+    width: 80px;
+    height: auto !important;
+    /*height: 80px;*/
+}
+
+.newsCarousel .jcarousel-skin-tango .jcarousel-item-horizontal
+{
+	width: 250px;
+    /*
+    http://www.010pixel.com/2013/01/07/css-horizontal-columns-with-same-height/
+    */
+    padding:4px 20px 10004px 33px; margin:0 9px -10000px 0;
+
+	border-right: 1px solid #dadddf;
+	background: url(../../../images/ui/newsbg.jpg) no-repeat 15px 6px;
+}
+.newsCarousel  .jcarousel-skin-tango .jcarousel-next-horizontal,
+.newsCarousel  .jcarousel-skin-tango .jcarousel-prev-horizontal
+  {
+    position: absolute;
+	top: -25px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+	 background: url(../../../images/ui/carusel/caruselskin.png) no-repeat;
+}
+.newsCarousel .jcarousel-skin-tango .jcarousel-next-horizontal
+ {
+	left:96px;
+	background-position: -15px 0;
+}
+
+.newsCarousel .jcarousel-skin-tango .jcarousel-prev-horizontal
+ {
+	left:78px;
+}
+
+.newsCarousel .jcarousel-skin-tango .jcarousel-prev-disabled-horizontal,
+.newsCarousel .jcarousel-skin-tango .jcarousel-next-disabled-horizontal
+{
+    cursor: default;
+    background:none
+}
+
+.jcarousel-skin-tango li {
+    float: left;
+    list-style: none outside none;
+    width: 80px;
+    /*height: 80px;*/
+    margin-right:4px;
+}
+
+.jcarousel-container .cont1 {width:326px; overflow: hidden; position: relative; margin:0 0 0 11px; height:75px; padding: 3px 5px;}
+.jcarousel-container .cont1 ul {left:0; position:absolute; top:0}
+.sc_right {display:none}
+
+.newsCarousel .jcarousel-list {width:20000em !important;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

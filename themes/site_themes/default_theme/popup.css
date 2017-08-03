@@ -1,0 +1,102 @@
+#backgroundPopup
+{
+  display:none;
+  position:fixed;
+  _position:absolute; /* hack for internet explorer 6 */
+  height:100%;
+  width:100%;
+  _width: 1700px;
+  top:0;
+  left:0;
+  background: #000;
+  z-index:150;
+  background: url(../../../images/popbg.png);
+ }
+#popupCont
+{
+	clear: both;
+	display:none;
+	position:fixed;
+	_position:absolute; /* hack for internet explorer 6 */
+	width:400px;
+	height:475px;
+	background:#E6E6E6;
+	z-index:200;
+	margin-left: -200px;
+    margin-top: -50px;
+	left: 50%;
+	opacity:1;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius:5px;
+}
+
+#button {
+    background: #1175bc;
+    border: 1px solid #000;
+    padding: 10px;
+    color: #FFF;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+._text {
+color:#1175bc;
+font-weight:700;
+text-decoration:underline;
+font-size:16px;	
+}
+#popupContClose
+{
+	cursor: pointer;
+	position: absolute;
+	right: 7px;
+	top:5px;
+	font-weight: bold;
+	line-height: normal;
+	font-size: 9px;
+}
+#popupCont .head
+{
+	font-weight: bold;
+	font-size: 20px;
+	color: #000;
+	height: 40px;
+	line-height: 38px;
+	padding-left: 20px;
+	border-bottom: 1px solid #FFF;
+}
+#popupCont .body
+{
+	padding-left: 20px;
+}
+#popupCont .body input,
+#popupCont .body textarea
+{
+	width: 350px;
+	padding: 4px 4px 5px 6px;
+	border: 1px solid #E2E9EF;
+	border-right: 1px solid #E2E9EF;
+}
+
+#popupCont .body input[name=captcha] { width: 225px; }
+#popupCont .body .ips
+{
+	margin: 5px 0 12px;
+}
+ #popupCont .body .ips
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4874 @@
+@import url(http://www.giprint.ru/themes/site_themes/default_theme/reset.css)/*tpa=reset.css*/;
+body
+{
+	width:100%;
+	height: 100%;
+	font-family: tahoma, DejaVu Sans Condensed ;
+	background: #FFF;
+	font-size: 14px;
+	color: #000;
+}
+
+.clear {clear:both !important}
+textarea {font-family: tahoma;}
+
+h1, .headO
+{
+	font-size: 18px;
+	color: #1175bc;
+	font-weight: normal;
+}
+h2
+{
+	font-size: 16px;
+	color: #64a3d6;
+    font-style: italic;
+    font-family: Arial;
+    margin-top: 10px;
+	/*color: #919191;*/
+}
+h2.h2t {
+	font-size: 14px;
+	color: #484b4d;
+}
+h3
+{
+	font-size: 15px;
+	text-align: center;
+	font-style: normal;
+	margin-bottom: 12px;
+}
+h4
+{
+	line-height: 48px;
+	color: #1175bc;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+a
+{
+	color: #1074bc;
+}
+#minWidth
+{
+	min-width: 950px;
+	width: 100%;
+}
+.contentContainer
+{
+	width: 952px;
+	margin: 0 auto;
+}
+.header
+{
+	padding: 37px 16px 14px 21px;
+	font-family: arial, Helvetica, sans-serif;
+	zoom:1;
+}
+.header .logo
+{
+	float:left;
+}
+.header .logo img
+{
+	background: url(http://www.giprint.ru/images/logo.jpg)/*tpa=*/ no-repeat;
+	width: 194px;
+	height: 39px;
+}
+.header .right
+{
+	float: right;
+	width: 620px; /*495*/
+}
+.header .right .phone
+{
+	color: #1074bc;
+	float: right;
+	width:265px;
+	height:20px;
+}
+.header .right .phone b
+{
+	font-size: 16px;
+}
+.header .right  .bot
+{
+	clear: both;
+	padding-top: 4px;
+	padding-right:0px;
+}
+ .top_right {
+float:left;
+ }
+.top_right img{
+width:25px;
+ }
+.contact_block {float:right; width:445px; margin-right:0px; height:35px; top:0px; position:relative}
+.contact_block .ph {background:url(http://www.giprint.ru/images/phone_icon.png)/*tpa=*/ -2px 4px no-repeat; padding-left:25px; color:#3574c6; font-size:14px; font-family: Arial,Helvetica,sans-serif;float:left;height:35px; padding-top:3px; width:160px;background-size: 25px;}
+.contact_block .ph strong {font-size:18px;}
+.contact_block .eml {background:url(http://www.giprint.ru/images/mail_icon.png)/*tpa=*/ -2px 4px no-repeat; padding-left:25px; color:#3574c6; font-size:14px; float:left; height:35px; padding-top:5px; width:120px;background-size: 25px;}
+
+.header .right  .bot>a {
+	background:url(http://www.giprint.ru/images/online2.png)/*tpa=*/ no-repeat 0 0;
+	width:108px;
+	height:26px;
+	float: right;
+
+}
+.header .right  .bot>a:hover {
+	background:url(http://www.giprint.ru/images/online-h2.png)/*tpa=*/ no-repeat 0 0;
+	width:108px;
+	height:26px;
+	float: right;
+
+}
+.header .right  .bot>a.dis {
+	background:url(http://www.giprint.ru/images/online-dis.jpg)/*tpa=*/ no-repeat 0 0;
+	width:108px;
+	height:26px;
+	float: right;
+
+}
+.header .right .trash
+{/*
+	clear: both;
+	float: left;
+	margin-top: 0px;
+	margin-left:8px;
+	opacity: 1;
+	background: url(http://www.giprint.ru/images/trash.jpg)  no-repeat;
+	width: 20px;
+	height: 20px;*/
+
+}
+.header .right  .trash:hover, .header .right  .trash-dis
+{/*
+	clear: both;
+	float: left;
+	margin-top: 0px;
+	margin-left:8px;
+	opacity: 1;
+	background: url(http://www.giprint.ru/images/trash-h.jpg)  no-repeat;
+	width: 20px;
+	height: 20px;*/
+}
+
+.h_b {float:right; padding-right:0px;}
+
+.header .right   .lang
+{
+	float: left;
+	margin: 5px 0 0 16px
+}
+.header .right  .lang .Lang
+{
+	float: left;
+	font-family: tahoma;
+	font-size: 10px;
+	text-decoration:none;
+	margin-top:-1px;
+}
+.header .right  .lang .Lang:hover
+{
+	float: left;
+	font-family: tahoma;
+	font-size: 10px;
+	text-decoration:none;
+	margin-top:-1px;
+}
+.header .right  .lang .flag
+{
+	float: left;
+	margin-left: 2px;
+	margin: 1px 0 0 2px;
+	background: url(http://www.giprint.ru/images/eng.jpg)/*tpa=*/ no-repeat;
+	width: 18px;
+	height: 12px;
+}
+.header .right .cogwheel {
+	width:16px;
+	height:16px;
+	float:left;
+	margin:3px 0 0 16px;
+}
+.header .right .cogwheel a {
+	background:url(http://www.giprint.ru/images/cogwheel.png)/*tpa=*/ no-repeat 0 0;
+	width:16px;
+	height:16px;
+	display:block;
+	text-decoration:none;
+}
+.header .right .cogwheel a:hover {
+	background:url(http://www.giprint.ru/images/cogwheel.png)/*tpa=*/ no-repeat 0 -16px;
+	width:16px;
+	height:16px;
+	display:block;
+	text-decoration:none;
+}
+.header .right  .bot form
+{
+	float: left;
+	margin-top: 2px
+
+}
+.header .right  .bot  form .inpText
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/inputtext.jpg)/*tpa=*/ no-repeat;
+	width: 100px;
+	height: 17px;
+	padding: 2px 0 1px 9px;
+
+}
+.header .right  .bot  form .inpText input
+{
+	width: 100px;
+ 	height: 16px;
+	background: #FFF;
+	border: 0;
+}
+.header .right  .bot  form  input.img
+{
+	margin-left: -3px;
+	float:left;
+}
+
+
+
+
+ ul.topMenu
+{
+	width: 940px;
+	clear: both;
+	background: url(http://www.giprint.ru/images/topmenubg.jpg)/*tpa=*/;
+	height: 33px;
+}
+ ul.topMenu li
+{
+	float: left;
+	width: 155px;
+	height: 33px;
+}
+ ul.topMenu li a
+ {
+	float: left;
+	width: 155px;
+	height: 33px;
+	text-align: center;
+	line-height: 30px;
+	color: #000;
+
+}
+ ul.topMenu li a:hover,
+  ul.topMenu li a.sel
+ {
+	background: url(http://www.giprint.ru/images/topmenuasel.jpg)/*tpa=*/;
+	color: #1f87b5;
+}
+ ul.topMenu li a.sel
+ {
+	font-weight: bold;
+	cursor:default;
+	text-decoration: none;
+}
+ ul.topMenu li.sep
+{
+	width: 2px;
+	height: 33px;
+	background:	url(http://www.giprint.ru/images/separator.jpg)/*tpa=*/ no-repeat;
+}
+ ul.topMenu li.left
+ {
+	background: url(http://www.giprint.ru/images/topmenuleft.jpg)/*tpa=*/ no-repeat;
+}
+ ul.topMenu li.left a:hover,
+  ul.topMenu li.left a.sel
+ {
+	background: url(http://www.giprint.ru/images/topmenuselleft.jpg)/*tpa=*/ no-repeat;
+}
+  ul.topMenu li.left a.sel
+  {
+	text-decoration: none;
+}
+ ul.topMenu li.right
+ {
+	background: url(http://www.giprint.ru/images/topmenuright.jpg)/*tpa=*/ no-repeat 100% 0;
+}
+ ul.topMenu li.right a:hover,
+  ul.topMenu li.right a.sel
+ {
+	background: url(http://www.giprint.ru/images/topmenuselright.jpg)/*tpa=*/ no-repeat 100% 0;
+}
+.menuUnderline
+{
+	background: url(http://www.giprint.ru/images/menuunderline.jpg)/*tpa=*/ no-repeat;
+	width: 940px;
+	height: 4px;
+	font-size: 1px;
+}
+.content
+{
+	padding-top: 14px;
+	position:relative;
+	/*min-height:925px;*/
+	_position:inherit;
+
+}
+.content .BigMenu
+{
+	z-index:99;
+
+}
+.content .BigMenu .Top
+{
+
+}
+.content .BigMenu .Left,
+.content .BigMenu .Centr,
+.content .BigMenu  .Right
+{
+	float: left;
+	width: 317px;
+	*width: 310px;
+}
+.content .BigMenu .item
+{
+	margin-bottom: 15px;
+}
+.content .BigMenu .item .head
+{
+	background: url(http://www.giprint.ru/images/accordion/accordactive.jpg)/*tpa=*/;
+	padding-left: 24px;
+	width: 285px;
+	height: 56px;
+	font-size: 20px;
+	line-height: 50px;
+	text-transform: uppercase;
+	color: #30363b;
+	position: relative;
+}
+.content .BigMenu .item .head .name
+{
+	position: relative;
+	z-index:10;
+}
+.content .BigMenu .super .name
+{
+	color: #FF9306;
+}
+.content .BigMenu .item .head .shadow
+{
+	position:absolute;
+	top:1px;
+	margin-left: 1px;
+	z-index:9;
+	color: #FFF;
+}
+.content .BigMenu .item .cont
+{
+	background: url(http://www.giprint.ru/images/accordion/accordbg.png)/*tpa=*/;
+	width: 279px;
+	height: 427px;
+	padding: 10px  15px 0 15px;
+}
+.content .BigMenu .super .cont
+{
+	height: 96px !important;
+	width: 274px;
+	padding-top: 15px;
+	padding-left: 20px;
+	overflow:hidden;
+}
+
+.content .BigMenu .super1 .cont
+{
+	height: 60px !important;
+	width: 274px;
+	padding-top: 15px;
+	padding-left: 20px;
+	overflow:hidden;
+}
+
+.content .BigMenu .super
+{
+	color: #db4800;
+	font-size: 20px;
+}
+.content .BigMenu .free .cont,
+.content .BigMenu .free .cont .text
+{
+	height: auto !important;
+}
+
+
+
+.mainMenu a {
+    text-decoration: none;
+}
+
+ul.mainMenu
+{
+
+}
+ul.mainMenu>li
+{
+	/*padding-left: 38px;*/
+	min-height: 28px;
+	_height: 28px;
+	margin-bottom: 6px;
+	font-size: 14px;
+	line-height: 15px;
+}
+
+ul.mainMenu>li>a
+{
+	padding-left: 38px;
+	min-height: 28px;
+	_height: 28px;
+	font-size: 14px;
+	line-height: 15px;
+	display:inline-block
+}
+ul.mainMenu>li ul {margin:0px 0 0 45px}
+ul.mainMenu>li ul a{min-height: 22px;_height: 22px; margin-bottom:5px; display:inline-block; font-size:12px}
+ul.mainMenu li a.sel
+{
+	font-weight: bold;
+	text-decoration: none;
+}
+ul.mainMenu li ul a.sel
+{
+	font-weight: bold;
+	text-decoration: none;
+	cursor:default
+}
+ul.mainMenu li a:hover
+{
+	text-decoration: none;
+}
+
+#icon-ws {
+    background: url('http://www.giprint.ru/images/333.jpg')/*tpa=*/ no-repeat 0 -2px;
+}
+
+#icon-1,#icon-2,#icon-3,#icon-4,#icon-5,#icon-6,#icon-7,#icon-8,#icon-9,#icon-10,#icon-11,#icon-12,#icon-14,#icon-15,#icon-16,
+#icon-17,#icon-18,#icon-19,#icon-20,#icon-21,#icon-22,#icon-23,#icon-24,#icon-25,#icon-26,#icon-27,#icon-28,#icon-29,#icon-30,#icon-31,#icon-32
+{
+	background: url(http://www.giprint.ru/images/icons.jpg)/*tpa=*/ no-repeat;
+}
+#icon-1
+{
+	background-position: 0 -2px;
+}
+#icon-2
+{
+	background-position: 0 -34px;
+}
+#icon-3
+{
+	background-position: 0 -850px;
+}
+#icon-4
+{
+	background-position: 0 -67px;
+}
+#icon-5
+{
+	background-position: 0 -912px;
+}
+#icon-6
+{
+	background-position: 0 -127px;
+}
+#icon-7
+{
+	background-position: 0 -164px;
+}
+#icon-8
+{
+	background-position: 0 -193px;
+}
+#icon-9
+{
+	background-position: 0 -227px;
+}
+#icon-10
+{
+	background-position: 0 -264px;
+}
+#icon-11
+{
+	background-position: 0 -528px;
+}
+#icon-23
+{
+	background-position: 0 -820px;
+}
+#icon-24
+{
+	background-position: 0 -99px;
+}
+#icon-26
+{
+	background-position: 0 -364px;
+}
+
+#icon-27
+{
+	background-position: 0 -397px;
+}
+#icon-28
+{
+	background-position: 0 -429px;
+}
+#icon-29
+{
+	background-position: 0 -165px;
+}
+/*.icon-26
+{
+	background-position: 0 -429px;
+}*/
+#icon-30
+{
+	background-position: 0 -199px;
+}
+#icon-31
+{
+	background-position: 0 -34px;
+}
+#icon-32
+{
+	background-position: 0 -67px;
+}
+#icon-12
+{
+	background-position: 0 -324px;
+}
+#icon-13 {
+    background: url(http://www.giprint.ru/images/11.jpg)/*tpa=*/ no-repeat 0 -3px;
+}
+#icon-17
+{
+    background-position: 0 -563px;
+}
+#icon-15
+{
+    background-position: 0 -948px;
+}
+#icon-16
+{
+	background-position: 0 -429px;
+}
+#icon-18
+{
+    background-position: 0 -605px;
+}
+#icon-19
+{
+    background-position: 0 -638px;
+}
+#icon-20
+{
+    background-position: 0 -670px;
+}
+#icon-21
+{
+    background-position: 0 -709px;
+}
+#icon-22
+{
+    background-position: 0 -746px;
+}
+#icon-25
+{
+    background: url(http://www.giprint.ru/images/333.jpg)/*tpa=*/ no-repeat;
+}
+
+.content .BigMenu .item  .bot
+{
+	background: url(http://www.giprint.ru/images/accordion/accordbot.png)/*tpa=*/;
+	width: 309px;
+	height: 11px;
+	font-size: 1px;
+}
+.content .BigMenu .Bot
+{
+	padding-top:15px;
+	zoom:1;
+}
+.content .BigMenu .Bot .cont
+{
+	height: 150px !important;
+}
+.content .BigMenu .Bot .cont.cont1
+{
+	height: 250px !important;
+}
+.newsCarousel
+{
+	clear: both;
+	font-size: 12px;
+	color: #6d717;
+	margin-bottom: 25px;
+	margin-top: 5px;
+}
+.newsCarousel a
+{
+	color: #6d717;
+}
+.newsCarousel h2
+{
+	font-weight: normal;
+}
+.newsCarousel .date
+{
+	font-size: 10px;
+	color: #1074bc;
+}
+
+.content .BigMenu .Bot .item .cont
+{
+	height: 100px;
+
+}
+.content .BigMenu .cont .text
+{
+	width: 280px;
+/*	height: 100px;*/
+	font-size: 11px;
+}
+.content .mainDiv
+{
+	float: right;
+	width: 622px;
+	padding-right: 7px;
+	margin-top: 67px;
+	color: #484b4d;
+	z-index:120;
+	position:relative;
+}
+.content .mainDiv  .item
+{
+	margin-bottom: 30px;
+	width: 622px;
+
+}
+.content .mainDiv  .item .head
+{
+	background: url(http://www.giprint.ru/images/itemheadleft.jpg)/*tpa=*/;
+	height: 32px;
+	width: 622px;
+	line-height: 32px;
+	color: #96999D;
+}
+.content .mainDiv  .item .head h2 {padding:0; margin:0; width:295px !important;}
+.content .mainDiv  .item .head h1{padding:0; margin:0; width:495px !important;}
+.breadcrumbs {margin-bottom:10px; font-size:12px}
+.breadcrumbs strong a {text-decoration:none}
+.breadcrumbs strong a:hover {text-decoration:underline}
+
+.content .mainDiv  .item .head h2, .content .mainDiv  .item .head h1
+{
+display:inline;
+float:left;
+height:25px;
+margin-left:9px;
+width:304px;
+overflow:hidden;
+color: #484b4d;
+}
+.content .mainDiv  .item .head h2 a
+{
+	color: #484b4d;
+	text-decoration: none;
+}
+.content .mainDiv  .item .head h1 a
+{
+	color: #484b4d;
+	text-decoration: none;
+}
+.content .mainDiv  .item .head form
+{
+	float: right;
+}
+.content .mainDiv  .item .head form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv  .item .head form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv  .item .head form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv .item .head form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv  .item .head form a.img
+{
+	float: left;
+	margin-left: 47px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv  .item .head form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuy-h.jpg)/*tpa=*/ no-repeat;
+}
+.content .mainDiv  .item .head form a.img-dis
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/)/*tpa=http://www.giprint.ru/images/itemheadbuy-dis.jpg*/ no-repeat;
+	width:118px;
+	height:32px;
+}
+.content .mainDiv  .item .body
+{
+	clear: both;
+	padding-top: 10px;
+}
+.content  .mainDiv  .item .body .pic
+{
+	float: left;
+	width: 250px;
+	margin-right: 12px;
+	position:relative;
+}
+.content .item .body .pic .linza
+{
+	background: url(http://www.giprint.ru/images/linza.png)/*tpa=http://www.giprint.ru/images/linza.png*/ no-repeat;
+	width: 22px;
+	height: 21px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+.content  .item .body .discr
+{
+	float: left;
+	position:relative;
+	width: 360px;
+}
+
+
+.content .mainDiv  .item .body .discr .cost
+{
+	clear: both;
+	font-size: 33px;
+	color: #FFBB72;
+	line-height: 85px;
+}
+.content .mainDiv  .item .body .text
+{
+	clear: both;
+	width: 622px;
+}
+.content .mainDiv  .item .body .text .more
+{
+	font-style: italic;
+	text-align: right;
+}
+.content .mainDiv  .item .body .text .more a
+{
+	color: #1f87b5;
+}
+.content .mainDiv  .item .body .text .more a:hover
+{
+	color: #1074BC;
+	text-decoration: none;
+}
+{
+	color: #484b4d;
+}
+.content .mainDiv .totop
+{
+	clear: both;
+	background: url(http://www.giprint.ru/images/totopbg.jpg)/*tpa=http://www.giprint.ru/images/totopbg.jpg*/ no-repeat;
+	width: 621px;
+	height: 32px;
+	text-align: center;
+	margin-top: 20px;
+}
+.content .leftDiv
+{
+	float: left;
+	width: 200px;
+	margin-top: 0px;
+/*	padding-bottom: 225px;
+	_padding-bottom: 225px;*/
+}
+
+.footer
+{
+	clear: both;
+	width: 940px;
+	border-top: 1px solid #caccce;
+	margin-top: 15px;
+	padding: 15px 0;
+	line-height: 25px;
+	font-size: 11px;
+}
+.footer ul.botMenu
+{
+	color: #1074bc;
+	width: 550px;
+	margin: 0 auto;
+	text-align:center
+}
+.footer ul.botMenu li
+{
+	float: left;
+	margin-right: 15px; font-size:11px !important;
+}
+.footer ul.botMenu li a
+{
+	font-size:11px !important;
+}
+.footer .copyRights
+{
+	clear: both;
+	color: #9c9c9d;
+	text-align: center;
+}
+
+.titlePlug
+{
+	background: url(http://www.giprint.ru/images/blank-3.gif)/*tpa=http://www.giprint.ru/images/blank.gif*/;
+	width: 268px;
+	height: 56px;
+	position:absolute;
+	z-index:111;
+}
+.zakaz
+{
+	float: left;
+	margin-left: 10px;
+	font-size: 12px;
+	font-weight: bold;
+	opacity: 0.5;
+}
+#accordion7 .text
+{
+	height: 140px !important;
+}
+.rubric
+{
+	position:absolute;
+	_position:inherit;
+	bottom:0;
+}
+.formFocus
+{
+    color: #1074BC;
+}
+/*--------------------------------------------+
+|	Style by Aleksandr Yegerev (Alex Riz)     |
+|	Made in Ukraine.                          |
+|	ICQ:472296333                             |
+|	Skype: alex-riz                           |
++--------------------------------------------*/
+/*head1
+---------------------------------------------*/
+.content .mainDiv  .item .head1
+{
+	background: url(http://www.giprint.ru/images/tot.jpg)/*tpa=http://www.giprint.ru/images/tot.jpg*/;
+	height: 44px;
+	width: 622px;
+	margin-top:10px;
+	line-height: 20px;
+	color: #96999D;
+}
+.content .mainDiv  .item .head1 h2
+{
+	float: right;
+	margin-right: 9px;
+	display: inline;
+}
+.content .mainDiv  .item .head1 form
+{
+	float: right;
+}
+.content .mainDiv  .item .head1 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv  .item .head1 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv  .item .head1 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv .item .head1 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv  .item .head1 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv  .item .head1 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head1
+---------------------------------------------*/
+/*head2
+---------------------------------------------*/
+.content .mainDiv  .item .head2
+{
+	background: url(http://www.giprint.ru/images/tot.jpg)/*tpa=http://www.giprint.ru/images/tot.jpg*/;
+	height: 30px;
+	width: 622px;
+	margin-top:10px;
+	line-height: 28px;
+	color: #96999D;
+}
+.content .mainDiv  .item .head2 h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv  .item .head2 form
+{
+	float: right;
+}
+.content .mainDiv  .item .head2 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv  .item .head2 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv  .item .head2 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv .item .head2 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv  .item .head2 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv  .item .head2 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head2
+---------------------------------------------*/
+/*head3
+---------------------------------------------*/
+.content .mainDiv  .item .head3
+{
+	background: url(http://www.giprint.ru/images/tot2.jpg)/*tpa=http://www.giprint.ru/images/tot2.jpg*/ no-repeat center left;
+	height: 40px;
+	width: 622px;
+	margin-top:10px;
+
+	line-height: 28px;
+	color: #96999D;
+}
+.content .mainDiv  .item .head3 h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+	position: relative;
+	margin-right: 105px !important;
+}
+.content .mainDiv  .item .head3 form
+{
+	float: right;
+}
+.content .mainDiv  .item .head3 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv  .item .head3 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv  .item .head3 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv .item .head3 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv  .item .head3 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv  .item .head3 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+#summ {
+	background:#fff;
+	float:right;
+	width:180px;
+	height:35px;
+	padding:5px 0 0 20px;
+}
+#summ p {
+	font-size:18px;
+	font-weight:bold;
+	color:#ff0000;
+	text-align:left;
+	margin:0;
+}
+/*head3
+---------------------------------------------*/
+/*body .text ul li
+---------------------------------------------*/
+.content .mainDiv  .item .body .text ul {
+	margin-bottom:10px;
+	margin-left:15px;
+	list-style-type:disc;
+}
+/*body .text ul li
+---------------------------------------------*/
+/*input int
+---------------------------------------------*/
+.int {
+	background:none;
+	border:0 none;
+	width:440px;
+	height:24px;
+	display:block;
+	float:right;
+	padding:0 10px;
+	font-size:18px;
+	vertical-align:middle;
+}
+.int-ml {
+	background:url(http://www.giprint.ru/images/input-ml.gif)/*tpa=http://www.giprint.ru/images/input-ml.gif*/ repeat-x 0 0;
+	width:460px;
+	height:24px;
+	float:right;
+}
+.int2 {
+	background:none;
+	border:0 none;
+	width:390px;
+	height:24px;
+	display:block;
+	float:right;
+	padding:0 10px;
+	font-size:18px;
+	vertical-align:middle;
+}
+.int-ml2 {
+	background:url(http://www.giprint.ru/images/input-ml.gif)/*tpa=http://www.giprint.ru/images/input-ml.gif*/ repeat-x 0 0;
+	width:410px;
+	height:24px;
+	float:right;
+}
+.int3 {
+	background:none;
+	border:0 none;
+	width:198px;
+	height:24px;
+	display:block;
+	float:right;
+	padding:0 10px;
+	font-size:18px;
+	vertical-align:middle;
+}
+.int-ml3 {
+	background:url(http://www.giprint.ru/images/input-ml.gif)/*tpa=http://www.giprint.ru/images/input-ml.gif*/ repeat-x 0 0;
+	width:218px;
+	height:24px;
+	float:right;
+}
+.int4 {
+	background:none;
+	border:0 none;
+	width:250px;
+	height:24px;
+	display:block;
+	float:left;
+	padding:0 10px;
+	font-size:18px;
+	vertical-align:middle;
+	border: 1px solid #cccccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+.int-ml4 {
+	/*background:url(../../../images/input-ml.gif) repeat-x 0 0;*/
+	width:270px;
+	height:24px;
+	float:left;
+	margin-bottom:15px;
+}
+.file {
+	width:410px;
+	height:24px;
+	display:block;
+	float:right;
+}
+.sub {
+	background:url(http://www.giprint.ru/images/send.png)/*tpa=http://www.giprint.ru/images/send.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+	display:inline;
+	cursor:pointer;
+	float:right;
+}
+.su-sub {
+	background:url(http://www.giprint.ru/images/summ.png)/*tpa=http://www.giprint.ru/images/summ.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+	display:inline;
+	cursor:pointer;
+	float:right;
+	outline:none;
+}
+.reset {
+	background:url(http://www.giprint.ru/images/reset.png)/*tpa=http://www.giprint.ru/images/reset.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+	display:inline;
+	cursor:pointer;
+	float:left;
+}
+.next {
+	background:url(http://www.giprint.ru/images/next.png)/*tpa=http://www.giprint.ru/images/next.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+	display:block;
+	text-decoration:none;
+}
+.sub:hover {
+	background:url(http://www.giprint.ru/images/send-h.png)/*tpa=http://www.giprint.ru/images/send-h.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+}
+.reset:hover {
+	background:url(http://www.giprint.ru/images/reset-h.png)/*tpa=http://www.giprint.ru/images/reset-h.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+}
+.next:hover {
+	background:url(http://www.giprint.ru/images/next-h.png)/*tpa=http://www.giprint.ru/images/next-h.png*/ no-repeat top left;
+	width:120px;
+	height:40px;
+	border:none;
+}
+.su-sub:hover {
+	background:url(http://www.giprint.ru/images/summ-h.png)/*tpa=http://www.giprint.ru/images/summ-h.png*/ no-repeat top left;
+	outline:none;
+}
+.su-sub-dis: {
+	background:url(http://www.giprint.ru/images/summ-dis.png)/*tpa=http://www.giprint.ru/images/summ-dis.png*/ no-repeat top left;
+}
+.sub-dis {
+	background:url(http://www.giprint.ru/images/send-dis.png)/*tpa=http://www.giprint.ru/images/send-dis.png*/ no-repeat left top;
+	width:120px;
+	height:40px;
+	border:none;
+	display:inline;
+	float:right;
+}
+.reset-dis {
+	background:url(http://www.giprint.ru/images/reset-dis.png)/*tpa=http://www.giprint.ru/images/reset-dis.png*/ no-repeat left top;
+	width:120px;
+	height:40px;
+	border:none;
+	display:inline;
+	float:left;
+}
+.next-dis {
+	background:url(http://www.giprint.ru/images/next-dis.png)/*tpa=http://www.giprint.ru/images/next-dis.png*/ no-repeat left top;
+	width:120px;
+	height:40px;
+	border:none;
+}
+.int-rt {
+	/*background:url(../../../images/input-rt.gif) no-repeat top right;*/
+	width:100%;
+	height:24px;
+}
+.int-lt {
+	/*background:url(../../../images/input-lt.gif) no-repeat top left;*/
+	width:100%;
+	height:24px;
+}
+.isel {
+	width:430px;
+	height:24px;
+	float:right;
+}
+	/*txtar
+	-----------------------------------------*/
+.txtar {
+	background:none;
+	border:0 none;
+	width:390px;
+	height:135px;
+	display:block;
+	float:right;
+	padding:10px;
+	font-size:18px;
+	overflow:auto;
+}
+.txtar-ml {
+	background:none;
+	width:410px;
+	height:155px;
+	float:right;
+}
+.txtar2 {
+	background:none;
+	border:0 none;
+	width:250px;
+	height:160px;
+	display:block;
+	float:left;
+	padding:10px;
+	font-size:15px;
+	overflow:auto;
+}
+.txtar-ml2 {
+	background:none;
+	width:270px;
+	height:190px;
+	float:left;
+}
+.txtar-ml-tp {
+	background:url(http://www.giprint.ru/images/txtar-ml-tp.gif)/*tpa=http://www.giprint.ru/images/txtar-ml-tp.gif*/ repeat-x top left;
+	width:100%;
+	height:100%;
+}
+.txtar-ml-lt {
+	background:url(http://www.giprint.ru/images/txtar-ml-lt.gif)/*tpa=http://www.giprint.ru/images/txtar-ml-lt.gif*/ repeat-y top left;
+	width:100%;
+	height:100%;
+}
+.txtar-ml-rt {
+	background:url(http://www.giprint.ru/images/txtar-ml-rt.gif)/*tpa=http://www.giprint.ru/images/txtar-ml-rt.gif*/ repeat-y top right;
+	width:100%;
+	height:100%;
+}
+.txtar-ml-bm {
+	background:url(http://www.giprint.ru/images/txtar-ml-bm.gif)/*tpa=http://www.giprint.ru/images/txtar-ml-bm.gif*/ repeat-x bottom left;
+	width:100%;
+	height:100%;
+}
+.txtar-tr {
+	background:url(http://www.giprint.ru/images/txtar-tr.gif)/*tpa=http://www.giprint.ru/images/txtar-tr.gif*/ no-repeat top right;
+	width:100%;
+	height:100%;
+}
+.txtar-tl {
+	background:url(http://www.giprint.ru/images/txtar-tl.gif)/*tpa=http://www.giprint.ru/images/txtar-tl.gif*/ no-repeat top left;
+	width:100%;
+	height:100%;
+}
+.txtar-br {
+	background:url(http://www.giprint.ru/images/txtar-br.gif)/*tpa=http://www.giprint.ru/images/txtar-br.gif*/ no-repeat bottom right;
+	width:100%;
+	height:100%;
+}
+.txtar-bl {
+	background:url(http://www.giprint.ru/images/txtar-bl.gif)/*tpa=http://www.giprint.ru/images/txtar-bl.gif*/ no-repeat bottom left;
+	width:100%;
+	height:100%;
+}
+	/*txtar
+	-----------------------------------------*/
+
+	/*itxt
+	-----------------------------------------*/
+.itxt {
+	height:21px;
+	display:block;
+	float:right;
+	padding-top:3px;
+}
+.itxt b {
+	color:#F60;
+}
+	/*itxt
+	-----------------------------------------*/
+
+	/*ibox
+	-----------------------------------------*/
+.ibox {
+	width:100%;
+	height:24px;
+	margin-bottom:10px;
+}
+.ibox2 {
+	width:100%;
+	height:155px;
+	margin-bottom:10px;
+}
+.ibox3-l {
+	width:270px;
+	height:24px;
+	margin-bottom:10px;
+	float:left;
+}
+.ibox3-r {
+	width:340px;
+	height:24px;
+	margin-bottom:10px;
+	float:right;
+}
+	/*ibox
+	-----------------------------------------*/
+/*input int
+---------------------------------------------*/
+/*table
+---------------------------------------------*/
+.tbl {
+	width:100%;
+	height:auto;
+	clear:both;
+	line-height:14px;
+	vertical-align:top;
+}
+.tbl .tbl-tr-h {
+	background:#2782c2;
+	width:100%;
+	height:45px;
+	color:#fff;
+	font-weight:bold;
+}
+.tbl-cont {
+	color:#2782c2;
+}
+.tbl-cont td {
+	padding:8px 0;
+}
+/*table
+---------------------------------------------*/
+/*pic-full
+---------------------------------------------*/
+.content  .mainDiv  .item .body .pic-full
+{
+	float: left;
+	width: 622px;
+	margin-top: 10px;
+	position:relative;
+}
+.content .item .body .pic-full .linza
+{
+	background: url(http://www.giprint.ru/images/linza.png)/*tpa=http://www.giprint.ru/images/linza.png*/ no-repeat;
+	width: 22px;
+	height: 21px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+/*pic-full
+---------------------------------------------*/
+/*mainDiv2
+---------------------------------------------*/
+.content .mainDiv2
+{
+	float: left;
+	width: 100%;
+	padding-right: 7px;
+	margin-top: 0px;
+	color: #484b4d;
+}
+.content .mainDiv2  .item
+{
+	margin-bottom: 30px;
+	width: 100%;
+	clear:both;
+
+}
+.content .mainDiv2  .item .head
+{
+	background: url(http://www.giprint.ru/images/itemheadleft.jpg)/*tpa=http://www.giprint.ru/images/itemheadleft.jpg*/;
+	height: 32px;
+	width: 100%;
+	line-height: 32px;
+	color: #96999D;
+}
+.content .mainDiv2  .item .head h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv2  .item .head form
+{
+	float: right;
+}
+.content .mainDiv2  .item .head form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv2  .item .head form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv2  .item .head form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv2 .item .head form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv2  .item .head form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv2  .item .head form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+.content .mainDiv2  .item .body
+{
+	/*clear: both;*/
+	float:right;
+	padding-top: 10px;
+	width:685px;
+}
+.content  .mainDiv2  .item .body .pic
+{
+	float: left;
+	width: 250px;
+	margin-right: 12px;
+	position:relative;
+}
+.pic-b
+{
+	float: left;
+	width: 250px;
+	margin-top:20px;
+	margin-right: 12px;
+	position:relative;
+}
+.pic-b .linza
+{
+	background: url(http://www.giprint.ru/images/linza.png)/*tpa=http://www.giprint.ru/images/linza.png*/ no-repeat;
+	width: 22px;
+	height: 21px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+.content .mainDiv2  .item .body .discr .cost
+{
+	clear: both;
+	font-size: 33px;
+	color: #db4800;
+	line-height: 85px;
+}
+.content .mainDiv2  .item .body .text
+{
+	clear: both;
+	/*width: 100%;*/
+	width:685px;
+	float:right;
+}
+.content .mainDiv2  .item .body .text .more
+{
+	font-style: italic;
+	text-align: right;
+}
+.content .mainDiv2  .item .body .text .more a
+{
+	color: #484b4d;
+}
+.content .mainDiv2  .item .body .text .more a:hover
+{
+	color: #1074BC;
+	text-decoration: none;
+}
+{
+	color: #484b4d;
+}
+.content .mainDiv2 .totop
+{
+	clear: both;
+	background: url(http://www.giprint.ru/images/totopbg.jpg)/*tpa=http://www.giprint.ru/images/totopbg.jpg*/ no-repeat;
+	width: 100%;
+	height: 32px;
+	text-align: center;
+	margin-top: 20px;
+}
+.content .mainDiv2  .item .body .text ul {
+	margin-bottom:10px;
+	margin-left:15px;
+	list-style-type:disc;
+}
+/*head1
+---------------------------------------------*/
+.content .mainDiv2  .item .head1
+{
+	background: url(http://www.giprint.ru/images/tot.jpg)/*tpa=http://www.giprint.ru/images/tot.jpg*/;
+	height: 44px;
+	width: 100%;
+	margin-top:10px;
+	line-height: 20px;
+	color: #96999D;
+}
+.content .mainDiv2  .item .head1 h2
+{
+	float: right;
+	margin-right: 9px;
+	display: inline;
+}
+.content .mainDiv2  .item .head1 form
+{
+	float: right;
+}
+.content .mainDiv2  .item .head1 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv2  .item .head1 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv2  .item .head1 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv2 .item .head1 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv2  .item .head1 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv2  .item .head1 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head1
+---------------------------------------------*/
+/*head2
+---------------------------------------------*/
+.content .mainDiv2  .item .head2
+{
+	background: url(http://www.giprint.ru/images/tot3.jpg)/*tpa=http://www.giprint.ru/images/tot3.jpg*/;
+	/*width: 100%;
+	background: url(../../../images/tot.jpg);*/
+	height: 30px;
+	width: 685px;
+	margin-top:20px;
+	line-height: 28px;
+	color: #96999D;
+	float:right;
+}
+.content .mainDiv2  .item .head2 h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv2  .item .head2 form
+{
+	float: right;
+}
+.content .mainDiv2  .item .head2 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv2  .item .head2 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv2  .item .head2 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv2 .item .head2 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv2  .item .head2 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv2  .item .head2 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head2
+---------------------------------------------*/
+/*head3
+---------------------------------------------*/
+.content .mainDiv2  .item .head3
+{
+	background: url(http://www.giprint.ru/images/tot2.jpg)/*tpa=http://www.giprint.ru/images/tot2.jpg*/ no-repeat center left;
+	height: 40px;
+	width: 100%;
+	margin-top:10px;
+	line-height: 28px;
+	color: #96999D;
+}
+.content .mainDiv2  .item .head3 h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv2  .item .head3 form
+{
+	float: right;
+}
+.content .mainDiv2  .item .head3 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv2  .item .head3 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv2  .item .head3 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv2 .item .head3 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv2  .item .head3 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv2  .item .head3 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head3
+---------------------------------------------*/
+/*mainDiv2
+---------------------------------------------*/
+/*mainDiv3
+---------------------------------------------*/
+.content .mainDiv3
+{
+	float: right;
+	width: 622px;
+	padding-right: 7px;
+	margin-top: 0px;
+	color: #484b4d;
+}
+.content .mainDiv3 img {
+    max-width: 100%;
+}
+.content .mainDiv3  .item
+{
+	margin-bottom: 30px;
+	width: 622px;
+
+}
+.content .mainDiv3  .item2
+{
+	width: 622px;
+
+}
+.content .mainDiv3  .item .head
+{
+	background: url(http://www.giprint.ru/images/itemheadleft.jpg)/*tpa=http://www.giprint.ru/images/itemheadleft.jpg*/;
+	height: 32px;
+	width: 622px;
+	line-height: 32px;
+	color: #96999D;
+}
+.content .mainDiv3  .item .head h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv3  .item .head form
+{
+	float: right;
+}
+.content .mainDiv3  .item .head form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv3  .item .head form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv3  .item .head form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv3 .item .head form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv3  .item .head form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv3  .item .head form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+.content .mainDiv3  .item .body
+{
+	clear: both;
+	padding-top: 10px;
+}
+.content .mainDiv3  .item2 .body
+{
+	clear: both;
+}
+.content  .mainDiv3  .item .body .pic
+{
+	float: left;
+	width: 250px;
+	margin-right: 12px;
+	position:relative;
+}
+.content  .mainDiv3  .item .body .pic-sm
+{
+	float: left;
+	width: 125px;
+	margin-right: 12px;
+	position:relative;
+}
+.content .item .body .pic-sm .linza_tech
+{
+	background: url(http://www.giprint.ru/images/linza.png)/*tpa=http://www.giprint.ru/images/linza.png*/ no-repeat;
+	width: 22px;
+	height: 21px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+.content .mainDiv3  .item .body .discr .cost
+{
+	clear: both;
+	font-size: 33px;
+	color: #db4800;
+	line-height: 85px;
+}
+
+.content .mainDiv3  .item .body .text
+{
+	clear: both;
+	width: 622px;
+}
+.content .mainDiv3  .item .body .full_text
+{
+    display: none;
+}
+.content .mainDiv3  .item .body .text .more
+{
+	font-style: italic;
+	text-align: right;
+}
+.content .mainDiv3  .item .body .text .more a
+{
+	color: #484b4d;
+}
+.content .mainDiv3  .item .body .text .more a:hover
+{
+	color: #1074BC;
+	text-decoration: none;
+}
+{
+	color: #484b4d;
+}
+.content .mainDiv3 .totop
+{
+	clear: both;
+	background: url(http://www.giprint.ru/images/totopbg.jpg)/*tpa=http://www.giprint.ru/images/totopbg.jpg*/ no-repeat;
+	width: 621px;
+	height: 32px;
+	text-align: center;
+	margin-top: 20px;
+}
+/*pic-full
+---------------------------------------------*/
+.content  .mainDiv3  .item .body .pic-full
+{
+	float: left;
+	width: 622px;
+	margin-top: 10px;
+	position:relative;
+}
+/*pic-full
+---------------------------------------------*/
+/*head1
+---------------------------------------------*/
+.content .mainDiv3  .item .head1
+{
+	background: url(http://www.giprint.ru/images/tot.jpg)/*tpa=http://www.giprint.ru/images/tot.jpg*/;
+	height: 44px;
+	width: 622px;
+	margin-top:10px;
+	line-height: 20px;
+	color: #96999D;
+}
+.content .mainDiv3  .item .head1 h2
+{
+	float: right;
+	margin-right: 9px;
+	display: inline;
+}
+.content .mainDiv3  .item .head1 form
+{
+	float: right;
+}
+.content .mainDiv3  .item .head1 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv3  .item .head1 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv3  .item .head1 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv3 .item .head1 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv3  .item .head1 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv3  .item .head1 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head1
+---------------------------------------------*/
+/*head2
+---------------------------------------------*/
+.content .mainDiv3  .item .head2
+{
+	background: url(http://www.giprint.ru/images/tot.jpg)/*tpa=http://www.giprint.ru/images/tot.jpg*/;
+	height: 30px;
+	width: 622px;
+	margin-top:10px;
+	line-height: 28px;
+	color: #96999D;
+}
+.content .mainDiv3  .item2 .head2
+{
+	/*background: url(../../../images/tot.jpg);*/
+	min-height: 30px;
+	width: 622px;
+	line-height: 28px;
+	color: #96999D;
+	margin-bottom:2px;
+}
+.content .mainDiv3  .item .head2 h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv3  .item .head2 form
+{
+	float: right;
+}
+.content .mainDiv3  .item .head2 form .trash
+{
+	float:  .head2 form .trash
+}
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv3  .item .head2 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+    color: #96999d;
+}
+.content  .mainDiv3  .item .head2 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv3 .item .head2 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv3  .item .head2 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv3  .item .head2 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head2
+---------------------------------------------*/
+/*head3
+---------------------------------------------*/
+.content .mainDiv3  .item .head3
+{
+	background: url(http://www.giprint.ru/images/tot2.jpg)/*tpa=http://www.giprint.ru/images/tot2.jpg*/ no-repeat center left;
+	height: 40px;
+	width: 622px;
+	margin-top:10px;
+	line-height: 28px;
+	color: #96999D;
+}
+.content .mainDiv3  .item .head3 h2
+{
+	float: left;
+	margin-left: 9px;
+	display: inline;
+}
+.content .mainDiv3  .item .head3 form
+{
+	float: right;
+}
+.content .mainDiv3  .item .head3 form .trash
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/trashblue.png)/*tpa=http://www.giprint.ru/images/trashblue.png*/;
+	width: 20px;
+	height: 18px;
+	margin: 8px 8px 0 0;
+}
+.content  .mainDiv3  .item .head3 form input.text
+{
+    border: 0;
+    width: 22px;
+    padding: 0 5px;
+    background: #dbe0e4;
+    border-bottom: 1px solid #898c8e;
+}
+.mainDiv3  .item .head3 form input.text:focus
+{
+	color: #1074BC;
+}
+.content .mainDiv3 .item .head3 form .inp
+{
+	float: left;
+	line-height: normal;
+	margin-top: 7px;
+}
+.content .mainDiv3  .item .head3 form a.img
+{
+	float: left;
+	margin-left: 87px;
+	background: url(http://www.giprint.ru/images/itemheadbuy.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuy.jpg*/ no-repeat;
+	 width:118px;
+	 height:32px;
+}
+.content .mainDiv3  .item .head3 form a.img:hover
+{
+	background: url(http://www.giprint.ru/images/itemheadbuyactive.jpg)/*tpa=http://www.giprint.ru/images/itemheadbuyactive.jpg*/ no-repeat;
+}
+/*head3
+---------------------------------------------*/
+/*body .text ul li
+---------------------------------------------*/
+.content .mainDiv3  .item .body .text ul {
+	margin-bottom:10px;
+	margin-left:15px;
+	list-style-type:disc;
+}
+.content .mainDiv3  .item .body .text ul.ult {
+	margin-bottom:10px;
+	margin-left:0;
+	list-style-type:none;
+}
+.content .mainDiv3  .item .body .text ul.ult li ul {
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:15px;
+	list-style-type:none;
+}
+.address_area {
+	float: left;
+	margin-right: 20px;
+}
+.address {
+	font-size:14px;
+}
+.address p {
+	padding:3px 0 3px 0px;
+}
+.address span {
+	color:#727475;
+}
+.contact_from .contact_email p {
+	padding:5px 0 0 0px;
+	margin:0;
+}
+
+.contact_from .contact_email label {
+	font-size:16px;
+	color:#1f87b5;
+}
+.contact_from .inputbox {
+	height:20px;
+	background:transparent url(http://www.giprint.ru/images/input.gif)/*tpa=http://www.giprint.ru/images/input.gif*/ no-repeat 0 5px;
+}
+
+.contact_from .inputbox input {
+	width:250px;
+	height:18px;
+	border:none;
+	background:none;
+	font-size:10px;
+	color:#808385;
+	padding-left: 5px;
+}
+
+.contact_from .textbox {
+	width:269px;
+	height:89px;
+	background:transparent url(http://www.giprint.ru/images/textarea.gif)/*tpa=http://www.giprint.ru/images/textarea.gif*/ no-repeat 0 0;
+}
+
+.contact_from .textbox textarea {
+	width:250px;
+	height:70px;
+	overflow:hidden;
+	border:none;
+	font-size:10px;
+	color:#808385;
+	padding: 4px;
+}
+
+.contact_from .contact_email button {
+	background:none;
+	border:none;
+}
+/* error message */
+.error {
+	font-size:13px;
+	color:#f00;
+	background-color: #DDE2E6;
+}
+.contact_pic {
+    margin: 0 auto;
+    width: 464px;
+	height:116px;
+}
+.contact_pic div {
+    float: left;
+    margin: 8px;
+	width: 100px;
+	position:relative;
+}
+.contact_pic div .linza_contact
+{
+	background: url(http://www.giprint.ru/images/linza.png)/*tpa=http://www.giprint.ru/images/linza.png*/ no-repeat;
+	width: 22px;
+	height: 21px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+.image
+{
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+}
+.image_inner
+{
+    width: 1000px;
+    height: 80px;
+    position: absolute;
+    left: -460px;
+    text-align: center;
+}
+.flash {
+    background: url(http://www.giprint.ru/images/flash.jpg)/*tpa=http://www.giprint.ru/images/flash.jpg*/ no-repeat;
+}
+ul.tabNavigation {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background:url(http://www.giprint.ru/images/tot.jpg)/*tpa=http://www.giprint.ru/images/tot.jpg*/;
+	height:28px;
+	padding-left:2px;
+	margin:2px 0;
+}
+
+ul.tabNavigation LI {
+	display: inline;
+}
+
+ul.tabNavigation LI A {
+	padding: 3px 5px;
+	/*background-color: #ccc;*/
+	/*color: #000;*/
+	text-decoration: none;
+}
+
+ul.tabNavigation LI A.selected,
+ul.tabNavigation LI A:hover {
+	background-color: #052d51;
+	color: #fff;
+	padding-top: 4px;
+}
+
+ul.tabNavigation LI A:focus {
+	outline: 0;
+}
+
+ol
+{
+margin-left:20px
+}
+.cloud {
+    text-align: center;
+}
+.cloud a {
+    padding-right: 5px;
+}
+.img_wait {
+	float: left;
+	margin-left: 87px;
+	width:118px;
+	height:32px;
+	color: #1F87B5;
+	font-weight: bold;
+}
+
+.feedBack
+{
+	float: left;
+	width: 186px;
+	background: url(http://www.giprint.ru/images/feed.png)/*tpa=http://www.giprint.ru/images/feed.png*/;
+	height: 31px;
+	position: fixed;
+	bottom: 0;
+	right: -2px;
+	color:#FFF;
+	font-size: 15px;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.2);
+	text-align: center;
+	line-height: 30px;
+	font-weight: bold;
+	cursor: pointer;
+    z-index: 9999 !important;
+}
+.feedBack .button
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/feed1.gif)/*tpa=http://www.giprint.ru/images/feed1.gif*/;
+	width: 36px;
+	height: 31px;
+}
+.feedBack .body
+{
+	float: left;
+	background: url(http://www.giprint.ru/images/feedbg.gif)/*tpa=http://www.giprint.ru/images/feedbg.gif*/ repeat-x;
+	width: 150px;
+	height: 31px;
+}
+.feedBack .body a
+{
+	color: #FFF;
+}
+.no_und {text-decoration:none; font-style:inherit; color:inherit}
+
+.left_text {width:300px; font-size:12px; line-height:16px}
+.alert {font-style:italic; color:#db4800 ; font-size:10px; font-weight:normal; display:none}
+
+.p404 {width:100%; padding-top:87px;}
+.pl {float:left; width:347px;}
+.pr {float:left; width:474px;}
+.pr a {text-decoration:underline}
+.pr a:hover {text-decoration:none}
+.pr .pt {font-size:18px; margin-bottom:25px; padding-left:10px;}
+.pr .link {font-size:18px; margin-bottom:25px; padding:0 10px; background-color:#b2b8bb; margin-top:-25px; width:auto !important; position:relative; display:inline-block}
+.pr .link1 {font-size:18px; margin-bottom:25px; padding:0 10px; margin-top:-25px; width:auto !important; position:relative; display:inline-block}
+.pr .link1 a {color:#3574c6; font-size:30px}
+.pr .links {font-size:16px; margin-bottom:25px; padding:0 10px; margin-top:-20px; width:auto !important; position:relative; display:inline-block}
+.pr .links a {display:block; padding-left:10px;}
+.pr .pt span {display:block; font-size:30px;}
+
+.clients
+{
+	clear: both;
+	width: 940px;
+	border-top: 0px; /*1px solid #caccce;*/
+	padding: 15px 0 0 0;
+	font-size: 16px;
+}
+
+
+
+
+.b-auto-calc-sections {
+    /*background: #ccc;*/
+    width: 309px;
+    box-sizing: border-box;
+    padding: 0 3px;
+}
+
+
+
+.b-auto-calc-sections > ul {
+    border: 1px solid #b4b6b5;
+    border-radius: 6px;
+    padding: 0 2px;
+}
+
+
+.b-auto-calc-sections > ul > li {
+
+}
+
+.b-auto-calc-sections > ul > li > a {
+    background: url(http://www.giprint.ru/images/calc-header.png)/*tpa=http://www.giprint.ru/images/ui/calc-header.png*/ no-repeat;
+    display: block;
+    line-height: 44px;
+    padding-left: 18px;
+
+    width: 297px;
+    height: 44px;
+
+    box-sizing: border-box;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    color: #006cb7;
+
+    margin: 2px 0;
+}
+
+.b-auto-calc-sections > ul ul {
+    border: 1px solid #b2b4b3;
+    border-radius: 6px;
+    margin: 2px 0;
+
+    padding: 18px;
+    display: none;
+
+}
+.b-auto-calc-sections > ul ul a {
+    color: #008dd4;
+}
+
+.b-auto-calc-sections > ul ul > li {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.b-auto-calc-sections > ul ul > li > a {
+    text-decoration: none;
+}
+
+.b-auto-calc-sections > ul ul ul  {
+    border: 0;
+}
+
+.b-auto-calc-sections > ul ul ul > li {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.b-auto-calc-sections > ul ul ul > li > a {
+    text-decoration: underline;
+}
+
+
+
+
+
+/*#menuwrapper ul, #menuwrapper ul li{*/
+    /*margin:0;*/
+    /*padding:0;*/
+    /*list-style:none;*/
+/*}*/
+
+/* We apply background color and border bottom white and width to 150px */
+/*#menuwrapper ul li{*/
+    /*background-color:#7f95db;*/
+    /*border-bottom:solid 1px white;*/
+    /*width:150px;*/
+    /*cursor:pointer;*/
+/*}*/
+
+/* We apply the background hover color when user hover the mouse over of the li component */
+/*#menuwrapper ul li:hover{*/
+    /*background-color:#6679e9;*/
+    /*position:relative;*/
+/*}*/
+
+/* We apply the link style */
+/*#menuwrapper ul li a{*/
+    /*padding:5px 15px;*/
+    /*color:#ffffff;*/
+    /*display:inline-block;*/
+    /*text-decoration:none;*/
+/*}*/
+
+/**** SECOND LEVEL MENU ****/
+/* We make the position to absolute for flyout menu and hidden the ul until the user hover the parent li item */
+/*#menuwrapper ul li ul{*/
+    /*position:absolute;*/
+    /*display:none;*/
+/*}*/
+
+/* When user has hovered the li item, we show the ul list by applying display:block, note: 150px is the individual menu width.  */
+/*#menuwrapper ul li:hover ul{*/
+    /*left:150px;*/
+    /*top:0px;*/
+    /*display:block;*/
+/*}*/
+
+/* we apply different background color to 2nd level menu items*/
+/*#menuwrapper ul li ul li{*/
+    /*background-color:#cae25a;*/
+/*}*/
+
+/* We change the background color for the level 2 submenu when hovering the menu */
+/*#menuwrapper ul li:hover ul li:hover{*/
+    /*background-color:#b1b536;*/
+/*}*/
+
+/* We style the color of level 2 links */
+/*#menuwrapper ul li ul li a{*/
+    /*color:#454444;*/
+    /*display:inline-block;*/
+    /*width:120px;*/
+/*}*/
+
+/**** THIRD LEVEL MENU ****/
+/* We need to hide the 3rd menu, when hovering the first level menu */
+/*#menuwrapper ul li:hover ul li ul{*/
+    /*position:absolute;*/
+    /*display:none;*/
+/*}*/
+
+/* We show the third level menu only when they hover the second level menu parent */
+/*#menuwrapper ul li:hover ul li:hover ul{*/
+    /*display:block;*/
+    /*left:150px;*/
+    /*top:0;*/
+/*}*/
+
+/* We change the background color for the level 3 submenu*/
+/*#menuwrapper ul li:hover ul li:hover ul li{*/
+    /*background:#86d3fa;*/
+/*}*/
+
+/* We change the background color for the level 3 submenu when hovering the menu */
+
+/*#menuwrapper ul li:hover ul li:hover ul li:hover{*/
+    /*background:#358ebc;*/
+/*}*/
+
+/* We change the level 3 link color */
+/*#menuwrapper ul li:hover ul li:hover ul li a{*/
+    /*color:#ffffff;*/
+/*}*/
+
+
+
+.sidebar {
+    float: left;
+}
+.bot p{margin:5px 0 0 9px; color:#ffffff;font-size: 12px;font-weight: bold;letter-spacing: 0.8px;}
+.bot a{text-decoration:none;/*color:#ffffff;*/}
+
+.bot p:hover {
+
+	color: #A65F02;
+
+}
+.feedback_form {width:622px;}
+.feedback_form .block .title{
+
+background: url(http://www.giprint.ru/images/feedback_form.png)/*tpa=http://www.giprint.ru/images/ui/accordion/feedback_form.png*/ no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #96999d;
+    cursor: pointer;
+    font-size: 20px;
+    height: 56px;
+    line-height: 50px;
+    padding-left: 24px;
+    position: relative;
+    text-transform: uppercase;
+    width: 622px;
+}
+.feedback_form .block .title .name {
+    position: relative;
+    z-index: 10;
+
+}
+
+.feedback_form .block .title .shadow {
+    color: #fff;
+    margin-left: 1px;
+    position: absolute;
+    top: 1px;
+    z-index: 9;
+}
+
+.feedback_form .blok_1, .blok_2 {float: left;width: 50%;}
+.feedback_form .blok_1 p{margin-bottom:5px;}
+.feedback_form .blok_2 p{margin-bottom:5px;}
+.feedback_form .blok_2 .txtar-ml2{height: 160px;}
+.feedback_form .wpcf7-textarea{
+max-height: 160px;
+
+
+	border: 1px solid #cccccc;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+
+
+    }
+.text {text-align:justify;}
+.text p{margin:7px}
+.text img{margin:5px;}
+.mainDiv .text ul {
+	margin-bottom:10px;
+	margin-left:15px;
+	list-style-type:disc;
+}
+.mainDiv p{margin:7px;}
+.mainDiv p{text-align:justify;}
+.mainDiv  ul {
+	margin-bottom:10px;
+	margin-left:15px;
+	list-style-type:disc;
+}
+.strong { font-weight: bold;}
+.bold{ font-weight: bold;}
+.em {font-style: italic;}
+.losung {margin-left:80px !important;
+    font-style: italic;}
+
+
+
+
+
+.slider {
+        width: 620px;
+        height: 100%;
+        margin: 10px 0 10px 0;
+    }
+
+.cont a {
+        color: #1075BC;
+
+        font-size: 19px;
+        text-decoration:none;
+    }
+
+.cont a:hover {
+
+        color: #FF9306;
+    }
+
+
+    .topMenu a {
+        font-weight: bold;
+        text-decoration: none;
+
+    }
+
+
+
+.line {
+        margin: 10px 0 0 0;
+        width: 620px;
+        height: 40px;
+        background: #5fa3d7;
+        text-align: center;
+        border-radius:3px;
+    }
+
+.txt-line {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 40px;
+
+}
+
+
+.atention {
+    margin-top: 15px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.atention1 {
+    font-style: normal;
+    font-weight: bold;
+    height: 100%;
+    width: 620px;
+    text-align:center;
+}
+
+.atention2 {
+    margin: 20px 0 20px 0;
+}
+
+.txt-title {
+    font-size: 15px;
+	color: #64a3d6;
+    font-style: italic;
+    font-family: Arial;
+    margin: 10px 0 20px 0;
+    font-weight: bold;
+
+}
+
+.txt-ul li {
+    margin-top: 15px;
+}
+
+.line2 {
+    margin-top: 30px;
+    background: #939598;
+    width: 620px;
+    height: 3px;
+}
+
+
+#head-title {
+    width: 620px;
+    height: 100px;
+    margin-top: 3px;
+
+}
+
+#head-title div {
+    float: left;
+}
+
+.title1 {
+    background: #5fa3d7;
+    width: 170px;
+    height: 90px;
+
+}
+
+.title1-1 {
+    font-family: Verdana;
+    color: #fff;
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 5px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    padding-top: 10px;
+    text-transform: uppercase ;
+
+
+}
+
+.title2 {
+    color: #5fa3d7;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 10px;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    padding-top: 20px;
+}
+
+
+.title2-1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.title2-2 {
+    font-size: 45px;
+    font-weight: bold;
+}
+
+
+
+.title2-3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.block1 {
+    width: 620px;
+    height: 950px;
+    margin-top: 20px;
+}
+
+.block1 div {
+    float: left;
+}
+
+.firm1 {
+    width: 300px;
+    height: 155px;
+
+}
+
+
+.firm2 , .firm4 , .firm6 , .firm8 , .firm10 {
+    width: 300px;
+    height: 155px;
+    margin-left: 15px;
+}
+
+
+
+.firm1 div {
+    float: left;
+}
+
+.firm1-1 {
+
+    width: 180px;
+    height: 120px;
+    margin-left: 3px;
+    text-align: center;
+}
+
+.firm1-title {
+    font-size: 10px;
+    margin-top: 10px;
+    margin-left: 2px;
+    height: 60px;
+    width: 180px;
+
+}
+
+.img1{
+    background: url(http://www.giprint.ru/images/img1.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img2{
+    background: url(http://www.giprint.ru/images/img2.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img3{
+    background: url(http://www.giprint.ru/images/img3.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+
+.img4{
+    background: url(http://www.giprint.ru/images/img4.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img5{
+    background: url(http://www.giprint.ru/images/img5.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img6{
+    background: url(http://www.giprint.ru/images/img6.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img7{
+    background: url(http://www.giprint.ru/images/img7.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img8{
+    background: url(http://www.giprint.ru/images/img8.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img9{
+    background: url(http://www.giprint.ru/images/img9.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img10{
+    background: url(http://www.giprint.ru/images/img10.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.img11{
+    background: url(http://www.giprint.ru/images/img11.jpg) no-repeat;
+    width: 95px;
+    height: 96px ;
+    margin: 10px 0 0 20px;
+
+}
+
+.line3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #939598;
+    width: 620px;
+    height: 3px;
+}
+
+.download {
+    width: 620px;
+    height: 37px;
+
+}
+
+
+.download div {
+    float: left;
+}
+
+.dwnld {
+    background: url(http://www.giprint.ru/images/download.jpg) no-repeat;
+    width: 37px;
+    height: 37px;
+}
+
+.dwnld-url {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 37px;
+}
+
+.dwnld-url a {
+    color:#268ed3 ;
+}
+
+
+.vizitki {
+    background: url(http://www.giprint.ru/images/Vizitki_1111.jpg);
+    margin-top: 10px;
+    width: 620px;
+    height:388px ;
+}
+
+
+.price-title {
+    color: #559ed3;
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.price {
+    width: 620px;
+    height: 100%;
+
+}
+
+.firm1-style {
+    margin: 20px 0 20px 0;
+}
+
+
+
+
+/*TABLE*/
+
+
+
+
+
+/*End NULL*/
+
+body {
+ font-family:Verdana, ;
+
+}
+
+.features-table
+{
+  width: 620px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border: 0;
+  border-spacing: 0;
+  font-size: 10px;
+  color: #fff;
+  background: #97bde3;
+
+
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.features-table td
+{
+  height: 50px;
+  padding: 0 1px;
+  border-bottom: 1px solid #cdcdcd;
+  box-shadow: 0 1px 0 white;
+  -moz-box-shadow: 0 1px 0 white;
+  -webkit-box-shadow: 0 1px 0 white;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+
+
+
+.features-table td.grey
+{
+  background: #97bde3;
+  border: 1px solid white;
+}
+
+
+ td.grey1
+{
+  padding: 0 4px;
+  background: #d3dff1;
+  border: 1px solid white;
+  color: #81a4cb !important;
+  font-weight: bold;
+}
+td.grey1:hover {
+	background: #1175bc;
+	cursor: pointer;
+}
+
+ .features-table {
+    text-transform: uppercase;
+ }
+
+.number {
+    font-size: 30px;
+    color: #c6ddf2 !important;
+    font-weight: bold;
+}
+	.mainDiv_glav div {float:left;width:48.4%; color:#9c9c9d;font-size:11px}
+	.mainDiv_glav .otstup {margin-right:30px;}
+
+
+.mainDiv_glav h1, h2 {
+    color: #1175bc;
+    font-size: 16px;
+    font-weight: bold;
+}
+.mainDiv_glav .mainp_glav {font-size: 11px;
+    margin-top: 15px; color: #1175bc;}
+
+p.zen {
+clear: both;
+color: #db4800;
+font-size: 33px;
+line-height: 50px;
+text-align:right;
+}
+
+p.obr1 {
+text-align:right;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+p.obr2 {
+text-align:right;
+font-style:italic;
+margin-bottom:15px;
+}
+
+p.zag_s {
+color: #1175bc;
+font-size: 16px;
+font-weight: bold;
+margin-bottom:15px;
+}
+
+.web ul {
+padding-left:20px;
+}
+
+.web h2 {
+padding-left:7px;
+margin: 12px 0;
+}
+
+.web ul li {
+margin-bottom:7px;
+}
+
+.web h1 {
+display: inline;
+float: left;
+margin-left: 9px;
+color: #1175bc;
+font-size: 16px;
+font-weight: bold;
+}
+.right {
+    width: 622px;
+    height: 100%;
+    margin: 0 auto;
+
+}
+
+
+.line-title {
+    width: 100% ;
+    height: 30px ;
+    background: linear-gradient(180deg, rgb(228, 232, 235) 30%, rgb(202, 210, 213) 70%);
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+     box-shadow:         0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+
+.title-txt {
+    font-size: 16px ;
+    font-weight: bold;
+    font-family: Arial;
+    line-height: 30px;
+    margin-left: 10px;
+    color: #1074BC ;
+}
+
+.image-n7 {
+margin-top: 10px;
+
+
+
+}
+
+.txt-under {
+ width: 622px;
+ font-family: Arial ;
+ font-size: 18px ;
+ color: #1175BC ;
+ font-weight: bold;
+padding-left: 10px;
+ box-sizing: border-box;
+}
+
+
+.second-txt {
+    width: 622px;
+     margin-top: 30px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: italic;
+    text-align: justify;
+}
+
+.bold-txt {
+    font-weight: bolder;
+}
+
+
+
+
+.icon-menu {
+width: 622px;
+    height: 77px;
+    box-sizing: border-box;
+    margin: 15px 0 15px 0;
+
+}
+
+
+.icon-menu div {
+float: left;
+}
+
+.icon1 {
+    width: 75px;
+    height: 75px;
+
+}
+
+
+.icon1-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/1.png);
+    background-position: 0px 0px;
+}
+
+.icon1-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon2 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon2-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/2.png);
+    background-position: 0px 0px;
+}
+
+.icon2-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon3 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+}
+
+
+.icon3-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/3.png);
+    background-position: 0px 0px;
+}
+
+.icon3-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon4 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon4-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/4.png);
+    background-position: 0px 0px;
+}
+
+.icon4-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon5 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon5-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/5.png);
+    background-position: 0px 0px;
+}
+
+.icon5-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+
+.icon6 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon6-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/6.png);
+    background-position: 0px 0px;
+}
+
+.icon6-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon7 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon7-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/7.png);
+    background-position: 0px 0px;
+}
+
+.icon7-1:hover {
+background-position: 0px -77px;
+
+}
+
+.txt-bold {
+
+color: #1175BC;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.txt-another {
+font-family: Arial;
+    margin: 10px;
+    text-align: justify;
+}
+
+.video {
+margin: 50px 0 0 0;
+}
+
+.txt-another2 {
+    margin: 30px 0 0 0;
+    box-sizing: border-box;
+    font-family: Arial;
+    text-align: justify;
+    font-style: italic;
+    line-height: 22px;
+}
+
+.line2 {
+    margin-top: 20px;
+    width: 100% ;
+    height: 30px ;
+    background: linear-gradient(180deg, rgb(228, 232, 235) 30%, rgb(202, 210, 213) 70%);
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+     box-shadow:         0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+
+.txt-title-bold {
+ font-family: Arial;
+    font-size: 20px;
+    color: #1175bc;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    text-align: center;
+
+}
+
+
+
+
+
+.roziograff {
+margin-top: 20px;
+
+}
+
+.roz-txt {
+margin-top: 10px;
+    font-family: Arial;
+    color: #1175bc;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.roz-txt1 {
+margin-top: 15px;
+    font-family: Arial;
+    line-height: 20px;
+    font-style: italic;
+
+}
+
+.roz-title {
+    color: #1175bc;
+    font-family: Arial;
+    margin-top: 20px;
+    font-weight: 900;
+
+}
+
+
+
+.icon-menu {
+width: 622px;
+    height: 77px;
+    box-sizing: border-box;
+    margin: 15px 0 15px 0;
+
+}
+
+
+.icon-menu div {
+float: left;
+}
+
+.icon1 {
+    width: 75px;
+    height: 75px;
+
+}
+
+
+.icon1-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/1.png);
+    background-position: 0px 0px;
+}
+
+.icon1-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon2 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon2-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/2.png);
+    background-position: 0px 0px;
+}
+
+.icon2-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon3 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+}
+
+
+.icon3-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/3.png);
+    background-position: 0px 0px;
+}
+
+.icon3-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon4 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon4-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/4.png);
+    background-position: 0px 0px;
+}
+
+.icon4-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon5 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon5-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/5.png);
+    background-position: 0px 0px;
+}
+
+.icon5-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+
+.icon6 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon6-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/6.png);
+    background-position: 0px 0px;
+}
+
+.icon6-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon7 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon7-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/7.png);
+    background-position: 0px 0px;
+}
+
+.icon7-1:hover {
+background-position: 0px -77px;
+
+}
+
+.roz-txt2 {
+font-family: Arial ;
+    text-align: justify;
+    margin-top: 15px;
+    line-height: 25px;
+}
+
+.video1 {
+margin-top: 20px
+}
+
+
+
+.line2 {
+    margin-top: 20px;
+    width: 100% ;
+    height: 30px ;
+    background: linear-gradient(180deg, rgb(228, 232, 235) 30%, rgb(202, 210, 213) 70%);
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+     box-shadow:         0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+.title-txt {
+    font-size: 16px ;
+    font-weight: bold;
+    font-family: Arial;
+    line-height: 30px;
+    margin-left: 10px;
+    color: #1074BC ;
+}
+
+
+
+img-kbs{
+margin-top: 20px ;
+
+}
+
+
+.kbs-txt {
+margin-top: 20px;
+    font-family: Arial;
+    text-align: justify;
+    font-style: italic;
+}
+
+.kbs-txt1 {
+font-weight: 900 ;
+}
+
+.img2-kbs {
+margin-top: 20px;
+}
+
+.kbs-txt2 {
+text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 18px;
+    color: #1175bc;
+    margin-top: 15px;
+}
+
+.icon-menu {
+width: 622px;
+    height: 77px;
+    box-sizing: border-box;
+    margin: 15px 0 15px 0;
+
+}
+
+
+.icon-menu div {
+float: left;
+}
+
+.icon1 {
+    width: 75px;
+    height: 75px;
+
+}
+
+
+.icon1-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/1.png);
+    background-position: 0px 0px;
+}
+
+.icon1-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon2 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon2-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/2.png);
+    background-position: 0px 0px;
+}
+
+.icon2-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon3 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+}
+
+
+.icon3-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/3.png);
+    background-position: 0px 0px;
+}
+
+.icon3-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon4 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon4-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/4.png);
+    background-position: 0px 0px;
+}
+
+.icon4-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon5 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon5-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/5.png);
+    background-position: 0px 0px;
+}
+
+.icon5-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+
+.icon6 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon6-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/6.png);
+    background-position: 0px 0px;
+}
+
+.icon6-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon7 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon7-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/7.png);
+    background-position: 0px 0px;
+}
+
+.icon7-1:hover {
+background-position: 0px -77px;
+
+}
+
+.kbs-txt3 {
+font-family: Arial;
+    font-size: 18px;
+    color: #1175bc;
+    font-weight: bold;
+    margin-top: 15px;
+
+}
+
+
+.kbs-txt4 {
+font-family: Arial;
+    line-height: 22px;
+    margin-top: 15px;
+    text-align: justify;
+}
+
+.kbs-txt5 {
+font-weight: bold;
+    color: #1175bc;
+}
+
+.txt-ps {
+font-size: 14px;
+color: #1175bc;
+    text-align: center;
+    background: #cad2d5;
+    height: 25px;
+    width: 580px;
+    margin: 0 auto;
+}
+
+.kbs-txt6 {
+font-family: Arial;
+    line-height: 22px;
+    margin-top: 15px;
+
+}
+
+.video {
+margin-top: 20px;
+
+}
+
+.txt6 {
+font-family: Arial;
+    margin-top: 15px;
+}
+
+
+
+.line2 {
+    margin-top: 20px;
+    width: 100% ;
+    height: 30px ;
+    background: linear-gradient(180deg, rgb(228, 232, 235) 30%, rgb(202, 210, 213) 70%);
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+     box-shadow:         0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+
+
+.img-1 {
+
+    margin-top: 20px;
+}
+
+.txt-1 {
+font-family: Arial;
+color: #1175bc ;
+margin: 10px 0 10px 0 ;
+font-size: 17px;
+
+}
+
+.txt-2 {
+font-family: Arial ;
+    font-size: 18px;
+    color: #1175bc;
+    font-weight: bolder;
+    line-height: 25px;
+    margin: 10px 0 10px 0 ;
+
+}
+
+.txt-3 {
+font-family: Arial;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 22px;
+
+}
+
+.cifr-image {
+margin: 15px 0 15px 0 ;
+}
+
+
+.video1 {
+margin: 10px 0 10px 0 ;
+
+}
+
+
+.line2 {
+    margin-top: 40px;
+    width: 100% ;
+    height: 30px ;
+    background: linear-gradient(180deg, rgb(228, 232, 235) 30%, rgb(202, 210, 213) 70%);
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+     box-shadow:         0px 1px 4px 0px rgba(50, 50, 50, 0.75);
+}
+
+
+
+.icon-menu {
+width: 622px;
+    height: 77px;
+    box-sizing: border-box;
+    /*margin: 15px 0 15px 0;*/
+	margin: 0 auto;
+
+}
+
+
+.icon-menu div {
+float: left;
+}
+
+.icon1 {
+    width: 75px;
+    height: 75px;
+
+}
+
+
+.icon1-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/1.png);
+    background-position: 0px 0px;
+}
+
+.icon1-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon2 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon2-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/2.png);
+    background-position: 0px 0px;
+}
+
+.icon2-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon3 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+}
+
+
+.icon3-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/3.png);
+    background-position: 0px 0px;
+}
+
+.icon3-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon4 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon4-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/4.png);
+    background-position: 0px 0px;
+}
+
+.icon4-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon5 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon5-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/5.png);
+    background-position: 0px 0px;
+}
+
+.icon5-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+
+.icon6 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon6-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/6.png);
+    background-position: 0px 0px;
+}
+
+.icon6-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+
+
+.icon7 {
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon7-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/7.png);
+    background-position: 0px 0px;
+}
+
+.icon7-1:hover {
+background-position: 0px -77px;
+
+}
+
+.main {
+width: 622px;
+height: 100% ;
+margin: 0 auto;
+}
+
+
+
+
+
+
+.quikly {
+width: 622px ;
+height: 125px;
+background: #4ea1d5;
+box-sizing: border-box;
+
+}
+
+
+.quikly div {
+float: left;
+}
+
+
+.quikly-icon {
+width: 100px;
+height: 100px;
+margin: 12px 0 0 54px;
+background: url(http://www.giprint.ru/images/uploads/quikly.png) no-repeat ;
+
+}
+
+.quikly-line {
+width: 3px;
+height: 109px;
+margin: 8px 57px 0 48px ;
+background: #f08d00;
+}
+
+.quikly-title {
+font-family: Arial;
+    font-weight: bold;
+    font-size: 24px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 28px;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8);
+
+}
+
+.quikly-text {
+font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 20px;
+
+
+}
+
+.quikly-txt {
+color: #f08d00;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.quikly-print {
+width: 120px;
+    height: 125px;
+    box-sizing: border-box;
+/*
+    margin-top: -56px;
+    margin-left: 40px;
+*/
+	position:absolute;
+	right:0;
+}
+
+
+
+.quikly-print-icon {
+width: 48px;
+    height: 44px;
+    background: url(http://www.giprint.ru/images/uploads/quikly_print.png) no-repeat ;
+    margin: 37px 0 0 35px;
+
+
+}
+
+
+
+
+.icon8{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon8-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/8.png);
+    background-position: 0px 0px;
+}
+
+.icon8-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon9{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon9-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/9.png);
+    background-position: 0px 0px;
+}
+
+.icon9-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon10{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon10-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/10.png);
+    background-position: 0px 0px;
+}
+
+.icon10-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon11{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon11-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/11.png);
+    background-position: 0px 0px;
+}
+
+.icon11-1:hover {
+background-position: 0px -77px;
+
+}
+.icon12{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon12-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/12.png);
+    background-position: 0px 0px;
+}
+
+.icon12-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon13{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon13-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/13.png);
+    background-position: 0px 0px;
+}
+
+.icon13-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon14{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon14-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/14.png);
+    background-position: 0px 0px;
+}
+
+.icon14-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon15{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon15-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/15.png);
+    background-position: 0px 0px;
+}
+
+.icon15-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon16{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon16-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/16.png);
+    background-position: 0px 0px;
+}
+
+.icon16-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon17{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon17-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/17.png);
+    background-position: 0px 0px;
+}
+
+.icon17-1:hover {
+background-position: 0px -77px;
+
+}
+
+
+.icon18{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon18-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/18.png);
+    background-position: 0px 0px;
+}
+
+.icon18-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon19{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon19-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/19.png);
+    background-position: 0px 0px;
+}
+
+.icon19-1:hover {
+background-position: 0px -77px;
+
+
+}
+
+.icon20{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon20-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/20.png);
+    background-position: 0px 0px;
+}
+
+.icon20-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon21{
+    width: 75px;
+    height: 75px;
+    margin-left: 15px;
+
+}
+
+
+.icon21-1 {
+    width: 75px;
+    height: 75px;
+    background:url(http://www.giprint.ru/images/uploads/21.png);
+    background-position: 0px 0px;
+}
+
+.icon21-1:hover {
+background-position: 0px -77px;
+
+}
+
+.icon22{
+  width: 75px;
+  height: 75px;
+  margin-left: 15px;
+
+}
+
+
+.icon22-1 {
+  width: 75px;
+  height: 75px;
+  background:url(http://www.giprint.ru/images/uploads/22.png);
+  background-position: 0px 0px;
+}
+
+.icon22-1:hover {
+  background-position: 0px -77px;
+
+}
+.icon23{
+  width: 75px;
+  height: 75px;
+  margin-left: 15px;
+
+}
+
+
+.icon23-1 {
+  width: 75px;
+  height: 75px;
+  background:url(http://www.giprint.ru/images/uploads/23.png);
+  background-position: 0px 0px;
+}
+
+.icon23-1:hover {
+  background-position: 0px -77px;
+
+}
+
+.icon24{
+  width: 75px;
+  height: 75px;
+  margin-left: 15px;
+
+}
+
+
+.icon24-1 {
+  width: 75px;
+  height: 75px;
+  background:url(http://www.giprint.ru/images/uploads/24.png);
+  background-position: 0px 0px;
+}
+
+.icon24-1:hover {
+  background-position: 0px -77px;
+
+}
+
+.icon25{
+  width: 75px;
+  height: 75px;
+  margin-left: 15px;
+
+}
+
+
+.icon25-1 {
+  width: 75px;
+  height: 75px;
+  background:url(http://www.giprint.ru/images/uploads/25.png);
+  background-position: 0px 0px;
+}
+
+.icon25-1:hover {
+  background-position: 0px -77px;
+
+}
+
+.icon26{
+  width: 75px;
+  height: 75px;
+  margin-left: 15px;
+
+}
+
+
+.icon26-1 {
+  width: 75px;
+  height: 75px;
+  background:url(http://www.giprint.ru/images/uploads/26.png);
+  background-position: 0px 0px;
+}
+
+.icon26-1:hover {
+  background-position: 0px -77px;
+
+}
+/* ����� ����� ������� */
+
+
+.korobki-title {
+font-size:24px;
+color:#007bbc;
+font-weight:700;
+margin-bottom:20px;
+margin-top:-20px;
+
+}
+
+
+.productblock {
+position:relative;
+float:left; width:40%;
+border:1px solid #e2e3e4;
+height:360px;
+padding:20px;
+margin-right:20px;
+margin-bottom:20px;
+display: table;
+}
+.productblock .title{
+color:#000;
+margin-right:20px;
+font-size: 16px;
+position:absolute;
+bottom:100px;
+text-indent: 80px;
+}
+.productblock .title .razm{
+color:#afb3b3;
+margin-right:20px;
+font-size: 16px;
+position:absolute;
+text-indent: 0px;
+}
+.productblock:hover .title .razm{
+  color:#007bbc;
+
+}
+.productblock .description{
+color:#afb3b3;
+font-size: 12px;
+position:absolute;
+bottom:75px;
+float: left;
+
+
+}
+.productblock .image{
+color:#000;
+width:100%;
+height:auto;
+text-align:center;
+}
+
+.productblock hr {
+border: 1px solid #afb3b3;
+width:85%;
+position:absolute;
+bottom:50px;}
+
+.productblock .pricek{
+color:#000;
+font-size: 24px;
+float:left;
+font-weight:700;
+position:absolute;
+bottom:20px;
+
+}
+.productblock .cart {
+background:url(http://www.giprint.ru/images/uploads/korobki/cart.png) no-repeat;
+background-size:70px;
+height:56px; width:109px;
+position:absolute;
+bottom:150px;
+left:-2px;
+
+}
+
+.productblock:hover {
+border: 1px solid #d8dadb;
+cursor:pointer;
+}
+.productblock:hover .title {
+color:#000;
+font-size: 16px;
+position:absolute;
+bottom:100px;
+}
+.productblock:hover .description{
+  color:#000;
+}
+.productblock:hover hr {
+border: 1px solid #007bbc;width:85%;}
+
+.productblock:hover .pricek{
+color:#007bbc;
+font-size: 24px;
+float:left;
+}
+.productblock:hover .cart {
+background:url(http://www.giprint.ru/images/uploads/korobki/cart-hover.png) no-repeat;
+background-size:70px;
+height:56px; width:109px;
+
+}
+.minorder {
+font-size:18px;
+font-weight:700;
+color:000;
+position: fixed;
+bottom: 15px;
+z-index: 1;
+background:url(http://www.giprint.ru/images/blank_grey.png);
+}
+
+.divscroll{
+position:relative;
+width:100%;
+float:left;
+}
+.scroll-up {
+position:absolute; bottom:42px; right:20px;
+}
+.scroll-down {
+position:absolute; bottom:20px; right:20px;
+}
+
+a.rollover1 {
+    background: url(http://www.giprint.ru/images/uploads/openstat-01.png);
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-left: 380px;
+    margin-bottom: -30px;
+   }
+a.rollover1:hover {
+    background: url(http://www.giprint.ru/images/uploads/openstat-02.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-left: 380px;
+    margin-bottom: -30px;
+   }
+a.rollover2 {
+    background: url(http://www.giprint.ru/images/uploads/vk1.png);
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-left: 450px;
+    margin-bottom: -30px;
+   }
+a.rollover2:hover {
+    background: url(http://www.giprint.ru/images/uploads/vk2.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-left: 450px;
+    margin-bottom: -30px;
+   }
+a.rollover3 {
+    background: url(http://www.giprint.ru/images/uploads/fb1.png);
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-left: 520px;
+
+   }
+a.rollover3:hover {
+    background: url(http://www.giprint.ru/images/uploads/fb2.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    margin-left: 520px;
+
+   }
+
+   .karta {
+
+    width: 600px;
+    min-height: 100px;
+    height: auto;
+    position: fixed;
+    display: none;
+    /* top: 100px; */
+    top: 0;
+    left: 50%;
+    margin-left: -300px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px 0px 3px 0px;
+    z-index: 500;
+    -moz-box-shadow: 0px 0px 15px 0px #333333;
+    -webkit-box-shadow: 0px 0px 15px 0px #333333;
+    box-shadow: 0px 0px 15px 0px #333333;
+
+	}
+
+
+
+.submitbtn {
+padding: 5px 10px 5px 10px;
+border-radius:30px;
+color:#FFF;
+cursor:pointer;
+background: -moz-linear-gradient(top, #7db9e8 0%, #2989d8 50%, #207cca 63%, #207cca 63%, #1e5799 100%)!important;
+background: -webkit-linear-gradient(top, #7db9e8 0%,#2989d8 50%,#207cca 63%,#207cca 63%,#1e5799 100%)!important;
+background: linear-gradient(to bottom, #7db9e8 0%,#2989d8 50%,#207cca 63%,#207cca 63%,#1e5799 100%)!important;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 )!important;
+}
+
+.-info-block{
+	width:100%;
+	padding:1em;
+}
+
+.-info-block-button{
+	display: inline-block;
+	border: solid 3px #97bde3;
+	padding: 0 1em;
+	margin: 1em;
+	margin-bottom: 0;
+	line-height: 3em;
+	margin-left: 3px;
+	text-align: center;
+	color: rgba(0, 0, 0, .5);
+	cursor: pointer;
+	text-decoration: none;
+	transition: all .4s ease-in;
+	text-align: center;
+	border-radius: .4em;
+	font-size: 10px;
+	font-family: tahoma, DejaVu Sans Condensed;
+	text-transform: uppercase;
+	background-color: #fff;
+	transition:all .2s ease-in;
+}
+.-info-block-button:hover{
+	color: #fff;
+	background-color: #97bde3;
+}
+.-info-block-text{
+	display:none;
+	padding:1em;
+	transition:all .2s ease-in;
+}
+.ndesigntable .btnsdfh{
+	background-color: rgb(255,255,255);
+	border-radius: 4px;
+	color: rgb(112,182,231);
+	height:3em;
+	line-height: 3em;
+	border:none;
+	padding: 0 1em;
+	cursor: pointer;
+	transition: all .2s ease-in;
+}
+.ndesigntable .btnsdfh:hover{
+	background-color: rgb(40,56,144);
+	color: rgb(255,255,255);
+}
+.ndesigntable > tbody > tr > td{
+	padding:1em;
+	border: solid 4px rgb(255,255,255);
+}
+.ndesigntable .sstl{
+	background-color: rgb(40,56,144);
+	color:rgb(255,255,255);
+}
+
+.ndesigntable .sstb{
+	background-color: rgb(112,182,231);
+	color:rgb(255,255,255);
+}

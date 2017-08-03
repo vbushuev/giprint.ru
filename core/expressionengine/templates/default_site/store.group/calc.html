@@ -1,0 +1,711 @@
+<style>
+    .p-modal {
+        position: fixed;
+        display: none;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 100%
+    }
+
+    .p-pool-right {
+        float: right
+    }
+
+    .p-modal .p-button {
+        border-radius: 1em;
+        height: 1.6em;
+        line-height: 1.6em;
+        text-align: center;
+        background: 0;
+        padding: 0 1em;
+        font-size: 1.4em;
+        display: inline-block;
+        border: 1px solid rgba(16, 116, 188, .8);
+        cursor: pointer;
+        transition: all .4s ease-in
+    }
+
+    .p-modal .p-button:hover {
+        background-color: : rgba(0, 0, 0, .3);
+        color: rgba(0, 0, 0, .8)
+    }
+
+    .p-button.p-button-primary {
+        color: rgba(255, 255, 255, .8);
+        border: 0;
+        text-shadow: 2px;
+        background: -webkit-linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8));
+        background: -o-linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8));
+        background: -moz-linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8));
+        background: linear-gradient(rgba(16, 116, 188, .5), rgba(16, 116, 188, .8))
+    }
+
+    .p-button.p-button-primary:hover {
+        color: rgba(255, 255, 255, 1);
+        background: -webkit-linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5));
+        background: -o-linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5));
+        background: -moz-linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5));
+        background: linear-gradient(rgba(16, 116, 188, .8), rgba(16, 116, 188, .5))
+    }
+
+    .p-modal .p-modal-container {
+        position: relative;
+        background-color: #fff;
+        color: rgba(0, 0, 0, 0.3);
+        margin: 5% 20%;
+        padding: 2em 0 0 0;
+        border-radius: 1em;
+        font-size: 16px;
+        min-width: 640px;
+        max-width: 720px;
+        box-shadow:0 0 25px 0 #333;
+    }
+
+    .p-modal .p-modal-container .p-modal-header {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: .4em 2em;
+        font-weight: 700;
+        color: #000;
+        text-transform: uppercase
+    }
+
+    .p-modal .p-modal-container .p-modal-header .p-currency {
+        font-size: 2.8em;
+        margin-top: -.55em
+    }
+
+    .p-modal .p-modal-container .p-title {
+        color: #000;
+        height: 2em;
+        line-height: 2em;
+        display: inline-block;
+        font-size: 1.2em
+    }
+
+    .p-modal .p-modal-container .p-readonly {
+        margin: 0;
+        text-align: right;
+        padding: 0 1em;
+        height: 2.2em;
+        margin: 0 .4em;
+        border: 0;
+        border-radius: 1em;
+        min-width: 12rem;
+        background-color: #fff;
+        display: inline-block
+    }
+
+    .p-modal .p-modal-container .p-modal-header .p-modal-close {
+        position: absolute;
+        right: .8em;
+        top: .4em;
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: all .4s ease-in
+    }
+
+    .p-modal .p-modal-container .p-modal-header .p-modal-close:hover {
+        color: rgba(0, 0, 0, 0.5)
+    }
+
+    .p-modal .p-modal-container .p-modal-body {
+        background-color: #fff;
+        margin: 1em;
+        padding: 1em
+    }
+    .p-modal .p-modal-container .p-modal-body .p-highlighted {
+        border-radius: .4em;
+        border: 1px solid rgba(16, 116, 188, .8);
+        margin: 0 -1em;
+        padding: 0 1em;
+    }
+
+    .p-modal .p-modal-container .p-modal-body p {
+        font-size: 10pt
+    }
+
+    .p-modal .p-modal-container .p-modal-body p a {
+        transition: all .4s ease-in;
+        color: rgba(16, 116, 188, .5);
+        text-decoration: none
+    }
+
+    .p-modal .p-modal-container .p-modal-body p a:hover {
+        text-decoration: underline
+    }
+
+    .p-row {
+        padding: 0;
+        margin: 1em 0;
+        position: relative
+    }
+
+    .p-modal .p-modal-container .p-modal-body .p-label {
+        display: inline-block;
+        margin: 0;
+        width: 30%;
+        font-weight: 600;
+        color: rgba(0, 0, 0, .7)
+    }
+
+    .p-modal .p-modal-container .p-modal-body .p-empty  .p-label{
+        color: rgba(16, 116, 188, .8);
+    }
+
+
+    .p-modal .p-modal-container .p-modal-body .p-value {
+        display: inline-block;
+        width: 70%;
+        margin: 0;
+        position: relative
+    }
+
+    .p-modal .p-modal-container .p-modal-body .p-instructions {
+        display: block;
+        width: 70%;
+        font-size: 90%;
+        position: relative;
+        margin: -1em 0 -1em 30%
+    }
+
+    .p-modal .p-modal-container .p-modal-body .p-value select,
+    .p-modal .p-modal-container .p-modal-body .p-value input {
+        width: 100%;
+        font-size: 14pt;
+        height: 2em;
+        line-height: 2em;
+        outline: solid 1px rgba(0, 0, 0, .3);
+        border: 0;
+        color: rgba(0, 0, 0, .3);
+        display: inline-block
+    }
+
+    .p-modal .p-modal-container .p-modal-body .p-value input {
+        color: rgba(0, 0, 0, .9);
+        padding 0 1em
+    }
+
+    .p-modal .p-modal-container .p-modal-body .p-value select.p-visited {
+        color: rgba(0, 0, 0, .9)
+    }
+
+    .p-required:after {
+        content: '*'
+    }
+
+    .p-modal .p-modal-container .p-modal-footer {
+        margin: 1em;
+        text-align: right;
+        padding: 1em
+    }
+
+    .alert-required {
+        border: solid 2px red
+    }
+
+    #p-tabs {
+        position: relative;
+        width: 100%;
+        text-align: justify
+    }
+
+    #p-tabs > div {
+        display: none
+    }
+
+    #p-tabs > a {
+        display: inline-block;
+        border: solid 3px #97bde3;
+        padding: 0 1em;
+        margin: 1em;
+        margin-bottom: 0;
+        line-height: 3em;
+        margin-left: 3px;
+        text-align: center;
+        color: rgba(0, 0, 0, .5);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all .4s ease-in;
+        text-align: center;
+        border-radius: .4em;
+        font-size: 10px;
+        font-family: tahoma, DejaVu Sans Condensed;
+        text-transform: uppercase
+    }
+
+    #p-tabs > a:hover {
+        color: rgba(0, 0, 0, .8)
+    }
+
+    #p-tabs.p-tab1 div.p-tab1 {
+        display: block;
+        width: 100%
+    }
+
+    #p-tabs.p-tab2 div.p-tab2 {
+        display: block;
+        width: 100%
+    }
+
+    #p-tabs.p-tab3 div.p-tab3 {
+        display: block;
+        width: 100%
+    }
+
+    #p-tabs.p-tab1 > a.p-tab1 {
+        color: #fff;
+        background-color: #97bde3;
+        cursor: default;
+        text-decoration: none
+    }
+
+    #p-tabs.p-tab2 > a.p-tab2 {
+        color: #fff;
+        background-color: #97bde3;
+        cursor: default;
+        text-decoration: none
+    }
+
+    #p-tabs.p-tab3 > a.p-tab3 {
+        color: #fff;
+        background-color: #97bde3;
+        cursor: default;
+        text-decoration: none
+    }
+
+    .p-currency {
+        font-weight: normal
+    }
+
+
+
+    .uploader_container {
+        border-color: rgba(16, 116, 188, .8)
+    }
+</style>
+
+<script>
+    var entryId = "{embed:entry_id}";
+</script>
+<div class="p-modal store1 calc1 entry-{embed:entry_id}" id="p_newcalc" style="display:block;">
+    {exp:store:product entry_id="{embed:entry_id}" return="basket/ok"}
+    <input type="hidden" name="empty_cart" value="yes" />
+    <div class="store_product_in_out_stock" style="display:none;" align="center">
+        <span class="store_product_in_stock">Товар можно заказать! <img src='/images/forms/green_circle.png'></span>
+        <span class="store_product_out_of_stock">Товар нельзя заказать из калькулятора - актуальные цены уточняйте у менеджера! <img src='/images/forms/red_circle.png'></span>
+    </div>
+
+    <div class="order_more" style="display:none;" align="center">Недостаточное количество - тираж будет увеличен до указанного Вами! <img src='/images/forms/red_circle.png'></div>
+
+    <span style="display: none;" class="regular_price" uid="{embed:entry_id}">{regular_price}</span>
+    <span style="display: none;" class="min_order_qty" uid="{embed:entry_id}">{min_order_qty}</span>
+
+    <div class="p-modal-container">
+        <div class="p-modal-header">
+            <a href="javascript:{return false;}" class="p-modal-close">&times;</a>
+            <div class="p-title">Стоимость заказа</div>
+            <div class="p-title p-pool-right p-currency"> &#8381;</div>
+            <div class="p-readonly p-pool-right sale_price1" uid="{embed:entry_id}" id="p_total_price" style="font-size:24pt;height:1.2em;line-height:1.2em"></div>
+        </div>
+        <div class="p-modal-body">
+            <div id="product_modifiers">
+            {modifiers}
+                <?php $modifierName = mb_strtolower("{modifier_name}"); ?>
+                <div class="p-row" <?php if(strpos($modifierName, '^')===0 ): ?>style="display:none;"<?php endif;?> >
+                    <?php if (strpos($modifierName, '#') === 0): $modifierName = substr($modifierName, 1, strlen($modifierName) - 1);?>
+                    <?php elseif (strpos($modifierName, '^Files') === 0): ?>
+                        <input type="hidden" name="{modifier_input_name}" class="product_files" />
+                    <?php else: ?>
+                        {if modifier_type == 'var' OR modifier_type == 'var_single_sku'}
+                            <div class="p-label p-required">{modifier_name}</div><div class="p-value">
+                                <select name="{modifier_input_name}" data-name="{modifier_name}" class="p-modifiers-select modifier_selecting {modifier_input_name}" uid="{embed:entry_id}" required>
+                                    {modifier_options}
+                                        <option  value="{option_id}" price="{if price_mod == ''}0{if:else}{price_mod}{/if}">{option_name}</option>
+                                    {/modifier_options}
+                                </select>
+                            </div>
+                        {if:else}
+                            <div class="p-label">{modifier_name}</div><div class="p-value">
+                                <input type="text" uid="{embed:entry_id}" id="{modifier_input_name}" data-name="{modifier_name}" name="{modifier_input_name}" value="" class="p-modifiers-input" />
+                            </div>
+                        {/if}
+                    <?php endif; ?>
+                    {if modifier_instructions!==""}
+                        <div class="p-instructions">{modifier_instructions}</div>
+                    {/if}
+                </div>
+            {/modifiers}
+            {if entry_id!=="30"}
+            <div class="p-row p-empty">
+                <div class="p-label p-required">Количество</div><div class="p-value"><input type="number" uid="{embed:entry_id}" name="item_qty" class="p-modifiers-input" value="1" required/></div>
+            </div>
+            {if:else}
+                <input type="hidden" uid="{embed:entry_id}" name="item_qty" value=""/>
+            {/if}
+            </div>
+            <div class='p-highlighted'>
+                <div class="p-row p-empty">
+                    <div class="p-label p-required">Ваше имя</div><div class="p-value"><input type="text" class="p-modifiers-input" name="billing_name" required/></div>
+                </div>
+                <div class="p-row p-empty">
+                    <div class="p-label p-required">E-mail</div><div class="p-value"><input type="email" class="p-modifiers-input" name="order_email" required/></div>
+                </div>
+                <div class="p-row p-empty">
+                    <div class="p-label p-required">Телефон</div><div class="p-value"><input type="tel" class="p-modifiers-input" name="billing_phone" required/></div>
+                </div>
+            </div>
+            <p>* - поле, обязательное для заполнения. Информация из полей, отмеченных *, используется для составления автоматического счета для оплаты заказываемой продукции. Мы не храним персональную информацию, указываемую Вами,
+                и не используем её для чего-либо кроме обеспечения процесса заказа на нашем сайте.</p>
+        </div>
+        <div class="p-modal-footer">
+            <button class="p-button" style="float:left;" id="p_maket" type="button">Загрузить макет</button>
+            <button class="p-button p-button-primary" id="p_checkout">Оформить заказ</button>
+        </div>
+        <div class="checkout_placeholder"></div>
+
+
+    </div>
+    {/exp:store:product}
+</div>
+<!-- .calc -->
+<div class='uploader_container uploader_container-{embed:entry_id}' style="z-index:1001;">
+    <div class="uploader_container_header" style="text-align: center;">
+        <a href="/company/trebovaniya-k-maketam/" target="_blank">Требования к макетам</a>
+        <a href="#" class="uploader_container_close">&times;</a>
+    </div>
+    <div class='plupload_dialog'>
+        <form>
+            <div class="uploader-{embed:entry_id}">
+                <p>Your browser doesn't have Flash, Silverlight, Gears, BrowserPlus or HTML5 support.</p>
+                <input style='display:none;' type='file' value='' name='upload' id='upload'>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+var f_c_fields = ["176","199","219","285"];
+var q_fields = ["177","200","220","286","184","25","261"];
+window.priceNumber = function(d) {
+    var r = (d == null) ? 0 : d,
+        a = r.toString().split(/\./),
+        na = [],
+        n = "",
+        f = "";
+    if (d >= 1000) {
+        na = a[0].split("").reverse();
+        var c = 3;
+        //console.debug(na);
+        for (var i in na) {
+            n += na[i];
+            if (--c <= 0) {
+                n += " ";
+                c = 3;
+            }
+        }
+        r = n.split("").reverse().join("") + ((a.length > 1) ? ("." + a[1]) : "");
+    }
+    return r;
+};
+var getAcceptedEntries = function(){
+    return ["30","134","49","123"];
+}
+var getStock = function(ei){
+    if(typeof(ExpressoStore)=="undefined")return false;
+    if(typeof(ExpressoStore.products)=="undefined")return false;
+    var products = (typeof(ExpressoStore.products[ei])=="undefined")?false:ExpressoStore.products[ei];
+    if(products===false)return false;
+    var st2 = {};
+    for(var i in products.stock){
+        var stockItem = products.stock[i];
+        if(stockItem.stock_level!=null)continue;
+        var ss = st2;
+        for(var o in stockItem.opt_values){
+            if(typeof(ss[o])=="undefined") ss[o] = {};
+            if(typeof(ss[o][stockItem.opt_values[o]])=="undefined") ss[o][stockItem.opt_values[o]]={min_order_qty:stockItem.min_order_qty};
+            ss = ss[o][stockItem.opt_values[o]];
+        }
+    }
+    console.debug(st2);
+    return st2;
+};
+window.onVarChange = function(p,stock){
+    var s = stock;
+    $.when($(".p-modifiers-select").each(function(){
+        var $t = $(this), m = $t.attr("name").replace(/modifiers_(\d+)/,"$1"), v = $t.val();
+        if(v==null||typeof(v)=="undefined")return false;
+        if(typeof(s)=="undefined")return false;
+        if(typeof(s[m])=="undefined")return false;
+        if(typeof(s[m][v])=="undefined")return false;
+        for(var i in s[m][v]){
+            var t = $(".p-modifiers-select[name=modifiers_"+i+"] :selected:first").text();
+            $(".p-modifiers-select[name=modifiers_"+i+"] option").addClass("no-display").hide();
+            for(var j in s[m][v][i])$(".p-modifiers-select[name=modifiers_"+i+"] option[value="+j+"]").removeClass("no-display").show();
+            $(".p-modifiers-select[name=modifiers_"+i+"]").val($(".p-modifiers-select[name=modifiers_"+i+"] option:not(.no-display):contains('"+t+"')").val());
+        }
+        s = s[m][v];
+    })).done(function(){
+        onCaclulate(p);
+    });
+};
+window.onInitCalc = function(s){
+    var itm = (typeof(currentSelectedItem)!="undefined")?currentSelectedItem:null;
+    console.debug("selected cell",itm);
+    for(var i in q_fields){
+        $(".p-modifiers-select[name=modifiers_"+q_fields[i]+"] option").each(function(){
+            $(this).text($(this).text().replace(/\s*(\d+).*/ig, "$1").replace(/\D+/ig, "")+" шт.");
+        })
+    };
+    var currentChange=function(itm){
+        if(itm==null)return;
+        for(var j in f_c_fields){
+            $.when($(".p-modifiers-select[name=modifiers_"+f_c_fields[j]+"]").val($(".p-modifiers-select[name=modifiers_"+f_c_fields[j]+"] option:not(.no-display):contains('"+itm.f_c+"')").val()).change()).done(function(){
+                for(var i in q_fields){
+                    $.when($(".p-modifiers-select[name=modifiers_"+q_fields[i]+"] option").each(function(){
+                        $(this).text($(this).text().replace(/\s*(\d+).*/ig, "$1").replace(/\D+/ig, "")+" шт.");
+                    })).done(function(){
+                        $(".p-modifiers-select[name=modifiers_"+q_fields[i]+"]").val($(".p-modifiers-select[name=modifiers_"+q_fields[i]+"] option:not(.no-display):contains('"+itm.q+"')").val()).change();
+                        $("[name=item_qty]").val(itm.q);
+                    });
+
+                }
+            });
+        }
+    };
+    if($("#p-tabs").length){
+        var id = $("#p-tabs").attr("data-id"),val = $("#p-tabs").attr("data-val");
+        if(id&&val){
+            $.when($(".p-modifiers-select[name=modifiers_"+id+"] option[value="+val+"]").attr("selected","selected").change()).done(currentChange(itm));
+        }
+    }else currentChange(itm);
+    if($(".p-modifiers-select:first").length)$(".p-modifiers-select:first").change();
+    else $("[name=item_qty]").keyup()
+    //onCaclulate(ExpressoStore.products[entryId].price);
+};
+window.onCaclulate = function (p){
+    var total = (typeof(currentSelectedItem)!="undefined" && typeof(currentSelectedItem.price)!="undefined")?parseFloat(currentSelectedItem.price):p,quantity = 0;
+    $(".p-modifiers-select option:selected").each(function(){
+        var adds =$(this).attr("price");
+        if(typeof adds!="undefined" && adds!=false){
+            //console.debug(total+"+("+adds+") of "+$(this).text());
+            adds = parseFloat(adds);
+            total+= adds;
+        }
+    });
+    quantity = parseInt($(".p-modifiers-select[data-name*='ираж'] option:selected").text().replace(/\D+/ig,""));
+    quantity = (quantity==0 || typeof(quantity)=="undefined" || isNaN(quantity))?$("input[name=item_qty]").val():quantity;
+    console.debug("price="+total+" quantity="+quantity);
+    total *=quantity;
+    if (!isNaN(total)) {
+        $("input[name=item_qty]").val(quantity);
+        $("#p_total_price").text(priceNumber(total.toFixed(2)));
+    }
+};
+
+</script>
+<script type="text/javascript">
+    function initCalculator() {
+        console.log("init calc");
+
+
+        var uid = '{embed:entry_id}'; // id продукта
+        var entrySel = '.entry-' + uid + ' ';
+        var product = ExpressoStore.products[entryId],
+            avaliableStock = [],
+            as = new Object(),
+            acceptedEntries = getAcceptedEntries(),
+            currentStock = getStock(entryId);
+
+        $(".uploader-" + uid).pluploadQueue({
+            // General settings
+            runtimes: 'html5, gears,flash,silverlight,browserplus',
+            url: '/plupload/upload.php',
+            max_file_size: '999mb',
+            chunk_size: '1mb',
+            unique_names: true,
+
+            // Specify what files to browse for
+            filters: [{
+                    title: "Image files",
+                    extensions: "ai,eps,cdr,tif,tiff,pdf"
+                },
+                {
+                    title: "Zip files",
+                    extensions: "zip,rar,7z"
+                }
+            ],
+
+            // Flash settings
+            flash_swf_url: '/static/Moxie.swf',
+
+            // Silverlight settings
+            silverlight_xap_url: '/static/Moxie.xap',
+
+            init: {
+                UploadComplete: function(up, files) {
+                    var index = 1;
+                    // var $productFiles = $(entrySel + ' .product_files');
+                    var $productFiles = $('[data-name="^Files"]');
+                    var filenames = [];
+                    plupload.each(files, function(file) {
+                        filenames.push(file.target_name);
+                    });
+                    console.debug($productFiles,filenames);
+                    $productFiles.val(filenames.join());
+
+                }
+            }
+        });
+
+        $(entrySel + " .close_order").click(function() {
+            $(entrySel).data('onDialogClose')();
+            $(entrySel).css({
+                "display": "none"
+            });
+            return false;
+        });
+        $(".uploader_container_close").click(function() {$(this).parent().parent().hide();return false;});
+        $('#p_checkout').on('click', function(e) {
+            // fool check
+            $(".alert-required").removeClass('alert-required');
+            allow_submit = true;
+            showed = false;
+
+            $(entrySel + "select.modifier_selecting option:selected").each(function() {
+                if ($(this).val() == 0) {
+                    allow_submit = false;
+                    $(this).parent().addClass('alert-required');
+                }
+            });
+            if ($("input[name=billing_name]").val().length == 0) {
+                $(this).addClass('alert-required');
+                if (!showed) alert('Введите пожалуйста Ваше имя!');
+                showed = true;
+                allow_submit = false;
+            }
+            if ($("input[name=billing_phone]").val().length == 0 || !$("input[name=billing_phone]").val().match(/(\+7|8)?\d{10}/i)) {
+                $(this).addClass('alert-required');
+                if (!showed) alert('Не верный номер телефона! Пример +79998887766');
+                showed = true;
+                allow_submit = false;
+            }
+            if ($("input[name=order_email]").val().length == 0 || !$("input[name=order_email]").val().match(/[^@]+@.+?\.\w{2,4}/i)) {
+                $(this).addClass('alert-required');
+                if (!showed) alert('Не верный email! Пример: mymail@mail.com');
+                showed = true;
+                allow_submit = false;
+            }
+            if (!allow_submit) {
+                e.preventDefault();
+                if (!showed) alert('Пожалуйста, заполните все поля!');
+                return false;
+            }
+            // var valid = true;
+            // $(entrySel + '.store_product_form').find('input').each(function(){
+            //     valid=$(this).valid();
+            // });
+            // if(!valid)return false;
+            var postData = $(entrySel + '.store_product_form').serializeArray();
+            var formURL = $(entrySel + '.store_product_form').attr("action");
+
+            console.debug(postData);
+            //if(confirm("continue"))
+            $.ajax({
+                url: formURL,
+                type: "POST",
+                data: postData,
+                success: function(data, textStatus, jqXHR) {
+                    $.get('{site_url}store/ajax_checkout_foxdar/', function(data) {
+                        console.debug("ajax_checkout get");
+                        var s = '<form method="POST" action="' + document.location.href + '" id="_submit_form">';
+                        s += '<input type="hidden" name="_params" value="' + ($(data).find("input[name=_params]").length?$(data).find("input[name=_params]").val():$("input[name=_params]").val()) + '"/>';
+                        s += '<input type="hidden" name="XID" value="' + ($(data).find("input[name=XID]").length?$(data).find("input[name=XID]").val():$("input[name=XID]").val()) + '"/>';
+                        s += '<input type="hidden" name="ACT" value="' + ($(data).find("input[name=ACT]").length?$(data).find("input[name=ACT]").val():"28") + '"/>';
+                        s += '<input type="hidden" name="RET" value="' + $("input[name=RET]").val() + '"/>';
+                        s += '<input type="hidden" name="return_url" value="' + $("input[name=return_url]").val() + '"/>';
+                        s += '<input type="hidden" name="site_id" value="' + $("input[name=site_id]").val() + '"/>';
+                        s += '<input type="hidden" name="billing_customer_type" value="individual"/>';
+                        s += '<input type="hidden" name="payment_method" value="receipt"/>';
+                        s += '<input type="hidden" name="submit"/>';
+                        s += '<input type="hidden" name="billing_name" value="' + $("input[name=billing_name]").val() + '"/>';
+                        s += '<input type="hidden" name="billing_phone" value="' + $("input[name=billing_phone]").val() + '"/>';
+                        s += '<input type="hidden" name="order_email" value="' + $("input[name=order_email]").val() + '"/>';
+                        s += '</form>';
+                        console.debug(s);
+                        var form = $(s).appendTo('.checkout_placeholder');
+                        console.debug("appended");
+                        //form.submit();
+
+                        //console.debug(data);
+                        //$("form.store_product_form input").each(function(){if($(this).attr("name").match(/modifier/i))$(this).remove();});
+                        //console.debug($('form.store_product_form').serializeArray());
+                        //if(confirm("Все ок?"))
+                            HTMLFormElement.prototype.submit.call($('#_submit_form')[0]);
+                        return false;
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    //if fails
+                }
+            });
+            //$("input[name=ACT]").val(28);
+            //HTMLFormElement.prototype.submit.call($('form.store_product_form')[0]);
+            return false;
+        });
+        console.debug('p_maket count:'+$('#p_maket').length);
+        console.debug('.uploader_container-'+uid+' count:'+$('.uploader_container-'+uid).length);
+        $('#p_maket').click(function() {
+
+            $('.uploader_container-'+uid).show();
+        });
+        $("#calc-block").trigger('custom:form_ajax_checkout_loaded');
+        $(".p-modifiers-select").change(function(){onVarChange(product.price,currentStock);});
+        $("[name=item_qty]").keyup(function() {onVarChange(product.price,currentStock);});
+        $(".p-modal-close").click(function(){$(".p-modal").remove();});
+        onInitCalc(currentStock);
+        vbBuildCalculator(entryId);
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $('td.grey').css("cursor", "default");
+        $(".modifiers_198").val('833');
+        //$(this).trigger('custom:form_ajax_checkout_loaded');
+        var _show_form = function() {
+            if (typeof(window.currentSelectedItem) == "undefined" || window.currentSelectedItem == null) return;
+            var itm = window.currentSelectedItem,
+                found = false;
+            $('.modifier_selecting.modifiers_199 > option').each(function() {
+                var re = new RegExp(itm.f_c.replace(/([\(\)\+])/g, '\\$1'));
+                if (re.test($(this).text())) {
+                    $(this).attr("selected", "selected").change(); //.on("change",function(e){_show_form();});
+                    found = true;
+                }
+            });
+            itm.q = itm.q.replace(/(\d+).*/, "$1");
+            console.debug("quantity = " + itm.q);
+            $('.item_qty').val(itm.q).change();
+            if (found) {
+                $('.modifier_selecting.modifiers_200 > option').removeAttr("selected");
+                if (itm.q <= 100) $('.modifier_selecting.modifiers_200 > option[value=844]').attr("selected", "selected").parent().change();
+                else if (itm.q <= 300) $('.modifier_selecting.modifiers_200 > option[value=845]').attr("selected", "selected").parent().change();
+                else if (itm.q <= 500) $('.modifier_selecting.modifiers_200 > option[value=853],.modifier_selecting.modifiers_200 > option[value=854]').attr("selected", "selected").parent().change();
+            }
+        };
+        $("#calc-block").on("custom:form_ajax_checkout_loaded", function(e) {
+            console.debug("custom:form_ajax_checkout_loaded event occurs");
+            _show_form();
+            $(this).unbind("custom:form_ajax_checkout_loaded");
+            $(".modifiers_200").change(function() {
+                var val = parseInt($(this).val());
+                console.debug("Тираж: " + val);
+                if (844 < val < 853) $('.item_qty').val(300);
+                else if (853 < val) $('.item_qty').val(500);
+                else $('.item_qty').val(100);
+            });
+        });
+    })
+</script>

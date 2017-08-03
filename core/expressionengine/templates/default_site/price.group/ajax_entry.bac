@@ -1,0 +1,72 @@
+{if segment_3!==""}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("tr[modifier-row]:eq(0)").css({"display":"table-row"});
+
+        $(".modifier_selecting").change(function() {
+            var uid = $(this).attr("uid");
+            var first_var = $("select.modifier_selecting[uid="+uid+"]:eq(0) option[mod]:selected").val();
+            var variables = $("select.modifier_selecting[uid="+uid+"]:eq(1) option[mod]");
+
+            $("select.modifier_selecting[uid="+uid+"]:eq(1) option").css({"display":"list-item"});
+            $("tr[modifier-row]").css({"display":"table-row"});
+
+            var options = new Array();
+            if(variables && variables.length>0) {
+                for(var i=0;i<variables.length;i++) {
+                    options[i] = $("select.modifier_selecting[uid="+uid+"]:eq(1) option[mod]:eq("+i+")").val();
+                    //alert(options[i]);
+                }
+            }
+            for(var i=0;i<ExpressoStore.products[uid].stock.length;i++) {
+                for(var e=0;e<options.length;e++) {
+                    if(ExpressoStore.products[uid].stock[i].opt_values[1]==first_var && ExpressoStore.products[uid].stock[i].opt_values[2]==options[e]) {
+                        //alert(ExpressoStore.products[uid].stock[i].stock_level);
+                        if(ExpressoStore.products[uid].stock[i].stock_level=='0') {
+                            //alert(options[e]+" out of stock");
+                            $("select.modifier_selecting[uid="+uid+"]:eq(1) option[mod][value="+options[e]+"]").css({"display":"none"});
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{exp:store:product entry_id="{segment_3}"}
+<span class="store_product_in_stock"><p style="font-size: 14pt; color: green;">Товар есть на складе!</p></span>
+<span class="store_product_out_of_stock"><p style="font-size: 14pt; color: red;">Данная вариация товара закончилась!</p></span>
+<span style="display: none;" class="regular_price" uid="{segment_3}">{regular_price}</span>
+<table>
+    {modifiers}
+    <tr {if modifier_type == 'var' OR modifier_type == 'var_single_sku'}modifier-row style="display: none;{/if}">
+        <td><p style="margin: 3px 10px 3px 0;">{modifier_name}</p></td>
+        <td>
+            {if modifier_type == 'var' OR modifier_type == 'var_single_sku'}
+            <select class="modifier_selecting" uid="{segment_3}" id="{modifier_input_name}" name="{modifier_input_name}">
+                <option value="">Выбрать...</option>
+                {modifier_options}
+                <option mod value="{option_id}" price="{if price_mod == ''}0{if:else}{price_mod}{/if}">
+                    {option_name} {if price_mod_val} ({price_mod}) {/if}
+                </option>
+                {/modifier_options}
+            </select>
+            {if:else}
+            <input type="text" uid="{segment_3}" id="{modifier_input_name}" name="{modifier_input_name}" value="" />
+            {/if}
+        </td>
+    </tr>
+    {if modifier_instructions!==""}
+    <tr>
+        <td colspan="2"><p class="m_inst">{modifier_instructions}</p></td>
+    </tr>
+    {/if}
+    {/modifiers}
+    <tr>
+        <td><p style="margin: 3px 10px 3px 0;">Количество</p></td>
+        <td>
+            <input type="text" id="item_qty" uid="{segment_3}" name="item_qty" class="input-mini" value="1" />
+        </td>
+    </tr>
+</table>
+{/exp:store:product}
+{/if}

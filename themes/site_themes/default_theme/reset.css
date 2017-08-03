@@ -1,0 +1,25 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {padding:0;margin:0;outline:none;}
+
+caption,th {text-align:left}
+
+table {border-collapse:collapse; border-spacing:0}
+
+h1,h2,h3,h4,h5,h6 {font-size:1em}
+
+img {border:0; vertical-align:top}
+
+ul {list-style-type:none}
+
+a:focus, a:active {outline:none}
+
+a{cursor:pointer;}
+
+.clr {clear:both; height:1px; font-size:1px; visibility:hidden; line-height: 0px;zoom:1}
+p {margin:5px 0;}
+.mainDiv_glav{text-align:justify;}
+.mainDiv_glav ul {
+    list-style-type: disc;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+

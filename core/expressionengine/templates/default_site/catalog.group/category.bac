@@ -1,0 +1,106 @@
+{embed=embed/.header title="{exp:query sql="SELECT cat_name, exp_categories.cat_id, field_id_5 cat_title,cat_description FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}{if cat_title}{cat_title}{if:else}{cat_name}{/if}{/exp:query}" {exp:query sql="SELECT field_id_4 description, field_id_3 keywords FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}     description="{description}"  keywords="{keywords}" {/exp:query} }
+{if segment_3 !=''}{redirect='404'}{/if}
+			<div class="content">
+				<div class="BigMenu">                                        
+					<div class="plug"></div>
+{embed=embed/.accordion}
+				</div>
+				<div class="mainDiv">
+					{exp:query sql="SELECT cat_name, cat_id FROM exp_categories WHERE cat_url_title = '{segment_2}'"}
+					{if no_results}{redirect='404'}{/if}
+					<h1>{cat_name}</h1>
+					{exp:channel:entries channel="products" category="{cat_id}" dynamic="off" orderby="entry_date" sort="asc" disable="member_data|trackbacks|category_fields|categories|pagination"}
+					<div class="item">
+						<div class="head">
+							<h2><a href="{comment_url_title_auto_path}">{if product_title<>''} {product_title} {if:else} {title}{/if}</a></h2>
+							{if product_price}
+							<form action="#" method="post" class="product_num" name="product{entry_id}" id="product{entry_id}">
+								<div class="inp">
+									<input class="text" type="text" name="input{entry_id}" id="input{entry_id}" value="1" />
+									<span>{if cat_id == 5}комп.{if:else}шт.{/if}&nbsp;&nbsp;<span class="total_price">{product_price}</span> руб.</span>
+								</div>
+								<a href="{exp:simple_cart:insert name="{entry_id}" price="{product_price}" entry_id="{entry_id}"}" class="img buylink" rel="nofollow"></a>
+							</form>{/if}
+						</div>
+						<div class="body">
+							{if product_photos}
+							{product_photos limit="1"}
+							<div class="pic">
+                                111
+								<a rel="fancybox{absolute_count}" href="{exp:imgsizer:size src="{file}" width="800"}{sized}{/exp:imgsizer:size}">{exp:imgsizer:size src="{file}" width="250"}<img src="{sized}" width="{width}" height="{height}" alt="{title}" title="{title}" />{/exp:imgsizer:size}</a>
+								<div class="linza"></div>
+							</div>
+							{/product_photos}
+							{/if}
+							<div class="discr">
+								{if product_photos}
+								<div class="jcarousel-skin-tango">
+									<div class="jcarousel-container jcarousel-container-horizontal">
+										<div class="cont1">
+											<ul>
+										<? $i=0;?>
+										{product_photos}
+										<? if ($i>1) : ?>
+											<li>
+											   <div class="image">
+												  <div class="image_inner"><a rel="fancybox{absolute_count}" alt="{exp:imgsizer:size src="{file}" width="250"}{sized}{/exp:imgsizer:size}" href="{exp:imgsizer:size src="{file}" width="800"}{sized}{/exp:imgsizer:size}">{exp:imgsizer:size src="{file}" height="80"}<img src="{sized}" width="{width}" height="{height}" alt="{about}" title="{about}" />{/exp:imgsizer:size}</a></div>
+												  <a href="{exp:imgsizer:size src="{file}" width="800"}{sized}{/exp:imgsizer:size}"></a>
+											   </div>
+											</li>
+										<? endif;?>
+										<? $i = $i + 1;?>
+										{/product_photos}
+											</ul>
+										</div>
+										<div class="jcarousel-prev jcarousel-prev-horizontal sc_right"></div>
+										<div class="jcarousel-next jcarousel-next-horizontal sc_left"></div>
+									</div>
+								</div>
+							  	{/if}
+								<div class="cost">{if product_price}{product_price} р.*{if:else}&nbsp;{/if}</div>
+								<a href="{comment_url_title_auto_path}" class="no_und">{product_lozung}</a><em>* Не является публичной офертой</em><br/><br/>
+							</div>
+							<div class="text">
+								<a href="{comment_url_title_auto_path}" class="no_und">{product_short}</a>
+								<div class="more"><a href="{comment_url_title_auto_path}">Подробнее »</a></div>
+							</div>
+							<div class="clr"></div>
+						</div>
+					</div>
+					{/exp:channel:entries}
+					{/exp:query}
+
+{exp:query sql="SELECT field_id_6 seo_text FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}{seo_text}{/exp:query}
+				</div>
+				<div class="leftDiv">
+					<div class="BigMenu">
+						{embed=embed/.special_sale}
+						{embed=embed/.seo_block category_url="{segment_2}"}
+						{if segment_2=='vizitki' OR segment_2=='papki-blanki-otkrytki' OR segment_2=='etiketki-naklejki-gologrammy'}
+						<div id="accordion7">
+								<div class="block super1">
+									<div class="titlePlug"></div>
+									<div class="title">
+										<div class="name">ВЫРУБНЫЕ ШТАМПЫ</div>
+										<div class="shadow">ВЫРУБНЫЕ ШТАМПЫ</div>
+									</div>
+									<div class="body">
+                                                                             
+										<div class="top"></div>
+										<div class="cont">
+										<a href="/blanking_dies/" rel="external">Изготовление вырубных штампов для любого вида продукции</a>
+										<div class="clr"></div>
+										</div>
+										<div class="bot"></div>
+									     
+									</div>
+								</div>
+							</div>
+						{/if}
+					</div>
+					<div class="left_text">{exp:query sql="SELECT cat_description, cat_id FROM exp_categories LEFT JOIN exp_category_field_data USING(cat_id) WHERE cat_url_title = '{segment_2}'"}{if cat_id==55}{cat_description}{/if}{/exp:query}</div>
+				</div>
+				<div class="clr"></div>
+			</div>
+			<div class="clr"></div>
+			

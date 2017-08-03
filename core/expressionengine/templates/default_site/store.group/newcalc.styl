@@ -1,0 +1,51 @@
+// out: newcalc.css, compressed: true
+greyColor = rgba(0,0,0,.3);
+greyColorActive = rgba(0,0,0,.5);
+
+.p-modal
+    position: fixed;
+    display: block;
+    z-index: 999;
+    left:0;
+    top:0;
+    background-color: rgba(0,0,0,.2);
+    width:100%;
+    height:100%;
+    .p-button
+        border-radius: 1em;
+        height: 2em;
+        line-height: 2em;
+        text-align: center;
+        color #fff;
+        padding: 0 1em;
+        font-size: 1.4em;
+        display: inline-block;
+    .p-modal-container
+        position: relative;
+        background-color: #fff;
+        color:greyColor;
+        margin: 10% 20%;
+        padding: 2em 1em 1em 1em;
+        border-radius: 1em;
+        .p-modal-header
+            background-color: greyColor;
+            padding-top: 1em;
+            height:2em;
+            color:#000;
+            line-height: 2em;
+            .p-modal-close
+                position: absolute;
+                right .6em;
+                top .2em;
+                text-decoration: none;
+                color:greyColor;
+                cursor: pointer;
+                transition: all .4s ease-in;
+            .p-modal-close:hover
+                color: greyColorActive;
+        .p-modal-body
+            background-color: #fff;
+            margin: 1em;
+        .p-modal-footer
+            margin: 1em;
+            text-align: right;

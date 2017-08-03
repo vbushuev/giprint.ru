@@ -1,0 +1,95 @@
+/* shcalc = sheet calculator */
+.shcalc *,
+.shcalc *:after,
+.shcalc *:before {
+    box-sizing: border-box;
+}
+
+
+.shcalc {
+    font-family:'calibri', 'arial', sans-serif;
+    color:#161616;
+    font-size:14px;
+    width: 270px;
+    padding:20px;
+    background-color:#e9eaec;
+    border:4px solid #9e9ea0;
+    border-radius:10px;
+    position: relative;
+}
+
+.shcalc_close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    width:10px;
+    height:10px;
+    cursor:pointer;
+}
+
+.shcalc_header_txt {
+    color: #0a4e8e;
+    font-size:24px;
+    margin: 0;
+    font-weight: normal;
+}
+
+/* Внедряем clearfix */
+.shcalc_header:before, .shcalc_header:after {content: " "; display: table; }
+.shcalc_header:after {clear: both; }
+
+.shcalc_header_i {float:left; margin-bottom:20px; margin-right:10px; }
+.shcalc_total {margin-top:15px; }
+.shcalc_total_val {font-weight:bold; }
+
+/* Каскадом довешиваем стили, присущие только этому калькулятору */
+.shcalc .form-group {line-height:25px; margin-bottom:10px; }
+.shcalc .form-label {float: left; width: 110px; margin-right: 10px; }
+.shcalc .form-control {border-radius:8px; border:1px solid #888; float: left; }
+.shcalc input.form-control {padding-left: 3px; }
+.shcalc select.form-control {background: url(../../../static/shcalc_arrow.png) #fff right no-repeat; appearance:button; -moz-appearance:button; -webkit-appearance:button; }
+
+.form-group:before,
+.form-group:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.form-group:after {
+    clear: both;
+}
+
+/* Косметика */
+.shcalc .size_L {width: 150px; }
+.shcalc .size_S {width: 50px; }
+
+.shcalc_calcbtn {
+    padding:5px 34px 7px;
+    margin-top:15px;
+    color:white;
+    border-radius:20px;
+    border:none;
+    cursor:pointer;
+    background:#f8f8f8;
+    background: rgb(195,215,242); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(195,215,242,1) 0%, rgba(36,125,193,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(195,215,242,1)), color-stop(100%,rgba(36,125,193,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(195,215,242,1) 0%,rgba(36,125,193,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(195,215,242,1) 0%,rgba(36,125,193,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(195,215,242,1) 0%,rgba(36,125,193,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(195,215,242,1) 0%,rgba(36,125,193,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3d7f2', endColorstr='#247dc1',GradientType=0 ); /* IE6-9 */
+}
+
+.shcalc_calcbtn:disabled {
+    background: rgb(233,233,233); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(233,233,233,1) 0%, rgba(148,148,148,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(233,233,233,1)), color-stop(100%,rgba(148,148,148,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(233,233,233,1) 0%,rgba(148,148,148,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(233,233,233,1) 0%,rgba(148,148,148,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(233,233,233,1) 0%,rgba(148,148,148,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(233,233,233,1) 0%,rgba(148,148,148,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9e9e9', endColorstr='#949494',GradientType=0 ); /* IE6-9 */
+    cursor:default;
+}

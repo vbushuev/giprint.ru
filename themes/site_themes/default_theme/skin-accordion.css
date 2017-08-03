@@ -1,0 +1,393 @@
+#accordion
+{
+	position:relative;
+	z-index:10;
+	float:left;
+	margin-right:-628px;
+}
+
+#accordion .block
+{
+	width: 309px;
+	float: right;
+	margin-right: 5px;
+	position:relative;
+}
+#accordion .block .title
+{
+	background: url(../../../images/ui/accordion/accordpassive.jpg);
+	padding-left: 24px;
+	width: 285px;
+	height: 56px;
+	font-size: 20px;
+	line-height: 50px;
+	text-transform: uppercase;
+	color: #96999d;
+
+}
+#accordion  .block .title
+{
+	cursor:pointer; position:relative;
+}
+#accordion  .block .title .name
+{
+	position:relative;
+	z-index:10;
+}
+
+#accordion  .block .title .shadow
+{
+	position:absolute;
+	top:1px;
+	margin-left: 1px;
+	z-index:9;
+	color: #FFF;
+}
+/*#accordion  .block
+{
+	position:relative;
+	left: 320px;
+}*/
+
+#accordion  .block.selected
+{
+	/*position:absolute;*/
+	float:left;
+	left: 0px;
+
+}
+
+#accordion  .block .selected
+{
+	color: #30363b;
+	background: url(../../../images/ui/accordion/accordactive.jpg);
+}
+#accordion  .block .cont
+{
+	background: url(../../../images/ui/accordion/accordbg.png);
+	width: 279px;
+	padding: 10px  15px 0 15px;
+	min-height: 427px;
+
+}
+#accordion  .block .cont2
+{
+	background: url(../../../images/ui/accordion/accordbg.png);
+	width: 279px;
+	padding: 10px  15px 0 15px;
+	height: auto;
+
+}
+#accordion  .block  .top
+{
+	background:	url(../../../images/ui/accordion/accordtop.png) no-repeat;
+	width: 309px;
+	height: 10px;
+	font-size: 1px;
+}
+#accordion  .block  .bot
+{
+	background: url(../../../images/ui/accordion/accordbot.png);
+	width: 309px;
+	height: 11px;
+	font-size: 1px;
+}
+#accordion  .block  .body
+{
+	margin-top: -10px;
+}
+#accordion  .block.selected  .body
+{
+	_margin-top: 46px;
+}
+.plug
+{
+	width:309px;
+	height:56px;
+	 position:absolute;
+	 z-index:101;
+	 background: url(../../../images/ui/blank.gif);
+}
+
+
+
+#accordion2,
+#accordion3,
+#accordion4,
+#accordion5,
+#accordion6,
+#accordion7
+{
+		z-index:100;
+}
+
+#accordion2 .block,
+ #accordion3 .block,
+ #accordion4 .block,
+ #accordion5 .block,
+ #accordion6 .block,
+  #accordion7 .block
+{
+	width: 309px;
+	float: left;
+	margin-right: 5px;
+
+}
+#accordion2 .block .title,
+#accordion3 .block .title,
+#accordion4 .block .title,
+#accordion5 .block .title,
+#accordion6 .block .title,
+#accordion7 .block .title
+{
+	background: url(../../../images/ui/accordion/accordpassive.jpg);
+	padding-left: 24px;
+	width: 285px;
+	height: 56px;
+	font-size: 20px;
+	line-height: 50px;
+	text-transform: uppercase;
+	color: #96999d;
+	position:relative;
+	cursor:pointer;
+}
+#accordion2 .block .title .name,
+#accordion3 .block .title .name,
+#accordion4 .block .title .name,
+#accordion5 .block .title .name,
+#accordion6 .block .title .name,
+#accordion7 .block .title .name
+{
+	position:relative;
+	z-index:10;
+}
+
+#accordion2 .block .title .shadow,
+#accordion3 .block .title .shadow,
+#accordion4 .block .title .shadow,
+#accordion5 .block .title .shadow,
+#accordion6 .block .title .shadow,
+#accordion7 .block .title .shadow
+{
+	position:absolute;
+	top:1px;
+	margin-left: 1px;
+	z-index:9;
+	color: #FFF;
+}
+
+
+#accordion2 .block.selected,
+#accordion3 .block.selected,
+#accordion4 .block.selected,
+#accordion5 .block.selected,
+#accordion6 .block.selected,
+#accordion7 .block.selected
+{
+	left: 0px;
+	padding-bottom: 10px;
+}
+
+#accordion2 .block .selected,
+#accordion3 .block .selected,
+#accordion4 .block .selected,
+#accordion5 .block .selected,
+#accordion6 .block .selected,
+#accordion7 .block .selected
+{
+	color: #30363b;
+	background: url(../../../images/ui/accordion/accordactive.jpg) no-repeat;
+}
+#accordion2 .block .cont,
+#accordion3 .block .cont,
+#accordion4 .block .cont,
+#accordion5 .block .cont,
+#accordion6 .block .cont,
+#accordion7 .block .cont
+{
+	background: url(../../../images/ui/accordion/accordbg.png);
+	width: 279px;
+	padding: 10px  15px 0 15px;
+	/*min-height: 427px;*/
+	zoom:1;
+
+}
+#accordion2 .block .cont2,
+#accordion3 .block .cont2,
+#accordion4 .block .cont2,
+#accordion5 .block .cont2,
+#accordion6 .block .cont2,
+#accordion7 .block .cont2
+{
+	background: url(../../../images/ui/accordion/accordbg.png);
+	width: 279px;
+	padding: 10px  15px 0 15px;
+	height: auto;
+	zoom:1;
+
+}
+
+#accordion2 .block  .top,
+#accordion3 .block  .top,
+#accordion4 .block  .top,
+#accordion5 .block  .top,
+#accordion6 .block  .top,
+#accordion7 .block  .top
+{
+	background:	url(../../../images/ui/accordion/accordtop.png) no-repeat;
+	width: 309px;
+	height: 10px;
+	font-size: 1px;
+	position:relative;
+	z-index:112;
+	_display: none;
+
+}
+#accordion2 .block  .bot,
+#accordion3 .block  .bot,
+#accordion4 .block  .bot,
+#accordion5 .block  .bot,
+#accordion6 .block  .bot,
+#accordion7 .block  .bot
+{
+	background: url(../../../images/ui/accordion/accordbot.png);
+	width: 309px;
+	height: 11px;
+	font-size: 1px;
+}
+#accordion2 .block .body,
+#accordion3 .block .body,
+#accordion4 .block .body,
+#accordion5 .block .body,
+#accordion6 .block .body,
+#accordion7 .block .body
+{
+	margin-top: -10px;
+
+}
+#accordion2 .block.selected .body,
+#accordion3 .block.selected .body,
+#accordion4 .block.selected .body,
+#accordion5 .block.selected .body,
+#accordion6 .block.selected .body,
+#accordion7 .block.selected .body
+{
+	/*_margin-top: 46px;*/
+}
+/*   */
+#accordion8
+{
+	position:relative;
+	z-index:100;
+	float:left;
+	margin-right:-628px
+}
+
+#accordion8 .block
+{
+	width: 309px;
+	float: left;
+	margin-right: 5px;
+
+}
+#accordion8 .block .title
+{
+	background: url(../../../images/ui/accordion/accordpassive.jpg);
+	padding-left: 24px;
+	width: 285px;
+	height: 56px;
+	font-size: 20px;
+	line-height: 50px;
+	text-transform: uppercase;
+	color: #96999d;
+	position:relative;
+	cursor:pointer;
+}
+#accordion8 .block .title .name
+{
+	position:relative;
+	z-index:10;
+}
+
+#accordion8 .block .title .shadow
+{
+	position:absolute;
+	top:1px;
+	margin-left: 1px;
+	z-index:9;
+	color: #FFF;
+}
+
+
+#accordion8 .block.selected
+{
+	left: 0px;
+	padding-bottom: 10px;
+}
+
+#accordion8 .block .selected
+{
+	color: #30363b;
+	background: url(../../../images/ui/accordion/accordactive.jpg) no-repeat;
+}
+#accordion8 .block .cont
+{
+	background: url(../../../images/ui/accordion/accordbg.png);
+	width: 279px;
+	padding: 10px  15px 0 15px;
+	height: 427px;
+	zoom:1;
+
+}
+#accordion8 .block .cont2
+{
+	background: url(../../../images/ui/accordion/accordbg.png);
+	width: 279px;
+	padding: 10px  15px 0 15px;
+	height: auto;
+	zoom:1;
+
+}
+
+#accordion8 .block  .top
+
+{
+	background:	url(../../../images/ui/accordion/accordtop.png) no-repeat;
+	width: 309px;
+	height: 10px;
+	font-size: 1px;
+	position:relative;
+	z-index:112;
+	_display: none;
+
+}
+#accordion8 .block  .bot
+{
+	background: url(../../../images/ui/accordion/accordbot.png);
+	width: 309px;
+	height: 11px;
+	font-size: 1px;
+}
+#accordion8 .block .body
+
+{
+	margin-top: -10px;
+
+}
+#accordion8 .block.selected .body
+{
+	/*_margin-top: 46px;*/
+}
+
+.plug
+{
+	width:309px;
+	height:56px;
+	 position:absolute;
+	 z-index:101;
+	 background: url(../../../images/ui/blank.gif);
+}
+
+#accordion .block .title .current {
+    text-decoration: underline;
+}

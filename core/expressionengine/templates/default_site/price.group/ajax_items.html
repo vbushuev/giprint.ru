@@ -1,0 +1,9 @@
+{if segment_3!==""}
+<select id="sel-3" class="isel">
+    <option value="">Выберите товар</option>
+    {exp:channel:entries channel="products" category="{segment_3}" dynamic="off"}
+    {if product_title==""}<option value="{entry_id}">{title}</option>{if:else}<option value="{entry_id}">{product_title}</option>{/if}
+    {/exp:channel:entries}
+</select>
+<span class="itxt">Наименование товара&nbsp;</span>
+{/if}
