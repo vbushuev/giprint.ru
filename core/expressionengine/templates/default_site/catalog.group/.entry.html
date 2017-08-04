@@ -31,7 +31,7 @@
                         UploadComplete: function(up, files) {
                             var $productFiles = $('.order_attachments');
 
-                            console.log(files);
+                            // console.log(files);
 
                             var filenames = [];
                             plupload.each(files, function(file) {
@@ -837,7 +837,7 @@
                     $(this).text($(this).text().replace(/(\d+)\s.+/, "$1 шт."));
                 });
                 */
-                console.debug(product);
+                // console.debug(product);
                 for (var i in product.stock) {
                     var stock = product.stock[i]; // склад
                     if (stock.stock_level != 0 && stock.stock_level != '0') {
@@ -847,7 +847,7 @@
                         for (var i1 in k) {
                             if(typeof(product.modifiers[k[i1]].options[v[i1]])=="undefined")break;
                             for (var i2 in k) {
-                                console.debug(i1,i2);
+                                // console.debug(i1,i2);
                                 if (i1 != i2) {
                                     if (typeof(product.modifiers[k[i1]].options[v[i1]]["combinations"]) == "undefined") product.modifiers[k[i1]].options[v[i1]]["combinations"] = {};
                                     if (typeof(product.modifiers[k[i1]].options[v[i1]]["combinations"][k[i2]]) == "undefined") product.modifiers[k[i1]].options[v[i1]]["combinations"][k[i2]] = {};
@@ -870,9 +870,9 @@
                         format = $("[name=modifiers_199] option:selected").attr("price").replace(/([\+\-]\d+\.?\d*).+/, "$1"),
                         count = $("[name=modifiers_200] option:selected").attr("price").replace(/([\+\-]\d+\.?\d*).+/, "$1"),
                         quantity = $("[name=modifiers_200] option:selected").text().replace(/(\d+).*/, "$1");
-                    console.debug("price=" + total + " paper=" + paper + " format=" + format + " count=" + count + " quantity=" + quantity);
+                    // console.debug("price=" + total + " paper=" + paper + " format=" + format + " count=" + count + " quantity=" + quantity);
                     total += parseFloat(paper) + parseFloat(format) + parseFloat(count);
-                    console.debug("price=" + total + " total=" + (total * parseInt(quantity)));
+                    // console.debug("price=" + total + " total=" + (total * parseInt(quantity)));
                     //total = ((typeof(window.currentSelectedItem)!="undefined")?window.currentSelectedItem.price:total)*parseInt(quantity);
                     total = (total) * parseInt(quantity);
                     if (!isNaN(total)) {
@@ -887,7 +887,7 @@
                         "200": $('[name=modifiers_200]').val(),
                         selected: $('[name=modifiers_200] :selected').text()
                     };
-                    console.debug(choosen);
+                    // console.debug(choosen);
                     $(".p-modifiers-select[name=modifiers_200] > option").addClass("option-hidden").hide();
                     for (var i in product.stock) {
                         var s = product.stock[i];
@@ -895,10 +895,10 @@
                             $(".p-modifiers-select[name=modifiers_200] > option[value='" + s.opt_values["200"] + "']").removeClass("option-hidden").show();
                         }
                     }
-                    console.debug("visible options = " + $(".p-modifiers-select[name=modifiers_200] option::not(.option-hidden)").length);
+                    // console.debug("visible options = " + $(".p-modifiers-select[name=modifiers_200] option::not(.option-hidden)").length);
                     var new_s = $(".p-modifiers-select[name=modifiers_200] option:not(.option-hidden):contains('" + choosen.selected + "')").val();
                     if (new_s) {
-                        console.debug("new value by text =" + new_s)
+                        // console.debug("new value by text =" + new_s)
                         $(".p-modifiers-select[name=modifiers_200]").val(new_s);
                         choosen["200"] = new_s;
                     }
@@ -1075,14 +1075,14 @@
                         return false;
                     }
                     var postData = $('#p_newcalc').serializeArray();
-                    console.debug('postData',postData);
+                    // console.debug('postData',postData);
                     $.ajax({
                         url: document.location.href,
                         type: "POST",
                         data: postData,
                         success: function(data, textStatus, jqXHR) {
                             $.get('{site_url}store/ajax_checkout', function(data) {
-                                console.debug("ajax_checkout get");
+                                // console.debug("ajax_checkout get");
                                 var s = '<form method="POST" action="' + document.location.href + '" id="_submit_form">';
                                 s += '<input type="hidden" name="_params" value="' + $(data).find("input[name=_params]").val() + '"/>';
                                 s += '<input type="hidden" name="XID" value="' + $(data).find("input[name=XID]").val() + '"/>';
@@ -1097,7 +1097,7 @@
                                 s += '<input type="hidden" name="billing_phone" value="' + $("input[name=billing_phone]").val() + '"/>';
                                 s += '<input type="hidden" name="order_email" value="' + $("input[name=order_email]").val() + '"/>';
                                 s += '</form>';
-                                console.debug(s);
+                                // console.debug(s);
                                 var form = $(s).appendTo('#p_newcalc');
                                 //form.submit();
 
@@ -1105,7 +1105,7 @@
                                 //$("form.store_product_form input").each(function(){if($(this).attr("name").match(/modifier/i))$(this).remove();});
                                 //console.debug($('form.store_product_form').serializeArray());
                                 var _form_ = $('#_submit_form');
-                                console.debug(_form_);
+                                // console.debug(_form_);
                                 if(confirm("Продолжаем?"))
                                 HTMLFormElement.prototype.submit.call(_form_[0]);
                                 return false;

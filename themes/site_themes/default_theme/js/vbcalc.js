@@ -11,8 +11,8 @@ Number.prototype.currency=function(){
     }
     return r;
 }
-// var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234,290],
-var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234],
+var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234,290],
+// var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234],
     __cms = [24,25,30,35,49,51,52,124,134,160,230,234];
 var countModifiers = function(prod){
     for(var i in prod){
@@ -20,35 +20,21 @@ var countModifiers = function(prod){
     }
     return 0;
 };
-var drawModifier=function(mod,itr){
-    var $container = $("#product_modifiers"),ei = $('[name=entry_id]').val(),$c = $('<div class="p-row"></div>').appendTo($container),modNames=["Тип","Формат","Тираж"],
-        options='';
-    console.debug("drawModifier",itr,mod);
-    for(var i in mod){
-        var re = /^\s*(A|А)\d+\s*$/;
-        console.debug(i.match(re)?"matched":"nomatch",i);
-        if(itr==2 && i.match(re))modNames[2]="Размерость";
-        options+='<option>'+i+'</option>';
-    }
-    $('<div class="p-label p-required">'+modNames[itr]+'</div>').appendTo($c);
-    $c = $('<div class="p-value"></div>').appendTo($c);
-    $c = $('<select id="'+(ei+"_"+itr)+'"  data-field="'+itr+'" data-name="'+modNames[itr]+'" class="p-modifiers-select-builded modifier_selecting " onchange="vbCalculate(true)" uid="'+ei+'" required></select>').appendTo($c);
-    $c.append(options);
-}
 var vbBuildTable=function(ei){
     if(typeof(vbStock)=="undefined") {console.debug("no vbStock defined");return;}
     if(typeof(vbStock[ei])=="undefined")  {console.debug("no "+ei+" defined in  vbStock");return;}
     $("li.textrelise,.textrelise:empty").hide();
     var prod = vbStock[ei], isTabs = countModifiers(prod)>2;
     var tabs=[], rows=[],col=[],colMade = false;
-    var drawRows = function(prow){
+    var drawRows = function(prow,key){
         var colMade = false,rows=[],col=[];
-        console.debug(prow);
+        key = (key==null || typeof(key)=="undefined")?"":key;
+        // console.debug(prow);
         for(var i in prow){
             var row = [];
             if(typeof(prow[i].title)!="undefined"){
                 var title = prow[i].title;
-                title = (typeof(prow[i].image)!="undefined")?'<img alt="'+i+'" src="'+prow[i].image+'"><br>'+title:title;
+                title = (typeof(prow[i].image)!="undefined")?'<img alt="'+i+'" src="'+prow[i].image+'" width="100%"><br>'+title:title;
                 row.push('<td class="grey" style="max-width:160px;">'+title+'</td>');
 
             }
@@ -58,7 +44,7 @@ var vbBuildTable=function(ei){
                 (!colMade)?col.push('<td class="grey">'+j+'</td>'):{};
                 var price = parseFloat(prices[j]),
                     quantity = j.replace(/"/g,'\"');
-                row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
+                row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="'+key+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
             }
             colMade=true;
             rows.push('<tr>'+row.join('')+'</tr>')
@@ -71,20 +57,7 @@ var vbBuildTable=function(ei){
         $tabs.html('').addClass("p-tab1");
         for(var k in prod){
             tabLinks[k]='<a class="p-tab'+t+'" href="javascript:{$(\'#p-tabs\').attr(\'class\',\'p-tab'+t+'\').attr(\'data-val\',\''+k+'\');void(0);}">'+k+'</a>';
-            // for(var i in prod[k]){
-            //     var row = [];
-            //     row.push('<td class="grey" style="max-width:160px;padding:4px;">'+i+'</td>');
-            //     for(var j in prod[k][i]){
-            //         (!colMade)?col.push('<td class="grey">'+j+'</td>'):{};
-            //         var price = parseFloat(prod[k][i][j]),
-            //             quantity = j.replace(/"/g,'\"');
-            //
-            //         row.push('<td class="'+((price>0)?'grey1 ':'')+'" data-type="'+k+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>');
-            //     }
-            //     colMade=true;
-            //     rows.push('<tr>'+row.join('')+'</tr>')
-            // }
-            var dr = drawRows(prod[k]);
+            var dr = drawRows(prod[k],k);
             rows=dr[0];
             col = dr[1];
             tables[t] = '<div class="p-tab'+t+'"><table class="features-table features-table-new">\
@@ -102,20 +75,7 @@ var vbBuildTable=function(ei){
     }
     else {
         var $table = $('<table class="features-table features-table-new"></table>').insertAfter(".features-table:first");
-        // for(var i in prod){
-        //     var row = [];
-        //     row.push('<td class="grey" style="max-width:160px;">'+i+'</td>');
-        //     for(var j in prod[i]){
-        //         (!colMade)?col.push('<td class="grey">'+j+'</td>'):{};
-        //         var price = parseFloat(prod[i][j]);
-        //         // row.push('<td class="grey1" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>');
-        //         row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+j.replace(/"/g,'\"')+'" onclick="vbSetCalculator(this)" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
-        //     }
-        //     colMade=true;
-        //     rows.push('<tr>'+row.join('')+'</tr>')
-        // }
-        //console.debug(rows.join(' '));
-        var dr = drawRows(prod);
+        var dr = drawRows(prod,null);
         rows=dr[0];
         col = dr[1];
         $table.html('');
@@ -126,6 +86,23 @@ var vbBuildTable=function(ei){
     $(".features-table:not(.features-table-new),#p-tabs:not(.features-table-new)").remove();
     $("body").trigger("vb:tableLoaded");
 };
+var drawModifier=function(mod,itr){
+    var $container = $("#product_modifiers"),ei = $('[name=entry_id]').val(),$c = $('<div class="p-row"></div>').appendTo($container),modNames=["Тип","Формат","Тираж"],
+        options='', arrData = mod;
+    arrData = (typeof(arrData.prices)!="undefined")?arrData.prices:mod;
+    console.debug("drawModifier",itr,arrData,mod);
+
+    for(var i in arrData){
+        // console.debug("drawModifier - ",i,arrData,mod);
+        var re = /^\s*(A|А)\d+\s*$/;
+        if(itr==2 && i.match(re))modNames[2]="Размерость";
+        options+='<option>'+((typeof(arrData[i].title)!="undefined")?arrData[i].title:i)+'</option>';
+    }
+    $('<div class="p-label p-required">'+modNames[itr]+'</div>').appendTo($c);
+    $c = $('<div class="p-value"></div>').appendTo($c);
+    $c = $('<select id="'+(ei+"_"+itr)+'"  data-field="'+itr+'" data-name="'+modNames[itr]+'" class="p-modifiers-select-builded modifier_selecting " onchange="vbCalculate(true)" uid="'+ei+'" required></select>').appendTo($c);
+    $c.append(options);
+}
 var vbBuildCalculator=function(ei){
     if(typeof(vbStock)=="undefined") {console.debug("no vbStock defined");return;}
     if(typeof(vbStock[ei])=="undefined")  {console.debug("no "+ei+" defined in  vbStock");return;}
@@ -150,15 +127,17 @@ var vbBuildCalculator=function(ei){
     $("body").trigger("vb:calculatorLoaded");
 }
 var vbRebuildCalculator = function(prod,ei,itr,manual){
-    var eid = "#"+ei+"_"+itr.toString(),was = $(eid).val();
+    var eid = "#"+ei+"_"+itr.toString(),was = $(eid).val(),
+        arrData = (typeof(prod)!="undefined" && typeof(prod.prices)!="undefined")?prod.prices:prod;
     if(!$(eid).length)return;
     $(eid).html('');
-    for(var j in prod){
+    for(var j in arrData){
         var wasSelected = false;
+        // if(manual)wasSelected = (was==j && arrData[j]!=-1);
         if(manual)wasSelected = (was==j);
         else if(typeof(selectedCell["d"+itr])!="undefined" && selectedCell["d"+itr]==j)wasSelected=true;
-        // console.debug(eid,was,j,wasSelected,(was==j)?"matched":"no match");
-        $(eid).append('<option'+(wasSelected?' selected="selected"':'')+'>'+j+'</option>');
+        // $(eid).append('<option'+((wasSelected || (arrData[j]!=-1))?' selected="selected"':'')+'>'+j+'</option>');
+        $(eid).append('<option'+((wasSelected)?' selected="selected"':'')+'>'+j+'</option>');
     }
 };
 var vbCalculate=function(){
@@ -167,15 +146,22 @@ var vbCalculate=function(){
     var ei = $('[name=entry_id]').val(),stock = vbStock[ei],qty = 1,total=0,data="", isTabs = countModifiers(stock)>=3, itr=isTabs?0:1,manual = arguments.length&&arguments[0]==true?true:false;
     $(".p-modifiers-select-builded").each(function(){
         var $t = $(this),n=$t.attr("data-name"),v=$t.val();
+        while(v==-1){
+            $t=$(this).find(":selected").next().attr("selected","selected");
+            n=$t.attr("data-name");
+            v=$t.val();
+        }
+        console.debug(stock,n,v);
         itr++;
         data+=n+": "+v+"<br>";
-        stock = stock[v];
+        // stock = stock[v];
+        stock = ((typeof(stock.prices)!="undefined") && (typeof(stock.prices[v])!="undefined")) ?stock.prices[v]:stock[v];
         vbRebuildCalculator(stock,ei,itr,manual);
         if(n=="Тираж")qty = parseInt(v.replace(/\D/ig,""));
-        // console.debug(stock,n,v);
+
     });
     total = parseFloat(stock)*qty;
-    //console.debug(total,qty);
+    console.debug(total,qty);
     if($("#comment").val().length)data+="Комментарий: "+$("#comment").val()+"<br/>";
     //data= "Параметры заказа:"+data;
     $("[data-name=price]").val(total.toFixed(2));
@@ -202,7 +188,7 @@ var vbSetCalculator = function(t){
 $("body").on("vb:stockLoaded",function(e,d){
     var ei = $("[name=entry_id]").val();
     if(typeof(ei)!="undefined"){
-        console.debug('Build new tables by '+ei);
+        // console.debug('Build new tables by '+ei);
         vbBuildTable(ei);
         $("body").unbind("vb:stockLoaded");
     }
@@ -226,7 +212,7 @@ $("body").on("vb:tableLoaded", function(e) {
     });
 });
 $("body").on("vb:calculatorLoaded", function(e) {
-    console.debug(selectedCell);
+    // console.debug(selectedCell);
     $(".p-modifiers-select-builded option:contains('"+selectedCell.t+"'):first").attr("selected","selected");
     $(".p-modifiers-select-builded option:contains('"+selectedCell.f+"'):first").attr("selected","selected");
     $(".p-modifiers-select-builded option:contains('"+selectedCell.q+"'):first").attr("selected","selected");
@@ -240,7 +226,7 @@ $("body").on("vb:calculatorLoaded", function(e) {
 });
 //start trigger
 $.getJSON("/themes/site_themes/default_theme/vbstock.json",function(d){
-    console.debug(d);
+    // console.debug(d);
     window.vbStock = d;
     $("body").trigger("vb:stockLoaded",[d]);
 });

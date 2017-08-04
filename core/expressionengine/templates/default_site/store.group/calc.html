@@ -398,7 +398,7 @@ window.priceNumber = function(d) {
     if (d >= 1000) {
         na = a[0].split("").reverse();
         var c = 3;
-        //console.debug(na);
+        ////console.debug(na);
         for (var i in na) {
             n += na[i];
             if (--c <= 0) {
@@ -429,7 +429,7 @@ var getStock = function(ei){
             ss = ss[o][stockItem.opt_values[o]];
         }
     }
-    console.debug(st2);
+    //console.debug(st2);
     return st2;
 };
 window.onVarChange = function(p,stock){
@@ -453,7 +453,7 @@ window.onVarChange = function(p,stock){
 };
 window.onInitCalc = function(s){
     var itm = (typeof(currentSelectedItem)!="undefined")?currentSelectedItem:null;
-    console.debug("selected cell",itm);
+    //console.debug("selected cell",itm);
     for(var i in q_fields){
         $(".p-modifiers-select[name=modifiers_"+q_fields[i]+"] option").each(function(){
             $(this).text($(this).text().replace(/\s*(\d+).*/ig, "$1").replace(/\D+/ig, "")+" шт.");
@@ -490,14 +490,14 @@ window.onCaclulate = function (p){
     $(".p-modifiers-select option:selected").each(function(){
         var adds =$(this).attr("price");
         if(typeof adds!="undefined" && adds!=false){
-            //console.debug(total+"+("+adds+") of "+$(this).text());
+            ////console.debug(total+"+("+adds+") of "+$(this).text());
             adds = parseFloat(adds);
             total+= adds;
         }
     });
     quantity = parseInt($(".p-modifiers-select[data-name*='ираж'] option:selected").text().replace(/\D+/ig,""));
     quantity = (quantity==0 || typeof(quantity)=="undefined" || isNaN(quantity))?$("input[name=item_qty]").val():quantity;
-    console.debug("price="+total+" quantity="+quantity);
+    //console.debug("price="+total+" quantity="+quantity);
     total *=quantity;
     if (!isNaN(total)) {
         $("input[name=item_qty]").val(quantity);
@@ -508,7 +508,7 @@ window.onCaclulate = function (p){
 </script>
 <script type="text/javascript">
     function initCalculator() {
-        console.log("init calc");
+        //console.log("init calc");
 
 
         var uid = '{embed:entry_id}'; // id продукта
@@ -553,7 +553,7 @@ window.onCaclulate = function (p){
                     plupload.each(files, function(file) {
                         filenames.push(file.target_name);
                     });
-                    console.debug($productFiles,filenames);
+                    //console.debug($productFiles,filenames);
                     $productFiles.val(filenames.join());
 
                 }
@@ -611,7 +611,7 @@ window.onCaclulate = function (p){
             var postData = $(entrySel + '.store_product_form').serializeArray();
             var formURL = $(entrySel + '.store_product_form').attr("action");
 
-            console.debug(postData);
+            //console.debug(postData);
             //if(confirm("continue"))
             $.ajax({
                 url: formURL,
@@ -619,7 +619,7 @@ window.onCaclulate = function (p){
                 data: postData,
                 success: function(data, textStatus, jqXHR) {
                     $.get('{site_url}store/ajax_checkout_foxdar/', function(data) {
-                        console.debug("ajax_checkout get");
+                        //console.debug("ajax_checkout get");
                         var s = '<form method="POST" action="' + document.location.href + '" id="_submit_form">';
                         s += '<input type="hidden" name="_params" value="' + ($(data).find("input[name=_params]").length?$(data).find("input[name=_params]").val():$("input[name=_params]").val()) + '"/>';
                         s += '<input type="hidden" name="XID" value="' + ($(data).find("input[name=XID]").length?$(data).find("input[name=XID]").val():$("input[name=XID]").val()) + '"/>';
@@ -634,14 +634,14 @@ window.onCaclulate = function (p){
                         s += '<input type="hidden" name="billing_phone" value="' + $("input[name=billing_phone]").val() + '"/>';
                         s += '<input type="hidden" name="order_email" value="' + $("input[name=order_email]").val() + '"/>';
                         s += '</form>';
-                        console.debug(s);
+                        //console.debug(s);
                         var form = $(s).appendTo('.checkout_placeholder');
-                        console.debug("appended");
+                        //console.debug("appended");
                         //form.submit();
 
-                        //console.debug(data);
+                        ////console.debug(data);
                         //$("form.store_product_form input").each(function(){if($(this).attr("name").match(/modifier/i))$(this).remove();});
-                        //console.debug($('form.store_product_form').serializeArray());
+                        ////console.debug($('form.store_product_form').serializeArray());
                         //if(confirm("Все ок?"))
                             HTMLFormElement.prototype.submit.call($('#_submit_form')[0]);
                         return false;
@@ -655,8 +655,8 @@ window.onCaclulate = function (p){
             //HTMLFormElement.prototype.submit.call($('form.store_product_form')[0]);
             return false;
         });
-        console.debug('p_maket count:'+$('#p_maket').length);
-        console.debug('.uploader_container-'+uid+' count:'+$('.uploader_container-'+uid).length);
+        //console.debug('p_maket count:'+$('#p_maket').length);
+        //console.debug('.uploader_container-'+uid+' count:'+$('.uploader_container-'+uid).length);
         $('#p_maket').click(function() {
 
             $('.uploader_container-'+uid).show();
@@ -686,7 +686,7 @@ window.onCaclulate = function (p){
                 }
             });
             itm.q = itm.q.replace(/(\d+).*/, "$1");
-            console.debug("quantity = " + itm.q);
+            //console.debug("quantity = " + itm.q);
             $('.item_qty').val(itm.q).change();
             if (found) {
                 $('.modifier_selecting.modifiers_200 > option').removeAttr("selected");
@@ -696,12 +696,12 @@ window.onCaclulate = function (p){
             }
         };
         $("#calc-block").on("custom:form_ajax_checkout_loaded", function(e) {
-            console.debug("custom:form_ajax_checkout_loaded event occurs");
+            //console.debug("custom:form_ajax_checkout_loaded event occurs");
             _show_form();
             $(this).unbind("custom:form_ajax_checkout_loaded");
             $(".modifiers_200").change(function() {
                 var val = parseInt($(this).val());
-                console.debug("Тираж: " + val);
+                //console.debug("Тираж: " + val);
                 if (844 < val < 853) $('.item_qty').val(300);
                 else if (853 < val) $('.item_qty').val(500);
                 else $('.item_qty').val(100);
