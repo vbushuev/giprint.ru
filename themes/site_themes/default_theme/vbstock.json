@@ -1916,7 +1916,258 @@
             }
         }
     },
-    "117": {
+    "117":{
+        "options": {
+            "style": "product_box",
+            "tabs": "true"
+        },
+        "С кручеными ручками": {
+             "Крафт пакет бумажный 43х32х12": {
+                "title": "Крафт пакет бумажный 43х32х12 с кручеными ручками (90 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/6dd.jpg",
+                "prices": {
+                    "1 шт.": 19.5
+                }
+            },
+             "Крафт пакет бумажный 42,5х32х13": {
+                "title": "Крафт пакет бумажный 42,5х32х13 с кручеными ручками (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/6dd.jpg",
+                "prices": {
+                    "1 шт.": 30
+                }
+            },
+             "Крафт пакет бумажный 42,5х32х13": {
+                "title": "Крафт пакет бумажный 42,5х32х13 белые с кручеными ручками (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/6dd.jpg",
+                "prices": {
+                    "1 шт.": 34.5
+                }
+            },
+             "Крафт пакет бумажный 34,5х26х11": {
+                "title": "Крафт пакет бумажный 34,5х26х11 с кручеными ручками (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/7_ee.jpg",
+                "prices": {
+                    "1 шт.": 25.5
+                }
+            },
+             "Крафт пакет бумажный 34,5х26х11": {
+                "title": "Крафт пакет бумажный 34,5х26х11 белые с кручеными ручками (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/7_ee.jpg",
+                "prices": {
+                    "1 шт.": 28.5
+                }
+            },
+             "Пакет 25х18х8": {
+                "title": "Пакет 25х18х8 (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/9ff.jpg",
+                "prices": {
+                    "1 шт.": 24
+                }
+            },
+             "Пакет 25х18х8": {
+                "title": "Пакет 25х18х8 белые (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/9ff.jpg",
+                "prices": {
+                    "1 шт.": 27.3
+                }
+            },
+             "Пакеты 20х18х8": {
+                "title": "Пакеты 20х18х8 (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/11kj.jpg",
+                "prices": {
+                    "1 шт.": 18.9
+                }
+            },
+             "Пакеты 20х18х8": {
+                "title": "Пакеты 20х18х8 белые (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/11kj.jpg",
+                "prices": {
+                    "1 шт.": 20.4
+                }
+            },
+             "Пакеты 39,5х15х8": {
+                "title": "Пакеты 39,5х15х8 в полоску окрашен. в бордовый цвет (120 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/12df.jpg",
+                "prices": {
+                    "1 шт.": 37.5
+                }
+            },
+             "Пакеты 39,5х15х8": {
+                "title": "Пакеты 39,5х15х8 белые (120 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/12df.jpg",
+                "prices": {
+                    "1 шт.": 33.75
+                }
+            },
+             "Пакеты 39,5х15х8": {
+                "title": "Пакеты 39,5х15х8 (120 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/12df.jpg",
+                "prices": {
+                    "1 шт.": 28.5
+                }
+            },
+             "Пакеты 39,5х18х8": {
+                "title": "Пакеты 39,5х18х8 (120 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/12df.jpg",
+                "prices": {
+                    "1 шт.": 27
+                }
+            }
+        },
+        "С плоскими ручками": {
+             "Крафт пакет бумажный 48х44,5х18": {
+                "title": "Крафт пакет бумажный 48х44,5х18 с плоск. ручками (100 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/1jdks.jpg",
+                "prices": {
+                    "1 шт.": 24
+                }
+            },
+             "Крафт пакет бумажный 48х44,5х18": {
+                "title": "Крафт пакет бумажный 48х44,5х18 с плоск. ручками (90 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/1jdks.jpg",
+                "prices": {
+                    "1 шт.": 24
+                }
+            },
+             "Пакеты 43х32х17": {
+                "title": "Пакеты 43х32х17 с плоск. ручками (80 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/3kraft.jpg",
+                "prices": {
+                    "1 шт.": 16.5
+                }
+            },
+             "Пакеты 43х32х17": {
+                "title": "Пакеты 43х32х17 белые с плоск. ручками (80 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/3kraft.jpg",
+                "prices": {
+                    "1 шт.": 24
+                }
+            },
+             "Пакеты 43х32х17": {
+                "title": "Пакеты 43х32х17 белые с плоск. ручками (100 гр/м) пакеты 43х32х17 2-сл. КРАФТ+ КРАФТ (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/3kraft.jpg",
+                "prices": {
+                    "1 шт.": 24
+                }
+            },
+             "Пакеты 37х32х20": {
+                "title": "Пакеты 37х32х20 (80 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/4kraft.jpg",
+                "prices": {
+                    "1 шт.": 18
+                }
+            },
+             "Пакеты 37х32х20": {
+                "title": "Пакеты 37х32х20 белые (80 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/4kraft.jpg",
+                "prices": {
+                    "1 шт.": 22.5
+                }
+            },
+             "Пакеты (из": {
+                "title": "Пакеты (из крафт бумаги) 35х44,5х18 (горизонтальные) крафт (90 гр/м)",
+                "image": "",
+                "prices": {
+                    "1 шт.": 18.75
+                }
+            },
+             "Пакеты (крафт": {
+                "title": "Пакеты (крафт бумага) 35х19х9 (90 гр/м)",
+                "image": "",
+                "prices": {
+                    "1 шт.": 15
+                }
+            }
+        },
+        "Для фасовки и упаковки": {
+             "Крафт пакет 35,8х15,2х9,4 (70": {
+                "title": "Крафт пакет 35,8х15,2х9,4 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/1_meshki.jpg",
+                "prices": {
+                    "1 шт.": 6
+                }
+            },
+             "Крафт пакет 35х12х8 (70": {
+                "title": "Крафт пакет 35х12х8 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/2_meshki.jpg",
+                "prices": {
+                    "1 шт.": 5.5
+                }
+            },
+             "Крафт пакет 33х9х6,5 (70": {
+                "title": "Крафт пакет 33х9х6,5 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/3_meshki.jpg",
+                "prices": {
+                    "1 шт.": 6
+                }
+            },
+             "Пакет 32х18х12": {
+                "title": "Пакет 32х18х12 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/4_meshki.jpg",
+                "prices": {
+                    "1 шт.": 6
+                }
+            },
+             "Пакет 30,1х15,2х9,4": {
+                "title": "Пакет 30,1х15,2х9,4 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/5_meshki.jpg",
+                "prices": {
+                    "1 шт.": 6
+                }
+            },
+             "Пакеты 26х10х7": {
+                "title": "Пакеты 26х10х7 белый ВПМ (80 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/7_meshki.jpg",
+                "prices": {
+                    "1 шт.": 3
+                }
+            },
+             "Пакеты 26х10х7": {
+                "title": "Пакеты 26х10х7 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/7_meshki.jpg",
+                "prices": {
+                    "1 шт.": 5.5
+                }
+            },
+             "Пакеты 27,5х9х6,5": {
+                "title": "Пакеты 27,5х9х6,5 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/8_meshki.jpg",
+                "prices": {
+                    "1 шт.": 3.3
+                }
+            },
+            "Фасовочные пакеты 30х15х9,5 (70 гр/м)": {
+                "title": "30х15х9,5 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/10_meshki.jpg",
+                "prices": {
+                    "1 шт.": 6
+                }
+            },
+            "Фасовочные пакеты (крафт бумага) 30х17х10 (70 гр/м)": {
+                "title": "(крафт бумага) 30х17х10 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/11_meshki.jpg",
+                "prices": {
+                    "1 шт.": 8
+                }
+            },
+             "Пакеты фасовочные": {
+                "title": "Пакеты фасовочные (крафт бумага) 19х10х7 белый (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/13_meshki.jpg",
+                "prices": {
+                    "1 шт.": 5.5
+                }
+            },
+             "Пакеты фасочовные": {
+                "title": "Пакеты фасочовные (крафт бумага) 19х10х7 (70 гр/м)",
+                "image": "http://www.giprint.ru/images/uploads/13_meshki.jpg",
+                "prices": {
+                    "1 шт.": 5
+                }
+            }
+        }
+    },
+
+    "117_": {
         "Крафт-пакеты с кручеными ручками": {
             "крафт-пакеты 43х32х12 с кручеными ручками (90 гр/м)": {
                 "1 шт.": "19.5"
@@ -2516,6 +2767,10 @@
         }
     },
     "290": {
+        "options":{
+            "style":"product_box",
+            "tabs":"true"
+        },
         "Готовые коробки": {
             "Материал: картон": {
                 "title": "Размеры:длина 48 см, ширина 35 см, высота 8 см",
@@ -2630,7 +2885,7 @@
                     "200 шт.": 44.6
                 }
             },
-            "Короб тип  А4": {
+            "Короб тип А4": {
                 "title": "Короб тип А4 330*230*230 мм",
                 "image": "/images/sized/images/uploads/gotovie_korobki_2.jpg",
                 "prices": {
@@ -2639,7 +2894,7 @@
                     "200 шт.": -1
                 }
             },
-            "Короб тип  А4 1 наклейка": {
+            "Короб тип А4 1 наклейка": {
                 "title": "Короб тип А4 330*230*230 мм Размер наклейки на крышке: диаметр 50*50 скругл.углы мм",
                 "image": "/images/sized/images/uploads/gotovie_korobki_2.jpg",
                 "prices": {
@@ -2648,7 +2903,7 @@
                     "200 шт.": 77.8
                 }
             },
-            "Короб тип  А4 2 наклейки": {
+            "Короб тип А4 2 наклейки": {
                 "title": "Короб тип А4 330*230*230 мм Размер наклейки на крышке: диаметр 50*50 скругл.углы мм. На торце: 10*10см",
                 "image": "/images/sized/images/uploads/gotovie_korobki_2.jpg",
                 "prices": {
@@ -2657,7 +2912,7 @@
                     "200 шт.": 89.6
                 }
             },
-            "Короб тип  А3": {
+            "Короб тип А3": {
                 "title": "Короб тип А3 Размер:480*325*295 мм",
                 "image": "/images/sized/images/uploads/gotovie_korobki_3.jpg",
                 "prices": {
@@ -2666,7 +2921,7 @@
                     "200 шт.": -1
                 }
             },
-            "Короб тип  А3 1 наклейка": {
+            "Короб тип А3 1 наклейка": {
                 "title": "Короб тип А3 Размер:480*325*295 мм Размер наклейки на крышке:А6 формат",
                 "image": "/images/sized/images/uploads/gotovie_korobki_3.jpg",
                 "prices": {
@@ -2675,7 +2930,7 @@
                     "200 шт.": 106.9
                 }
             },
-            "Короб тип  А3 2 наклейки": {
+            "Короб тип А3 2 наклейки": {
                 "title": "Короб тип А3 Размер:480*325*295 мм Размер наклейки на крышке:А6 формат  На торце:90*50мм",
                 "image": "/images/sized/images/uploads/gotovie_korobki_3.jpg",
                 "prices": {
