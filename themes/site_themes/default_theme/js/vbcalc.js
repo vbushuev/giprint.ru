@@ -15,6 +15,7 @@ var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,
 // var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234],
     __cms = [24,25,30,35,49,51,52,124,134,160,230,234];
 var countModifiers = function(prod){
+    if(prod.options !== undefined) return (prod.options.tabs=="true")?3:2;
     for(var i in prod){
         for(var j in prod[i]) return (!isNaN(prod[i][j])||(typeof(prod[i].prices)!="undefined"))?2:3;
     }
@@ -31,27 +32,31 @@ var vbBuildTable=function(ei){
         key = (key==null || typeof(key)=="undefined")?"":key;
         // console.debug(prow);
         for(var i in prow){
+            console.debug(i,$.inArray(i,["options","option","style","value"]));
+            if($.inArray(i,["options","option","style","value"])!=-1)continue;
             var row = [];
             if(typeof(prow[i].title)!="undefined"){
                 var title = prow[i].title;
                 title = (typeof(prow[i].image)!="undefined")?'<img alt="'+i+'" src="'+prow[i].image+'" width="100%"><br>'+title:title;
                 row.push('<td class="grey" style="max-width:160px;">'+title+'</td>');
-
             }
+            // else if(!$.inArray(prow[i],["options","option","style","value"])) row.push('<td class="grey" style="max-width:160px;">'+i+'</td>');
             else row.push('<td class="grey" style="max-width:160px;">'+i+'</td>');
             var prices = (typeof(prow[i].prices)!="undefined")?prow[i].prices:prow[i];
             for(var j in prices){
-                (!colMade)?col.push('<td class="grey">'+j+'</td>'):{};
-                var price = parseFloat(prices[j]),
-                    quantity = j.replace(/"/g,'\"');
-                row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="'+key+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
+                var price = parseFloat((prices[j].value!=undefined)?prices[j].value:prices[j]),
+                    quantity = j.replace(/"/g,'\"'),
+                    styles = (prices[j].style !== undefined)?prices[j].style.join(" ")+" ":"";
+                (!colMade )?col.push('<td class="grey">'+j+'</td>'):{};
+                row.push('<td class="'+((price>0)?'grey1 ':'')+styles+'selected-cell" data-type="'+key+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
             }
             colMade=true;
             rows.push('<tr>'+row.join('')+'</tr>')
         }
+        console.debug([rows,col]);
         return [rows,col];
     }
-    if(typeof(prod.options)!="undefined") return vbBuildBoxes(ei);
+    if(typeof(prod.options)!="undefined" && prod.options.style=="product_box") return vbBuildBoxes(ei);
     if(isTabs){
         var $tabs = $('<div id="p-tabs" class="features-table-new"></div>').insertAfter( ($("#p-tabs").length)?"#p-tabs":".features-table:first")
             ,tabLinks = {},tables={},t=1;
@@ -98,7 +103,8 @@ var drawModifier=function(mod,itr){
         // console.debug("drawModifier - ",i,arrData,mod);
         var re = /^\s*(A|А)\d+\s*$/;
         if(itr==2 && i.match(re))modNames[2]="Размерость";
-        options+='<option>'+((typeof(arrData[i].title)!="undefined")?arrData[i].title:i)+'</option>';
+        // options+='<option>'+((typeof(arrData[i].title)!="undefined")?arrData[i].title:i)+'</option>';
+        options+='<option>'+i+'</option>';
     }
     $('<div class="p-label p-required">'+modNames[itr]+'</div>').appendTo($c);
     $c = $('<div class="p-value"></div>').appendTo($c);
@@ -153,11 +159,12 @@ var vbCalculate=function(){
             n=$t.attr("data-name");
             v=$t.val();
         }
-        // console.debug(stock,n,v);
+        console.debug(stock,n,v);
         itr++;
         data+=n+": "+v+"<br>";
         // stock = stock[v];
         stock = ( (typeof(stock.prices)!="undefined") && (typeof(stock.prices[v])!="undefined")) ?stock.prices[v]:stock[v];
+        stock = (stock.value !== undefined)?stock.value:stock;
         console.debug(stock,' -> ',v);
         vbRebuildCalculator(stock,ei,itr,manual);
         if(n=="Тираж")qty = parseInt(v.replace(/\D/ig,""));
@@ -185,20 +192,21 @@ var vbSetCalculator = function(t){
         d1:f1,
         d2:f2
     }
-    // console.debug(t,$t,selectedCell);
+    console.debug("vbSetCalculator: ",selectedCell);
     $(".calc_order:first").click();
 }
 var vbBuildBoxes = function(ei){
     if(typeof(vbStock)=="undefined") {console.debug("no vbStock defined");return;}
     if(typeof(vbStock[ei])=="undefined")  {console.debug("no "+ei+" defined in  vbStock");return;}
     if(typeof(vbStock[ei].options)=="undefined")  {console.debug("no options "+ei+" defined in vbStock["+ei+"]");return;}
-    var prod = vbStock[ei], isTabs = prod.options.tabs,drawBox=function(r,t,d){
+    var prod = vbStock[ei], isTabs = (prod.options.tabs=="true"),drawBox=function(r,t,d){
+        // console.debug("vbBuildBoxes:drawBox: ",r,t,d);
         var s = '<div class="productblock productblock-new">',fprice = null;
         s+= '<div class="image"><img src="'+d.image+'" alt="'+d.title+'" title="'+d.title+'" style="max-height:154px;width:auto;"></div>';
         // s+= '<div class="image"><img src="'+d.image+'" alt="'+d.title+'" title="'+d.title+'" width="100%"></div>';
         // s+= '<div class="title"><div class="razm">Размеры:</div> длина 9,5 см, ширина 3,5 см, высота 2,5 см</div>';
-        s+= '<div class="title">'+d.title+'</div>';
-        s+= '<div class="description">'+t+'</div>';
+        s+= '<div class="title">'+t+'</div>';
+        s+= '<div class="description">'+d.title+'</div>';
         s+= '<hr/>';
         s+= '<div class="pricek">';
         for(var i in d.prices){
@@ -216,7 +224,6 @@ var vbBuildBoxes = function(ei){
         s+='</div>';
         return s;
     };
-
     if(isTabs){
         var $content = $('<div id="p-tabs" class="features-table-new p-tab1"></div>').insertAfter( ($("#p-tabs").length)?"#p-tabs":".features-table:first"),t=1,
             tabBoxes=[], tabs=[];
@@ -230,11 +237,14 @@ var vbBuildBoxes = function(ei){
         }
         $content.append(tabs.join(''));
         $content.append(tabBoxes.join(''));
-        console.debug($content);
+        // console.debug($content);
     }else{
         var $content = $('<div class="p-tab1">'+'</div>').insertAfter(".features-table:first"),
             boxes = [];
-        for(var r in prod)boxes.push(drawBox("",r,prod[r]));
+        for(var r in prod){
+            if(r=="options")continue;
+            boxes.push(drawBox("",r,prod[r]));
+        }
         $content.append(boxes.join(''));
     }
     $(".features-table:not(.features-table-new),#p-tabs:not(.features-table-new),.productblock:not(.productblock-new)").remove();
@@ -265,6 +275,10 @@ $("body").on("vb:tableLoaded", function(e) {
 
         $(this).parent().parent().find("tr td.grey1:nth-child(" + (p + 1) + ")").css("background-color", "#d3dff1");
         $(this).parent().parent().find("tr:nth-child(2) td:nth-child(" + (p+1-greyqty) + ")").css("background-color", "#97bde3");
+    });
+    $(".productblock-new").on("click",function(e){
+        vbSetCalculator($(this).find(".selected-cell").get());
+        // $(this).find(".selected-cell").click();
     });
 });
 $("body").on("vb:calculatorLoaded", function(e) {

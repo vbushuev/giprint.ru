@@ -1,4 +1,3 @@
-<style>
     .p-modal {
         position: fixed;
         display: none;
@@ -289,4 +288,11 @@
     .uploader_container {
         border-color: rgba(16, 116, 188, .8)
     }
-</style>
+    /* cell style*/
+    .grey1.red {
+        color:red !important;
+    }
+    .grey1.bold {
+        font-size:110% !important;
+        font-weight:bolder !important;
+    }

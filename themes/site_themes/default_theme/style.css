@@ -4864,11 +4864,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', end
 	border: solid 4px rgb(255,255,255);
 }
 .ndesigntable .sstl{
-	background-color: rgb(40,56,144);
+	background-color: #97bde3;
 	color:rgb(255,255,255);
 }
 
 .ndesigntable .sstb{
-	background-color: rgb(112,182,231);
+	background-color: #97bde3;
 	color:rgb(255,255,255);
+}
+
+/* cell style*/
+.grey1.red {
+	color:red !important;
+}
+.grey1.bold {
+	font-size:110% !important;
+	font-weight:bolder !important;
 }
