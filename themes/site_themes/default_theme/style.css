@@ -3037,7 +3037,7 @@ body {
   padding: 0 4px;
   background: #d3dff1;
   border: 1px solid white;
-  color: #81a4cb !important;
+  color: #81a4cb;
   font-weight: bold;
 }
 td.grey1:hover {
@@ -4874,10 +4874,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', end
 }
 
 /* cell style*/
-.grey1.red {
-	color:red !important;
+.grey1.red,.red {
+	color:rgba(255,0,0,.65) !important;
 }
-.grey1.bold {
+.bold {
 	font-size:110% !important;
 	font-weight:bolder !important;
+}
+.red:hover {
+	color:rgba(255,0,0,1) !important;
+}
+.red:after{
+	content:'*'
 }

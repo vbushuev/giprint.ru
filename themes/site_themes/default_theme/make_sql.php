@@ -1,6 +1,8 @@
 <?php
-$entryIds = [24,25,30,35,49,51,52,53,54,123,124,134,160,230,231,234];
+$old_entryIds = [24,25,30,35,49,51,52,53,54,123,124,134,160,230,231,234];
+$entryIds = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234,290,317];
 foreach ($entryIds as $entry_id) {
+    if(in_array($entry_id,$old_entryIds))continue;
     echo "\n#".$entry_id."\n";
     echo "delete FROM `exp_store_product_modifiers` where entry_id=".$entry_id.";\n";
     echo "delete FROM `exp_store_stock` where entry_id=".$entry_id.";\n";

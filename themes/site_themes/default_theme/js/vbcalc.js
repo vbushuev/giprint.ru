@@ -11,7 +11,7 @@ Number.prototype.currency=function(){
     }
     return r;
 }
-var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234,290],
+var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234,290,317],
 // var __all = [24,25,29,30,31,33,34,35,37,40,41,46,47,49,51,52,53,54,77,83,88,108,117,123,124,134,160,166,177,183,184,221,230,231,232,234],
     __cms = [24,25,30,35,49,51,52,124,134,160,230,234];
 var countModifiers = function(prod){
@@ -62,6 +62,7 @@ var vbBuildTable=function(ei){
             ,tabLinks = {},tables={},t=1;
         $tabs.html('').addClass("p-tab1");
         for(var k in prod){
+            if(k=="options")continue;
             tabLinks[k]='<a class="p-tab'+t+'" href="javascript:{$(\'#p-tabs\').attr(\'class\',\'p-tab'+t+'\').attr(\'data-val\',\''+k+'\');void(0);}">'+k+'</a>';
             var dr = drawRows(prod[k],k);
             rows=dr[0];
@@ -167,7 +168,8 @@ var vbCalculate=function(){
         stock = (stock.value !== undefined)?stock.value:stock;
         console.debug(stock,' -> ',v);
         vbRebuildCalculator(stock,ei,itr,manual);
-        if(n=="Тираж")qty = parseInt(v.replace(/\D/ig,""));
+        if(n=="Тираж" && v.match(/шт\./i))qty = parseInt(v.replace(/\D/ig,""));
+        // if(n=="Тираж" && !v.match(/цвет/i)  && !v.match(/(А|A)\d+/i))qty = parseInt(v.replace(/\D/ig,""));
 
     });
     total = parseFloat(stock)*qty;
@@ -211,10 +213,13 @@ var vbBuildBoxes = function(ei){
         s+= '<div class="pricek">';
         for(var i in d.prices){
             var pr = d.prices[i];
+            var styl = (pr.style != undefined)?pr.style:["normal"];
+            var pr = (pr.value != undefined)? pr.value:pr;
+
             if(pr==-1)continue;
             if(fprice == null){
                 fprice = {price:pr,title:i};
-                s+=i+' - '+pr+'&nbsp;&#8381;<br/>';
+                s+='<span class="'+styl.join(' ')+'">'+i+' - '+pr+'&nbsp;&#8381;</span><br/>';
                 break;
             }
 

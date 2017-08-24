@@ -289,10 +289,16 @@
         border-color: rgba(16, 116, 188, .8)
     }
     /* cell style*/
-    .grey1.red {
-        color:red !important;
+    .red {
+        color:rgba(255,0,0,.65) !important;
     }
-    .grey1.bold {
+    .bold {
         font-size:110% !important;
         font-weight:bolder !important;
+    }
+    .red:hover {
+        color:rgba(255,0,0,1) !important;
+    }
+    .red:after{
+        content:'*'
     }

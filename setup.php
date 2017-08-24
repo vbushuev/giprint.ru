@@ -78,11 +78,13 @@ if(strlen($entityBody)){
             "231":{title:"Двухслойные бумажные стаканы - купить одноразовые стаканчики для кофе, горячих напитков | «Центральная типография»",url:"http://www.giprint.ru/dvuhsloinie-bumajnie-stakani"},
             "232":{title:"Воблеры рекламные",url:"http://giprint.ru/vobleri/"},
             "234":{title:"Ростовые фигуры - изготовление на заказ в Москве, из картона, ПВХ, пластика | «Центральная типография»",url:"http://www.giprint.ru/body-stend"},
-            "290":{title:"Готовые коробки",url:"http://www.giprint.ru/gotovye-korobki/"}
+            "290":{title:"Готовые коробки",url:"http://www.giprint.ru/gotovye-korobki/"},
+            "317":{title:"Картонные  коробки",url:"http://www.giprint.ru/gotovye-korobki/"},
         };
         var countModifiers = function(prod){
+            if(prod.options !== undefined) return (prod.options.tabs=="true")?3:2;
             for(var i in prod){
-                for(var j in prod[i]) return (!isNaN(prod[i][j]))?2:3;
+                for(var j in prod[i]) return (!isNaN(prod[i][j])||(typeof(prod[i].prices)!="undefined"))?2:3;
             }
             return 0;
         };
@@ -90,27 +92,84 @@ if(strlen($entityBody)){
             if(typeof(vbStock)=="undefined") {console.debug("no vbStock defined");return;}
             if(typeof(vbStock[ei])=="undefined")  {console.debug("no "+ei+" defined in  vbStock");return;}
             $("li.textrelise,.textrelise:empty").hide();
-            var prod = vbStock[ei], isTabs = countModifiers(prod)>2;
+            var prod = vbStock[ei],opts = (prod.options != undefined)?prod.options:{style:"product_table",tabs:((countModifiers(prod)>2)?"true":"false"),stock:false};
+            opts.stock = (opts.stock==undefined)?false:opts.stock;
+            opts.tabs=(opts.tabs=="true");
+            var isTabs = opts.tabs;
             var tabs=[], rows=[],col=[],colMade = false;
             var ttitle = (typeof(__all[ei])!="undefined")?__all[ei].title:" no title";
             var turl = (typeof(__all[ei])!="undefined")?__all[ei].url:"#";
-            $("body").append('<br /><h2><a href="'+turl+'" target="_blank">#'+ei+" "+ttitle+"</a></h2>")
+            var $body = $('<div class="ei-product" data-id="'+ei+'"></div>').appendTo("body");
+            if(opts.style=="product_box")console.debug(ei,opts);
+
+            $body.append('<br /><h2 class="ei" id="'+ei+'"><a href="'+turl+'" target="_blank">#'+ei+" "+ttitle+"</a></h2>")
+            $body.append('&nbsp;Формат отображения: <select name="options.style"><option value="product_table" '+((opts.style=="product_table")?'selected="selected"':"")+'>Табличный вид</option><option value="product_box"'+((opts.style=="product_box")?'selected="selected"':"")+'>С картинками</option></select>');
+            $body.append('<br>Акция:<input type="checkbox" onchange="setStockAll(this);"'+(opts.stock?' checked="checked"':'')+'/>');
+            $body.append('<input type="hidden" name="options.stock" value="'+opts.stock.toString()+'" />');
+            $body.append('<input type="hidden" name="options.tabs" value="'+opts.tabs.toString()+'" />');
+
+            // if(typeof(prod.options)!="undefined" && prod.options.style=="product_box") return vbBuildBoxes(ei);
+            var drawCell = function(prod,k,i,j,ei){
+                var s = "",val = (k=="")?prod[i]:prod[k][i],
+                    val = (val.prices != undefined)?val.prices[j]:val[j];
+                    price = parseFloat((val.value != undefined)?val.value:val),
+                    base = parseFloat((val.base != undefined)?val.base:val),
+                    style = (val.style!=undefined)?val.style:["normal"];
+                    quantity = j.replace(/"/g,'\"');
+                s = '<td class="'+((price>0)?'grey1 ':'')+'" data-prod="'+ei+'" data-type="'+k+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" data-price="'+price+'" data-price-base="'+base+'">';//' onclick="'+((price>0)?"vbSetCalculator(this)":'')+'">';
+                s+= '<input name="value" value="'+( (isNaN(price)||price<0)? "&nbsp;" : price )+'"/>';
+                // console.debug(style,($.inArray("red",style)>=0)?'checked':'')
+                s+= '<br>Акция:<input type="checkbox" onchange="setStock(this);"'+(($.inArray("red",style)>=0)?' checked="checked"':'')+'/>';
+                s+= '<input type="hidden" name="style" value="'+style.join(",")+'"/>';
+                s+= '</td>';
+                return s;
+            },
+            drawBox=function(r,t,d){
+                // console.debug("vbBuildBoxes:drawBox: ",r,t,d);
+                var s = '<div class="productblock productblock-new">',fprice = null;
+                s+= '<div class="image"><img src="'+d.image+'" alt="'+d.title+'" title="'+d.title+'" style="max-height:154px;width:auto;"></div>';
+                // s+= '<div class="image"><img src="'+d.image+'" alt="'+d.title+'" title="'+d.title+'" width="100%"></div>';
+                // s+= '<div class="title"><div class="razm">Размеры:</div> длина 9,5 см, ширина 3,5 см, высота 2,5 см</div>';
+                s+= '<div class="title">'+t+'</div>';
+                s+= '<div class="description">'+d.title+'</div>';
+                s+= '<hr/>';
+                s+= '<div class="pricek">';
+                for(var i in d.prices){
+                    var pr = d.prices[i];
+                    if(pr==-1)continue;
+                    if(fprice == null){
+                        fprice = {price:pr,title:i};
+                        s+=i+' - '+pr+'&nbsp;&#8381;<br/>';
+                        break;
+                    }
+
+                }
+                s+= '</div>';
+                s+= '<a class="selected-cell" href="javascript:void(0);" onclick="vbSetCalculator(this);" data-type="'+r+'" data-row="'+t+'" data-quantity="'+fprice.title+'" data-price="'+fprice.price+'" data-price-base="'+fprice.base+'" style="text-decoration: none;"><div class="cart">&nbsp;</div></a>'
+                s+='</div>';
+                return s;
+            };
             if(isTabs){
-                var $tabs = $('<div id="p-tabs" class="features-table-new p-tabs"></div>').appendTo("body")//.insertAfter( ($("#p-tabs").length)?"#p-tabs":".features-table:first")
+                var $tabs = $('<div id="p-tabs" class="features-table-new p-tabs"></div>').appendTo($body)//.insertAfter( ($("#p-tabs").length)?"#p-tabs":".features-table:first")
                     ,tabLinks = {},tables={},t=1;
                 $tabs.html('').addClass("p-tab1");
                 for(var k in prod){
+                    if($.inArray(k,["options","option","style","value","stock"])!=-1)continue;
                     tabLinks[k]='<a class="p-tab'+t+'" href="javascript:void(0);" onclick="{$(this).parent(\'#p-tabs\').attr(\'class\',\'p-tab'+t+'\').attr(\'data-val\',\''+k+'\');void(0);}"><input name="" class="tabData" value="'+k+'" /></a>';
                     for(var i in prod[k]){
                         var row = [];
-                        row.push('<td class="grey" style="max-width:160px;padding:4px;">'+i+'</td>');
-                        for(var j in prod[k][i]){
+                        var title = (prod[k][i].title != undefined)?prod[k][i].title:i;
+                        var prices = (prod[k][i].prices != undefined)?prod[k][i].prices:prod[k][i];
+                        var image =  (prod[k][i].image != undefined)?prod[k][i].image:"";
+                        row.push('<td class="grey" style="max-width:160px;"><img width="160px" src="'+image+'" /><input name="title" value="'+title+'" /><br /><input name="image" value="'+image+'"/></td>');
+                        for(var j in prices){
                             (!colMade)?col.push('<td class="grey">'+j+'</td>'):{};
-                            var price = parseFloat(prod[k][i][j]),
-                                quantity = j.replace(/"/g,'\"');
-
-                            // row.push('<td class="'+((price>0)?'grey1 ':'')+'" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>');
-                            row.push('<td class="'+((price>0)?'grey1 ':'')+'" data-prod="'+ei+'" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'"><input name="" value="'+((isNaN(price)||price<0)?"&nbsp;":(price))+'"/></td>');
+                            row.push(drawCell(prod,k,i,j,ei));
+                            // var price = parseFloat(prod[k][i][j]),
+                            //     quantity = j.replace(/"/g,'\"');
+                            //
+                            // // row.push('<td class="'+((price>0)?'grey1 ':'')+'" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>');
+                            // row.push('<td class="'+((price>0)?'grey1 ':'')+'" data-prod="'+ei+'" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'"><input name="" value="'+((isNaN(price)||price<0)?"&nbsp;":(price))+'"/></td>');
                         }
                         colMade=true;
                         rows.push('<tr>'+row.join('')+'</tr>')
@@ -129,16 +188,22 @@ if(strlen($entityBody)){
                 for(var i in tables)$tabs.append(tables[i]);
             }
             else {
-                var $table = $('<table class="features-table features-table-new"></table>').appendTo("body");
+                var $table = $('<table class="features-table features-table-new"></table>').appendTo($body);
                 for(var i in prod){
+                    if($.inArray(i,["options","option","style","value","stock"])!=-1)continue;
                     var row = [];
-                    row.push('<td class="grey" style="max-width:160px;">'+i+'</td>');
-                    for(var j in prod[i]){
+                    var title = (prod[i].title != undefined)?prod[i].title:i;
+                    var prices = (prod[i].prices != undefined)?prod[i].prices:prod[i];
+                    var image =  (prod[i].image != undefined)?prod[i].image:"";
+                    row.push('<td class="grey" style="max-width:160px;"><img width="160px" src="'+image+'" /><input name="title" value="'+title+'" /><br /><input name="image" value="'+image+'"/></td>');
+                    for(var j in prices){
+
                         (!colMade)?col.push('<td class="grey">'+j+'</td>'):{};
-                        var price = parseFloat(prod[i][j]);
-                        // row.push('<td class="grey1" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>');
-                        // row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+j.replace(/"/g,'\"')+'" onclick="vbSetCalculator(this)" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
-                        row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="" data-prod="'+ei+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+j.replace(/"/g,'\"')+'" onclick="vbSetCalculator(this)" data-price="'+price+'"><input name="" value="'+((isNaN(price)||price<0)?"&nbsp;":(price))+'"/></td>')
+                        row.push(drawCell(prod,"",i,j,ei));
+                        // var price = parseFloat(prod[i][j]);
+                        // // row.push('<td class="grey1" data-type="'+k+'"data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+quantity+'" onclick="'+((price>0)?"vbSetCalculator(this)":'')+'"  data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>');
+                        // // row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+j.replace(/"/g,'\"')+'" onclick="vbSetCalculator(this)" data-price="'+price+'">'+((isNaN(price)||price<0)?"&nbsp;":(price.currency()))+'</td>')
+                        // row.push('<td class="'+((price>0)?'grey1 ':'')+'selected-cell" data-type="" data-prod="'+ei+'" data-row="'+i.replace(/"/g,'\"')+'" data-quantity="'+j.replace(/"/g,'\"')+'" onclick="vbSetCalculator(this)" data-price="'+price+'"><input name="" value="'+((isNaN(price)||price<0)?"&nbsp;":(price))+'"/></td>')
                     }
                     colMade=true;
                     rows.push('<tr>'+row.join('')+'</tr>')
@@ -153,8 +218,8 @@ if(strlen($entityBody)){
             // console.debug("will remove "+$(".features-table:not(.features-table-new),#p-tabs:not(.features-table-new)").length+" objects");
             $(".features-table:not(.features-table-new),#p-tabs:not(.features-table-new)").remove();
             // $("body").trigger("vb:tableLoaded");
-            $("body").append('<div style="width:100%;padding-right:2em;text-align:right;"><button class="save-button" onclick="save();">Сохранить</button></div>');
-            $("body").append('<HR /><br />');
+            $body.append('<div style="width:100%;padding-right:2em;text-align:right;"><button class="save-button" onclick="save();">Сохранить</button></div>');
+            $body.append('<HR /><br />');
         };
         //start trigger
         $.getJSON("/themes/site_themes/default_theme/vbstock.json",function(d){
@@ -174,24 +239,51 @@ if(strlen($entityBody)){
             }
         });
         function save(){
-            var dd = {"24":{},"25":{},"29":{},"30":{},"31":{},"33":{},"34":{},"35":{},"37":{},"40":{},"41":{},"46":{},"47":{},"49":{},"51":{},"52":{},"53":{},"54":{},"77":{},"83":{},"88":{},"108":{},"117":{},"123":{},"124":{},"134":{},"160":{},"166":{},"177":{},"183":{},"184":{},"221":{},"230":{},"231":{},"232":{},"234":{},"290":{}};
+            var dd = {};//{"24":{},"25":{},"29":{},"30":{},"31":{},"33":{},"34":{},"35":{},"37":{},"40":{},"41":{},"46":{},"47":{},"49":{},"51":{},"52":{},"53":{},"54":{},"77":{},"83":{},"88":{},"108":{},"117":{},"123":{},"124":{},"134":{},"160":{},"166":{},"177":{},"183":{},"184":{},"221":{},"230":{},"231":{},"232":{},"234":{},"290":{}};
+            $(".ei").each(function(){
+                dd[$(this).attr("id")]={
+                    options:{
+                        style:$(this).parent('.ei-product').find("[name='options.style']").val(),
+                        tabs:$(this).parent('.ei-product').find("[name='options.tabs']").val(),
+                        stock:($(this).parent('.ei-product').find("[name='options.stock']").val()=="true")
+                    }
+                };
+            });
             $(".grey1").each(function(){
-                var $t = $(this),tt = $t.attr("data-type"),rr = $t.attr("data-row"); qq = $t.attr("data-quantity"), prod = $t.attr("data-prod"),pp={},p=$t.find("input").val();
+                var $t = $(this),tt = $t.attr("data-type"),rr = $t.attr("data-row"); qq = $t.attr("data-quantity"), prod = $t.attr("data-prod"),pp={},p=$t.attr("data-price-base"),stc=$t.find("input[name=value]").val(),
+                    stl=$t.find("[name=style]").val().split(/,/),
+                    img=$t.parent().find("[name=image]").val(),
+                    tle=$t.parent().find("[name=title]").val();
+                // p = (p == undefined)?p:stc;
+                // stc = (stc == undefined)?p:stc;
                 p=p.length?p:"-1";
                 pp=dd[prod];
-                if(tt.length){
+                var isbox = (pp.options.style=="product_box");
+                if(tt.length){ //tabs view
                     pp[tt]=(typeof(pp[tt])=="undefined")?{}:pp[tt];
                     pp[tt][rr]=(typeof(pp[tt][rr])=="undefined")?{}:pp[tt][rr];
-                    pp[tt][rr][qq]=p;
+                    if(isbox){
+                            pp[tt][rr]["title"] = tle;
+                            pp[tt][rr]["image"] = img;
+                            if(pp[tt][rr]["prices"] == undefined)pp[tt][rr]["prices"]={};
+                            pp[tt][rr]["prices"][qq]={value:parseFloat(stc),style:stl,base:parseFloat(p)};
+                        }
+                    else pp[tt][rr][qq]={value:parseFloat(stc),style:stl,base:parseFloat(p)};
                 }
                 else {
                     pp[rr]=(typeof(pp[rr])=="undefined")?{}:pp[rr];
-                    pp[rr][qq]=p;
+                    if(isbox){
+                            pp[rr]["title"] = tle;
+                            pp[rr]["image"] = img;
+                            if(pp[rr]["prices"] == undefined)pp[rr]["prices"]={};
+                            pp[rr]["prices"][qq]={value:parseFloat(stc),style:stl,base:parseFloat(p)}
+                        }
+                    else pp[rr][qq]={value:parseFloat(stc),style:stl,base:parseFloat(p)};
                 }
                 // console.debug(pp);
                 // dd[prod] = $.extend(pp,dd[prod]);
             });
-            console.debug("save",dd);
+            console.debug("save",dd);//return;
             $.ajax({
                 url:"/setup.php",
                 type:"post",
@@ -201,6 +293,38 @@ if(strlen($entityBody)){
                     document.location.reload();
                 }
             });
+        }
+        function setStockAll(t){
+            var checked = $(t).is(':checked'),stockValue = 0;
+            $(t).parent(".ei-product").find("[name='options.stock']").val(checked.toString());
+            if(checked)stockValue = parseFloat(prompt("Введите размер скидки в процентах",5));
+            $(t).parent(".ei-product").find(".features-table .grey1 input[type=checkbox]").each(function(){
+                if(checked)$(this).attr("checked","checked");
+                else $(this).removeAttr("checked");
+                _setValueStock($(this),stockValue);
+            });
+        }
+        function _setValueStock($t,stockValue){
+            var styleInput = $t.next('[name=style]'), priceInput = $t.parent().find("[name=value]"),priceBase = $t.parent(),baseValue=0,priceValue=0;;
+            if($t.is(':checked')){
+                styleInput.val('red,bold');
+
+                baseValue = parseFloat(priceInput.val());
+                priceValue = baseValue*((100-stockValue)/100);
+                priceBase.attr("data-price-base",baseValue);
+                priceInput.val(priceValue);
+            }
+            else{
+                styleInput.val( 'normal' );
+                priceInput.val(priceBase.attr("data-price-base"));
+            }
+        }
+        function setStock(t){
+            var styleInput = $(t).next('[name=style]'), priceInput = $(t).parent().find("[name=value]"),priceBase = $(t).parent(),stockValue=0,baseValue=0,priceValue=0;;
+            if($(t).is(':checked')){
+                stockValue = parseFloat(prompt("Введите размер скидки в процентах",5));
+            }
+            _setValueStock($(t),stockValue);
         }
     </script>
 </body>
