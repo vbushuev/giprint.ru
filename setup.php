@@ -288,8 +288,7 @@ if(strlen($entityBody)){
                 url:"/setup.php",
                 type:"post",
                 data:JSON.stringify(dd),
-                dataType:"json",
-                success:function(){
+                success:function(d,x,s){
                     document.location.reload();
                 }
             });
